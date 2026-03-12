@@ -1458,6 +1458,12 @@ a:hover {
 /* =========================================================
    MOBILE MENU OVERLAY
    ========================================================= */
+/* [hidden] must come first so display: flex below doesn't override the attribute */
+.pcr-mobile-menu[hidden],
+.pcr-menu-backdrop[hidden] {
+  display: none !important;
+}
+
 .pcr-mobile-menu {
   position: fixed;
   inset: 0;
