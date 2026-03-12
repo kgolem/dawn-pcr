@@ -1,0 +1,100 @@
+{
+  "sections": {
+    "pcr-memorial": {
+      "type": "pcr-memorial",
+      "settings": {
+        "heading": "In memory of a Pacific Coast coffee legend, Mike Gobel",
+        "body": "<p>It all started in the early 2010s when Dave walked into Mike\u2019s Highway 9 coffee shop and the two hit it off instantly. What began as a friendship turned into a full-blown partnership, with the two buying a coffee roaster together and bonding over their love of the craft.<\/p><p>Tragically, we lost Mike in 2024. Losing a friend and partner hit Dave hard, but it also sparked a deeper connection. This loss brought him closer to the Pacific Coast recovery community, and today he\u2019s a dedicated advocate for addiction and rehabilitation, keeping Mike\u2019s story alive along the way.<\/p><p>10% of every bag of Mike\u2019s Blend goes straight to supporting the Pacific Coast recovery community \u2014 a small way of honoring the guy who inspired it all.<\/p>",
+        "video_url": "",
+        "video_label": "BEHIND THE ROASTERY (VIDEO)",
+        "cta_label": "Shop Mike\u2019s Blend",
+        "cta_url": "/products/mikes-blend"
+      }
+    },
+    "our-values": {
+      "type": "multicolumn",
+      "blocks": {
+        "col1": {
+          "type": "column",
+          "settings": {
+            "title": "SMALL BATCH",
+            "text": "<p>Every roast is made in small quantities to ensure freshness and quality. We roast weekly and ship within 48 hours.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col2": {
+          "type": "column",
+          "settings": {
+            "title": "THIRD WAVE",
+            "text": "<p>We source responsibly from hand-picked farmers around the world who share our commitment to quality and sustainability.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col3": {
+          "type": "column",
+          "settings": {
+            "title": "COMMUNITY FIRST",
+            "text": "<p>10% of every bag of Mike\u2019s Blend supports the Pacific Coast recovery community. Coffee that gives back.<\/p>",
+            "link_label": "Shop Mike\u2019s Blend \u2192",
+            "link": "/products/mikes-blend"
+          }
+        }
+      },
+      "block_order": ["col1", "col2", "col3"],
+      "settings": {
+        "title": "WHAT WE STAND FOR",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "farmers-market": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "FIND US EVERY SATURDAY",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We brew every Saturday at the Saratoga Farmers\u2019 Market. Come say hello, taste the latest roast, and take home a bag. It\u2019s where Pacific Coast Roasters started \u2014 and where we still show up every week.<\/p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Online",
+            "button_link": "/collections/all",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": ["pcr-memorial", "our-values", "farmers-market"]
+}

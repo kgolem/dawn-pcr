@@ -1,0 +1,304 @@
+{% comment %}
+  Pacific Coast Roasters — Custom Product Section
+  Renders the main product details for all coffee product pages.
+
+  Features:
+  - Product image gallery (primary + hover, thumbnail strip for 3+ images)
+  - Roast level dot indicator (from product.vendor → roast level)
+  - Flavor note pills (from product.metafields.custom.flavor_notes)
+  - Origin / product type line
+  - Size variant selector (12oz / 1kg)
+  - Quantity selector
+  - Add to Cart
+  - Brew guide callout (from section settings)
+  - Origin story (from product description)
+  - "10% goes to..." badge for Mike's Blend
+{% endcomment %}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'pcr-product-form-' | append: product.id
+  assign flavor_notes    = product.metafields.custom.flavor_notes.value
+  assign roast_level     = product.metafields.custom.roast_level.value | plus: 0
+  assign vendor          = product.vendor
+  assign product_type    = product.product_type
+  assign is_mikes_blend  = false
+  if product.handle contains 'mike' or product.title contains "Mike"
+    assign is_mikes_blend = true
+  endif
+-%}
+
+<div class="pcr-product page-width">
+  <div class="pcr-product__layout">
+
+    {%- comment -%} ── Left: Images ── {%- endcomment -%}
+    <div class="pcr-product__gallery">
+      <div class="pcr-product__featured-image">
+        {%- if product.featured_media != blank -%}
+          <img
+            id="pcr-featured-img-{{ product.id }}"
+            src="{{ product.featured_media | image_url: width: 900 }}"
+            srcset="
+              {{ product.featured_media | image_url: width: 600 }}  600w,
+              {{ product.featured_media | image_url: width: 900 }}  900w,
+              {{ product.featured_media | image_url: width: 1200 }} 1200w
+            "
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            alt="{{ product.featured_media.alt | default: product.title | escape }}"
+            loading="eager"
+            fetchpriority="high"
+            class="pcr-product__main-img"
+            width="{{ product.featured_media.width }}"
+            height="{{ product.featured_media.height }}"
+          >
+        {%- else -%}
+          <div class="pcr-product__img-placeholder">
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Thumbnail strip (shown if 2+ images) {%- endcomment -%}
+      {%- if product.media.size > 1 -%}
+        <div class="pcr-product__thumbnails" role="list" aria-label="Product images">
+          {%- for media in product.media limit: 6 -%}
+            <button
+              class="pcr-product__thumb{% if forloop.first %} is-active{% endif %}"
+              data-media-id="{{ media.id }}"
+              data-src="{{ media | image_url: width: 900 }}"
+              aria-label="View image {{ forloop.index }}"
+              type="button"
+            >
+              <img
+                src="{{ media | image_url: width: 120 }}"
+                alt="{{ media.alt | default: product.title | escape }}"
+                loading="lazy"
+                width="120"
+                height="120"
+                class="pcr-product__thumb-img"
+              >
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── Right: Details ── {%- endcomment -%}
+    <div class="pcr-product__details">
+
+      {%- comment -%} Type + origin {%- endcomment -%}
+      {%- if product_type != blank or vendor != blank -%}
+        <p class="pcr-product__meta-line">
+          {%- if product_type != blank -%}<span class="pcr-product__type">{{ product_type }}</span>{%- endif -%}
+          {%- if product_type != blank and vendor != blank -%}<span aria-hidden="true"> · </span>{%- endif -%}
+          {%- if vendor != blank -%}<span class="pcr-product__vendor">{{ vendor }}</span>{%- endif -%}
+        </p>
+      {%- endif -%}
+
+      <h1 class="pcr-product__title">{{ product.title }}</h1>
+
+      {%- comment -%} Roast level indicator {%- endcomment -%}
+      {%- if roast_level > 0 -%}
+        {% render 'roast-indicator', level: roast_level %}
+      {%- elsif vendor contains 'Light' -%}
+        {% render 'roast-indicator', level: 1 %}
+      {%- elsif vendor contains 'Medium-Dark' -%}
+        {% render 'roast-indicator', level: 4 %}
+      {%- elsif vendor contains 'Dark' -%}
+        {% render 'roast-indicator', level: 5 %}
+      {%- elsif vendor contains 'Medium' -%}
+        {% render 'roast-indicator', level: 3 %}
+      {%- endif -%}
+
+      {%- comment -%} Flavor notes {%- endcomment -%}
+      {%- if flavor_notes != blank -%}
+        <ul class="pcr-card__notes pcr-product__flavor-notes" aria-label="Tasting notes">
+          {%- for note in flavor_notes -%}
+            <li class="pcr-card__note">{{ note }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- comment -%} Price {%- endcomment -%}
+      <p class="pcr-product__price" id="pcr-price-{{ product.id }}">
+        {{ current_variant.price | money }}
+        {%- if current_variant.compare_at_price > current_variant.price -%}
+          <s class="pcr-product__compare-price">{{ current_variant.compare_at_price | money }}</s>
+        {%- endif -%}
+      </p>
+
+      {%- comment -%} 10% donation badge for Mike's Blend {%- endcomment -%}
+      {%- if is_mikes_blend -%}
+        <div class="pcr-product__donation-badge">
+          <span>10% of every bag supports Pacific Coast recovery community</span>
+          <span class="pcr-product__donation-icon" aria-hidden="true">♥</span>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Product form {%- endcomment -%}
+      {%- form 'product', product, id: product_form_id, class: 'pcr-product__form' -%}
+
+        {%- comment -%} Variant selector {%- endcomment -%}
+        {%- if product.variants.size > 1 -%}
+          <div class="pcr-product__variants">
+            <p class="pcr-product__variants-label">Size</p>
+            <div class="pcr-product__variant-btns" role="group" aria-label="Select size">
+              {%- for variant in product.variants -%}
+                <label class="pcr-product__variant-btn{% if variant == current_variant %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}">
+                  <input
+                    type="radio"
+                    name="id"
+                    value="{{ variant.id }}"
+                    {% if variant == current_variant %}checked{% endif %}
+                    {% unless variant.available %}disabled{% endunless %}
+                    class="visually-hidden pcr-product__variant-radio"
+                    data-price="{{ variant.price | money }}"
+                    data-available="{{ variant.available }}"
+                    form="{{ product_form_id }}"
+                  >
+                  {{ variant.title }}
+                </label>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- else -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}" form="{{ product_form_id }}">
+        {%- endif -%}
+
+        {%- comment -%} Quantity {%- endcomment -%}
+        <div class="pcr-product__qty">
+          <label for="pcr-qty-{{ product.id }}" class="pcr-product__qty-label">Quantity</label>
+          <div class="pcr-product__qty-control">
+            <button type="button" class="pcr-product__qty-btn js-qty-minus" aria-label="Decrease quantity">−</button>
+            <input
+              id="pcr-qty-{{ product.id }}"
+              type="number"
+              name="quantity"
+              min="1"
+              value="1"
+              class="pcr-product__qty-input"
+              form="{{ product_form_id }}"
+            >
+            <button type="button" class="pcr-product__qty-btn js-qty-plus" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        {%- comment -%} ATC button {%- endcomment -%}
+        {%- if current_variant.available -%}
+          <button type="submit" name="add" class="button button--primary pcr-product__atc" form="{{ product_form_id }}">
+            Add to Cart
+          </button>
+        {%- else -%}
+          <button type="button" class="button button--primary pcr-product__atc" disabled aria-disabled="true">
+            Sold Out
+          </button>
+        {%- endif -%}
+
+        {%- comment -%} Free shipping badge {%- endcomment -%}
+        {%- if current_variant.price >= 5000 -%}
+          <p class="pcr-product__shipping-note">✓ Free shipping on this order</p>
+        {%- else -%}
+          <p class="pcr-product__shipping-note">Free shipping on orders over $50</p>
+        {%- endif -%}
+
+      {%- endform -%}
+
+      {%- comment -%} Brew guide callout {%- endcomment -%}
+      {%- if section.settings.show_brew_guide -%}
+        <div class="pcr-product__brew-callout">
+          <span class="pcr-product__brew-icon" aria-hidden="true">☕</span>
+          <div>
+            <strong>Not sure how to brew it?</strong>
+            <a href="{{ section.settings.brew_guide_url | default: '/pages/brew-guides' }}">See our brew guides →</a>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Description / origin story {%- endcomment -%}
+      {%- if product.description != blank -%}
+        <details class="pcr-product__desc-details" open>
+          <summary class="pcr-product__desc-summary">About this coffee</summary>
+          <div class="pcr-product__desc rte">{{ product.description }}</div>
+        </details>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const form = document.getElementById('{{ product_form_id }}');
+  if (!form) return;
+
+  // ── Variant switcher ──
+  form.querySelectorAll('.pcr-product__variant-radio').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      // Update selected state
+      form.querySelectorAll('.pcr-product__variant-btn').forEach(function (l) { l.classList.remove('is-selected'); });
+      radio.closest('.pcr-product__variant-btn').classList.add('is-selected');
+
+      // Update price
+      const priceEl = document.getElementById('pcr-price-{{ product.id }}');
+      if (priceEl && radio.dataset.price) priceEl.textContent = radio.dataset.price;
+
+      // Update ATC state
+      const atcBtn = form.closest('.pcr-product__form').querySelector('.pcr-product__atc');
+      if (atcBtn) {
+        const avail = radio.dataset.available === 'true';
+        atcBtn.disabled = !avail;
+        atcBtn.textContent = avail ? 'Add to Cart' : 'Sold Out';
+      }
+    });
+  });
+
+  // ── Qty stepper ──
+  function getQtyInput() { return form.querySelector('.pcr-product__qty-input'); }
+  form.querySelector('.js-qty-minus')?.addEventListener('click', function () {
+    const inp = getQtyInput();
+    if (parseInt(inp.value) > 1) inp.value = parseInt(inp.value) - 1;
+  });
+  form.querySelector('.js-qty-plus')?.addEventListener('click', function () {
+    const inp = getQtyInput();
+    inp.value = parseInt(inp.value) + 1;
+  });
+
+  // ── Thumbnail gallery ──
+  const thumbs = document.querySelectorAll('.pcr-product__thumb');
+  const featuredImg = document.getElementById('pcr-featured-img-{{ product.id }}');
+  thumbs.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (featuredImg && btn.dataset.src) {
+        featuredImg.src = btn.dataset.src;
+        thumbs.forEach(function (t) { t.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+      }
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "PCR Product",
+  "tag": "section",
+  "class": "pcr-section-product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_brew_guide",
+      "label": "Show brew guide callout",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "brew_guide_url",
+      "label": "Brew guide URL",
+      "info": "Defaults to /pages/brew-guides"
+    }
+  ],
+  "presets": [
+    { "name": "PCR Product" }
+  ]
+}
+{% endschema %}
