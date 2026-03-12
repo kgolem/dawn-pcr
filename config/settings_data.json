@@ -1,77 +1,21 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "color_schemes": {
-      "scheme-1": {
-        "settings": {
-          "background": "#FDFDFB",
-          "background_gradient": "",
-          "text": "#111111",
-          "button": "#111111",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#111111",
-          "shadow": "#111111"
-        }
-      },
-      "scheme-2": {
-        "settings": {
-          "background": "#DAB556",
-          "background_gradient": "",
-          "text": "#111111",
-          "button": "#111111",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#111111",
-          "shadow": "#111111"
-        }
-      },
-      "scheme-3": {
-        "settings": {
-          "background": "#111111",
-          "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
-          "button_label": "#111111",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#111111"
-        }
-      },
-      "scheme-4": {
-        "settings": {
-          "background": "#FDFDFB",
-          "background_gradient": "",
-          "text": "#111111",
-          "button": "#111111",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#111111",
-          "shadow": "#111111"
-        }
-      },
-      "scheme-5": {
-        "settings": {
-          "background": "#FDFDFB",
-          "background_gradient": "",
-          "text": "#111111",
-          "button": "#111111",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#111111",
-          "shadow": "#111111"
-        }
-      },
-      "scheme-6": {
-        "settings": {
-          "background": "#FDFDFB",
-          "background_gradient": "",
-          "text": "#111111",
-          "button": "#111111",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#111111",
-          "shadow": "#111111"
-        }
-      }
-    },
-    "type_header_font": "arvo_n4",
-    "heading_scale": 110,
+    "favicon": "",
+    "type_header_font": "abril_fatface_n4",
+    "heading_scale": 135,
     "type_body_font": "assistant_n4",
-    "body_scale": 100,
+    "body_scale": 115,
+    "spacing_sections": 0,
+    "animations_reveal_on_scroll": false,
     "buttons_border_thickness": 0,
     "buttons_border_opacity": 0,
     "buttons_radius": 0,
@@ -113,29 +57,105 @@
     "blog_card_shadow_vertical_offset": 0,
     "blog_card_shadow_blur": 0,
     "badge_position": "bottom left",
-    "favicon": "",
-    "type_separators": false,
-    "animations_reveal_on_scroll": false,
+    "social_facebook_link": "",
+    "social_instagram_link": "https://instagram.com/pacificcoastroasters",
+    "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "social_twitter_link": "",
+    "social_snapchat_link": "",
+    "social_pinterest_link": "",
+    "social_tumblr_link": "",
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": true,
+    "predictive_search_show_price": true,
     "cart_type": "drawer",
+    "type_separators": false,
     "cart_icon": "bag",
     "show_quantity_selector": true,
     "cart_show_free_shipping_threshold": false,
     "cart_free_shipping_threshold": 50,
-    "spacing_sections": 0,
-    "social_twitter_link": "",
-    "social_facebook_link": "",
-    "social_pinterest_link": "",
-    "social_instagram_link": "https://instagram.com/pacificcoastroasters",
-    "social_youtube_link": "",
-    "social_tumblr_link": "",
-    "social_snapchat_link": "",
-    "social_tiktok_link": "",
     "share_facebook": true,
     "share_twitter": true,
     "share_pinterest": true,
-    "predictive_search_enabled": true,
-    "predictive_search_show_vendor": true,
-    "predictive_search_show_price": true
+    "sections": {
+      "pcr-header": {
+        "type": "pcr-header",
+        "settings": {
+          "logo": "shopify://shop_images/logo-transparent.png",
+          "main_menu_handle": "main-menu",
+          "announcement_text": "FREE SHIPPING ON SUBSCRIPTIONS AND ORDERS OVER $50"
+        }
+      }
+    },
+    "content_for_index": [],
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#fdfdfb",
+          "background_gradient": "",
+          "text": "#111111",
+          "button": "#111111",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#111111",
+          "shadow": "#111111"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#dab556",
+          "background_gradient": "",
+          "text": "#111111",
+          "button": "#111111",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#111111",
+          "shadow": "#111111"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#111111",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#111111",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#111111"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#fdfdfb",
+          "background_gradient": "",
+          "text": "#111111",
+          "button": "#111111",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#111111",
+          "shadow": "#111111"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#fdfdfb",
+          "background_gradient": "",
+          "text": "#111111",
+          "button": "#111111",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#111111",
+          "shadow": "#111111"
+        }
+      },
+      "scheme-6": {
+        "settings": {
+          "background": "#fdfdfb",
+          "background_gradient": "",
+          "text": "#111111",
+          "button": "#111111",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#111111",
+          "shadow": "#111111"
+        }
+      }
+    }
   },
   "presets": {}
 }

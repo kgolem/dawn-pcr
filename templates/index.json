@@ -1,9 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "pcr-hero": {
       "type": "pcr-hero",
       "settings": {
-        "banner_height": "medium",
+        "image": "shopify://shop_images/PCR-beans.jpg",
+        "banner_height": "small",
         "heading": "Small-Batch Coffee, Direct-to-your-door",
         "subheading": "Roasted fresh daily in Watsonville, California. Brewed every Saturday at Saratoga Farmers’ Market.",
         "btn1_label": "Shop Best Sellers",
@@ -51,7 +61,7 @@
       "settings": {
         "heading": "Small batch, third wave coffee sourced responsibly from hand-picked farmers all around the world.",
         "subheading": "Fresh roasted and shipped within 48 hours.",
-        "collection": "",
+        "collection": "best-sellers",
         "view_all_label": "View Catalog",
         "sub_title": "Tour De Coast Coffee Subscription",
         "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
@@ -151,14 +161,14 @@
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "square",
+        "button_label": "Follow @PacificCoastRoasters",
+        "button_link": "",
         "columns_desktop": 4,
         "column_alignment": "center",
         "background_style": "none",
-        "button_label": "Follow @PacificCoastRoasters",
-        "button_link": "",
-        "swipe_on_mobile": false,
         "color_scheme": "scheme-1",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 16,
         "padding_bottom": 60
       }
