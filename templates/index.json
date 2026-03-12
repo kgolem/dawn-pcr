@@ -18,10 +18,10 @@
         "subheading": "Roasted fresh daily in Watsonville, California. Brewed every Saturday at Saratoga Farmers’ Market.",
         "btn1_label": "Shop Best Sellers",
         "btn1_url": "/collections/best-sellers",
-        "btn2_label": "Coffee",
-        "btn2_url": "/collections/all",
-        "btn3_label": "Coffee Subscriptions",
-        "btn3_url": "/collections/all"
+        "btn2_label": "Shop EXOTICS",
+        "btn2_url": "shopify://collections/exotics",
+        "btn3_label": "SUBSCRIBE & SAVE",
+        "btn3_url": "shopify://pages/subscription"
       }
     },
     "pcr-trust-bar": {
