@@ -1607,3 +1607,78 @@ a:hover {
   background: #c8a348;
   color: var(--pcr-black);
 }
+
+/* =========================================================
+   HERO BUTTON OVERRIDES — high-specificity to beat Dawn base.css
+   Wireframe: Button 1 = solid black | Button 2 = outline (thin gray) | Button 3 = white + thick black border
+   ========================================================= */
+
+/* Button 1: Solid black fill, white text */
+.pcr-hero__box .button--primary {
+  background-color: #111111 !important;
+  border: 0.2rem solid #111111 !important;
+  color: #ffffff !important;
+  padding: 1rem 1.75rem;
+  font-family: var(--pcr-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.pcr-hero__box .button--primary:hover {
+  background-color: #2a2a2a !important;
+  border-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+/* Button 2: Transparent bg, thin gray border — matches wireframe "outline" */
+.pcr-hero__box .button--outline {
+  background-color: transparent !important;
+  border: 0.1rem solid #9ca3af !important;
+  color: #111111 !important;
+  padding: 1rem 1.75rem;
+  font-family: var(--pcr-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.pcr-hero__box .button--outline:hover {
+  border-color: #111111 !important;
+  color: #111111 !important;
+}
+
+/* Button 3: White bg, thick black border — matches wireframe "secondary" */
+.pcr-hero__box .button--secondary {
+  background-color: #ffffff !important;
+  border: 0.2rem solid #111111 !important;
+  color: #111111 !important;
+  padding: 1rem 1.75rem;
+  font-family: var(--pcr-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.pcr-hero__box .button--secondary:hover {
+  background-color: #f9fafb !important;
+  color: #111111 !important;
+}
