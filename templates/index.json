@@ -1,0 +1,175 @@
+{
+  "sections": {
+    "pcr-hero": {
+      "type": "pcr-hero",
+      "settings": {
+        "banner_height": "medium",
+        "heading": "Small-Batch Coffee, Direct-to-your-door",
+        "subheading": "Roasted fresh daily in Watsonville, California. Brewed every Saturday at Saratoga Farmers’ Market.",
+        "btn1_label": "Shop Best Sellers",
+        "btn1_url": "/collections/best-sellers",
+        "btn2_label": "Coffee",
+        "btn2_url": "/collections/all",
+        "btn3_label": "Coffee Subscriptions",
+        "btn3_url": "/collections/all"
+      }
+    },
+    "pcr-trust-bar": {
+      "type": "pcr-trust-bar",
+      "blocks": {
+        "trust-1": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "",
+            "text": "Sustainably sourced (verified partners)"
+          }
+        },
+        "trust-2": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "",
+            "text": "Roasted fresh weekly"
+          }
+        },
+        "trust-3": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "",
+            "text": "Secure checkout"
+          }
+        }
+      },
+      "block_order": [
+        "trust-1",
+        "trust-2",
+        "trust-3"
+      ],
+      "settings": {}
+    },
+    "pcr-featured-products": {
+      "type": "pcr-featured-products",
+      "settings": {
+        "heading": "Small batch, third wave coffee sourced responsibly from hand-picked farmers all around the world.",
+        "subheading": "Fresh roasted and shipped within 48 hours.",
+        "collection": "",
+        "view_all_label": "View Catalog",
+        "sub_title": "Tour De Coast Coffee Subscription",
+        "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
+        "sub_url": "/collections/all",
+        "sub_cta": "Subscribe Now"
+      }
+    },
+    "pcr-memorial": {
+      "type": "pcr-memorial",
+      "settings": {
+        "heading": "In memory of a Pacific Coast coffee legend, Mike Gobel",
+        "body": "<p>It all started in the early 2010s when Dave walked into Mike’s Highway 9 coffee shop and the two hit it off instantly. What began as a friendship turned into a full-blown partnership, with the two buying a coffee roaster together and bonding over their love of the craft.</p><p>Tragically, we lost Mike in 2024. Losing a friend and partner hit Dave hard, but it also sparked a deeper connection. This loss brought him closer to the Pacific Coast recovery community, and today he’s a dedicated advocate for addiction and rehabilitation, keeping Mike’s story alive along the way.</p><p>10% of every bag of Mike’s Blend goes straight to supporting the Pacific Coast recovery community — a small way of honoring the guy who inspired it all.</p>",
+        "video_url": "",
+        "video_label": "BEHIND THE ROASTERY (VIDEO)",
+        "cta_label": "",
+        "cta_url": ""
+      }
+    },
+    "social-proof-heading": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "LOVED BY THE COMMUNITY",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>★★★★★ 4.9/5 based on 1,200+ reviews</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "instagram-grid": {
+      "type": "multicolumn",
+      "blocks": {
+        "col1": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col2": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col3": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col4": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "col1",
+        "col2",
+        "col3",
+        "col4"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "Follow @PacificCoastRoasters",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "padding_top": 16,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "pcr-hero",
+    "pcr-trust-bar",
+    "pcr-featured-products",
+    "pcr-memorial",
+    "social-proof-heading",
+    "instagram-grid"
+  ]
+}

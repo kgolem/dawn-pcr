@@ -1,0 +1,48 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand": {
+          "type": "text",
+          "settings": {
+            "subheading": "PACIFIC COAST ROASTERS",
+            "content": "<p>Small-batch, specialty coffee. Roasted &amp; packed in Watsonville, CA. In memory of a pacific coast coffee legend, Mike Gobel.<\/p>"
+          }
+        },
+        "shop-menu": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu"
+          }
+        },
+        "support-menu": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "footer"
+          }
+        },
+        "newsletter": {
+          "type": "text",
+          "settings": {
+            "subheading": "Join the Club",
+            "content": "<p>Subscribe for early access to new roasts and brew tips.<\/p>"
+          }
+        }
+      },
+      "block_order": ["brand", "shop-menu", "support-menu", "newsletter"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "newsletter_enable": true,
+        "show_social": false,
+        "padding_top": 60,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": ["footer"]
+}

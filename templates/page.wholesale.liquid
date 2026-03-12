@@ -1,0 +1,156 @@
+{% comment %}
+  Pacific Coast Roasters — Wholesale page template
+  Assign this template to the "wholesale" page in Shopify admin:
+  Online Store → Pages → Wholesale → Theme template → page.wholesale
+{% endcomment %}
+
+
+<div class="pcr-wholesale page-width">
+
+  {%- comment -%} Hero {%- endcomment -%}
+  <div class="pcr-wholesale__hero">
+    <div class="pcr-wholesale__hero-content">
+      <p class="pcr-wholesale__eyebrow">For Retailers &amp; Distributors</p>
+      <h1 class="pcr-wholesale__title">Wholesale Partnership Program</h1>
+      <p class="pcr-wholesale__intro">
+        We partner with cafés, retailers, boutiques, and distributors who share our commitment
+        to small-batch, third wave coffee sourced responsibly from hand-picked farmers around
+        the world. Apply to become a wholesale partner and enjoy exclusive pricing, flexible
+        minimums, and dedicated support.
+      </p>
+      <a href="#wholesale-apply" class="button button--primary pcr-wholesale__cta">
+        Apply for Wholesale
+      </a>
+      <p class="pcr-wholesale__secondary-cta">
+        Questions? Email us at
+        <a href="mailto:wholesale@pacificcoastroasters.com">wholesale@pacificcoastroasters.com</a>
+      </p>
+    </div>
+  </div>
+
+  {%- comment -%} Benefits {%- endcomment -%}
+  <div class="pcr-wholesale__benefits">
+    <h2 class="pcr-wholesale__section-title">Why partner with us?</h2>
+    <ul class="pcr-wholesale__benefit-list">
+      <li>
+        <span class="pcr-wholesale__benefit-icon">☕</span>
+        <div>
+          <strong>Competitive wholesale pricing</strong>
+          <p>Volume-tiered pricing that scales with your business. Mike's Blend is our recommended wholesale espresso.</p>
+        </div>
+      </li>
+      <li>
+        <span class="pcr-wholesale__benefit-icon">📦</span>
+        <div>
+          <strong>Flexible ordering — 12oz or 1kg bags</strong>
+          <p>All blends available in 12oz (340g) and 1kg (35oz) formats. No lock-in contracts.</p>
+        </div>
+      </li>
+      <li>
+        <span class="pcr-wholesale__benefit-icon">🚚</span>
+        <div>
+          <strong>Roasted fresh and shipped fast</strong>
+          <p>Fresh roasted and shipped within 48 hours of order confirmation from Watsonville, CA.</p>
+        </div>
+      </li>
+      <li>
+        <span class="pcr-wholesale__benefit-icon">🤝</span>
+        <div>
+          <strong>Dedicated account support</strong>
+          <p>A real person to help with orders, reorders, and product questions — every time.</p>
+        </div>
+      </li>
+      <li>
+        <span class="pcr-wholesale__benefit-icon">📣</span>
+        <div>
+          <strong>Marketing assets included</strong>
+          <p>Product photography, tasting notes, and origin stories — ready to use on your shelves or menu.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  {%- comment -%} How it works {%- endcomment -%}
+  <div class="pcr-wholesale__how-it-works">
+    <h2 class="pcr-wholesale__section-title">How it works</h2>
+    <ol class="pcr-wholesale__steps">
+      <li>
+        <span class="pcr-wholesale__step-number">1</span>
+        <div>
+          <strong>Apply</strong>
+          <p>Fill out our short wholesale inquiry form below (takes about 2 minutes).</p>
+        </div>
+      </li>
+      <li>
+        <span class="pcr-wholesale__step-number">2</span>
+        <div>
+          <strong>Review</strong>
+          <p>We'll review your application and follow up within 3–5 business days.</p>
+        </div>
+      </li>
+      <li>
+        <span class="pcr-wholesale__step-number">3</span>
+        <div>
+          <strong>Start ordering</strong>
+          <p>Approved partners receive wholesale pricing, terms, and ordering instructions.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  {%- comment -%} Inquiry form {%- endcomment -%}
+  <div class="pcr-wholesale__form-section" id="wholesale-apply">
+    <h2 class="pcr-wholesale__section-title">Apply now</h2>
+    <p class="pcr-wholesale__form-intro">
+      Tell us a bit about your business. We review every application personally.
+    </p>
+
+    {%- render 'wholesale-form' -%}
+  </div>
+
+  {%- comment -%} FAQ {%- endcomment -%}
+  <div class="pcr-wholesale__faq">
+    <h2 class="pcr-wholesale__section-title">Common questions</h2>
+
+    <details class="pcr-wholesale__faq-item">
+      <summary>What bags and sizes do you offer?</summary>
+      <p>
+        All blends are available in 12oz (340g) and 1kg (35oz) bags. Our lineup includes
+        Mike's Blend (medium), Rise &amp; Gr!nd (light), Shadow Work (dark), Decaf (medium-dark),
+        and seasonal single-origins like Peaberry, Pinkerton, and Tanzania.
+      </p>
+    </details>
+
+    <details class="pcr-wholesale__faq-item">
+      <summary>What are your minimum order quantities?</summary>
+      <p>
+        Contact us at wholesale@pacificcoastroasters.com for current MOQ and volume pricing.
+        We work with accounts of all sizes and are happy to discuss your needs directly.
+      </p>
+    </details>
+
+    <details class="pcr-wholesale__faq-item">
+      <summary>How long does fulfillment take?</summary>
+      <p>
+        We roast to order and ship within 48 hours of confirmation from our Watsonville, CA
+        facility. Expedited options available upon request.
+      </p>
+    </details>
+
+    <details class="pcr-wholesale__faq-item">
+      <summary>Which blend do you recommend for espresso?</summary>
+      <p>
+        Mike's Blend is our go-to wholesale espresso. Smooth and grounded with rich chocolate,
+        warm spice, and a whisper of smoke — a confident cup built for balance and high volume.
+      </p>
+    </details>
+
+    <details class="pcr-wholesale__faq-item">
+      <summary>Can I request samples before committing to an order?</summary>
+      <p>
+        Yes — mention it in your application and we'll arrange a sample pack for approved partners.
+      </p>
+    </details>
+  </div>
+
+</div>

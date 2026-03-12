@@ -1,0 +1,78 @@
+{% comment %}
+  Pacific Coast Roasters — Trust Signals Bar
+  Positioned between the hero and featured products sections.
+  Add to homepage via Theme Editor: Add Section → pcr-trust-bar
+{% endcomment %}
+
+
+<div class="pcr-trust-bar">
+  <div class="pcr-trust-bar__inner page-width">
+    {%- for block in section.blocks -%}
+      <div class="pcr-trust-bar__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon != blank -%}
+          <span class="pcr-trust-bar__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+        {%- endif -%}
+        <span class="pcr-trust-bar__text">{{ block.settings.text }}</span>
+      </div>
+    {%- else -%}
+      {%- comment -%} Default items if no blocks added yet {%- endcomment -%}
+      <div class="pcr-trust-bar__item">
+        <span class="pcr-trust-bar__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </span>
+        <span class="pcr-trust-bar__text">Sustainably sourced (verified partners)</span>
+      </div>
+      <div class="pcr-trust-bar__item">
+        <span class="pcr-trust-bar__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+        </span>
+        <span class="pcr-trust-bar__text">Roasted fresh weekly</span>
+      </div>
+      <div class="pcr-trust-bar__item">
+        <span class="pcr-trust-bar__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <span class="pcr-trust-bar__text">Secure checkout</span>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PCR Trust Bar",
+  "tag": "section",
+  "class": "pcr-section-trust-bar",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji or leave blank)",
+          "info": "Paste an emoji: ☕ 🏆 🛡️ 🚚 🌱 or leave blank for default SVG icons."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Sustainably sourced"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PCR Trust Bar",
+      "blocks": [
+        { "type": "trust_item", "settings": { "text": "Sustainably sourced (verified partners)" } },
+        { "type": "trust_item", "settings": { "text": "Roasted fresh weekly" } },
+        { "type": "trust_item", "settings": { "text": "Secure checkout" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

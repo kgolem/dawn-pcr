@@ -1,0 +1,30 @@
+{% comment %}
+  Pacific Coast Roasters — Roast level dot indicator
+  Mirrors the LIGHT ○○●○○ DARK scale from product labels.
+
+  Usage:
+    {% render 'roast-indicator', level: product.metafields.custom.roast_level %}
+
+  Or hard-coded per product:
+    {% render 'roast-indicator', level: 3 %}
+
+  Levels: 1 = very light, 2 = light, 3 = medium, 4 = medium-dark, 5 = dark
+  Default: 3 (medium) if not provided.
+{% endcomment %}
+
+{%- assign roast_level = level | default: 3 | plus: 0 -%}
+{%- assign total_dots = 5 -%}
+
+<div class="pcr-roast-indicator" aria-label="Roast level {{ roast_level }} of 5">
+  <span class="pcr-roast-indicator__label">Light</span>
+  <div class="pcr-roast-indicator__dots" role="presentation">
+    {%- for i in (1..total_dots) -%}
+      {%- if i <= roast_level -%}
+        <span class="pcr-roast-indicator__dot pcr-roast-indicator__dot--filled" aria-hidden="true"></span>
+      {%- else -%}
+        <span class="pcr-roast-indicator__dot" aria-hidden="true"></span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <span class="pcr-roast-indicator__label">Dark</span>
+</div>

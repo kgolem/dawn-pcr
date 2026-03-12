@@ -1,0 +1,264 @@
+{% comment %}
+  Pacific Coast Roasters — Custom Header section
+  Matches wireframe exactly:
+    Mobile:  [hamburger] [logo center] [cart]
+    Desktop: [logo left] [nav center]  [login + cart]
+
+  Sticky on scroll up. Black announcement bar above.
+  Mobile menu: full-screen overlay with nav links + Log In.
+
+  Usage: Replace Dawn's built-in Header section with this one,
+  OR use this as a standalone section placed first on all templates
+  via layout/theme.liquid (see theme-liquid-patch.md).
+{% endcomment %}
+
+
+{%- liquid
+  assign main_menu = linklists[section.settings.main_menu_handle]
+  assign logo      = section.settings.logo
+  assign logo_alt  = section.settings.logo.alt | default: shop.name
+-%}
+
+{%- comment -%} ══════ Announcement Bar ══════ {%- endcomment -%}
+{%- if section.settings.announcement_text != blank -%}
+  <div class="pcr-announcement" role="region" aria-label="Promotional announcement">
+    <p class="pcr-announcement__text">{{ section.settings.announcement_text }}</p>
+  </div>
+{%- endif -%}
+
+{%- comment -%} ══════ Main Header ══════ {%- endcomment -%}
+<header class="pcr-header js-pcr-header" role="banner">
+  <div class="pcr-header__inner page-width">
+
+    {%- comment -%} Left: hamburger (mobile) + logo (desktop) {%- endcomment -%}
+    <div class="pcr-header__left">
+      {%- comment -%} Mobile hamburger {%- endcomment -%}
+      <button
+        class="pcr-header__hamburger js-pcr-menu-open"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="pcr-mobile-menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6"  x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      {%- comment -%} Desktop logo {%- endcomment -%}
+      <a href="{{ routes.root_url }}" class="pcr-header__logo pcr-header__logo--desktop" aria-label="{{ shop.name }} — Home">
+        {%- if logo != blank -%}
+          <img
+            src="{{ logo | image_url: height: 60 }}"
+            srcset="{{ logo | image_url: height: 60 }} 1x, {{ logo | image_url: height: 120 }} 2x"
+            alt="{{ logo_alt | escape }}"
+            height="40"
+            loading="eager"
+            class="pcr-header__logo-img"
+          >
+        {%- else -%}
+          <span class="pcr-header__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    {%- comment -%} Center: mobile logo + desktop nav {%- endcomment -%}
+    <div class="pcr-header__center">
+      {%- comment -%} Mobile logo {%- endcomment -%}
+      <a href="{{ routes.root_url }}" class="pcr-header__logo pcr-header__logo--mobile" aria-label="{{ shop.name }} — Home">
+        {%- if logo != blank -%}
+          <img
+            src="{{ logo | image_url: height: 60 }}"
+            srcset="{{ logo | image_url: height: 60 }} 1x, {{ logo | image_url: height: 120 }} 2x"
+            alt="{{ logo_alt | escape }}"
+            height="36"
+            loading="eager"
+            class="pcr-header__logo-img"
+          >
+        {%- else -%}
+          <span class="pcr-header__logo-text pcr-header__logo-text--mobile">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+
+      {%- comment -%} Desktop navigation {%- endcomment -%}
+      <nav class="pcr-header__nav" aria-label="Main navigation">
+        <ul class="pcr-header__nav-list" role="list">
+          {%- for link in main_menu.links -%}
+            <li class="pcr-header__nav-item">
+              <a
+                href="{{ link.url }}"
+                class="pcr-header__nav-link{% if link.active %} pcr-header__nav-link--active{% endif %}"
+                {% if link.current %}aria-current="page"{% endif %}
+              >
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </div>
+
+    {%- comment -%} Right: Log In + Cart {%- endcomment -%}
+    <div class="pcr-header__right">
+      {%- if shop.customer_accounts_enabled -%}
+        <a
+          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+          class="pcr-header__login-link"
+        >
+          {%- if customer -%}Account{%- else -%}Log In{%- endif -%}
+        </a>
+      {%- endif -%}
+
+      <a href="{{ routes.cart_url }}" class="pcr-header__cart" aria-label="Cart ({{ cart.item_count }} items)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="pcr-header__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+  </div>
+</header>
+
+{%- comment -%} ══════ Mobile Menu Overlay ══════ {%- endcomment -%}
+<div
+  id="pcr-mobile-menu"
+  class="pcr-mobile-menu"
+  role="dialog"
+  aria-label="Navigation menu"
+  aria-modal="true"
+  hidden
+>
+  <div class="pcr-mobile-menu__header">
+    <a href="{{ routes.root_url }}" class="pcr-mobile-menu__logo" aria-label="{{ shop.name }} — Home">
+      {%- if logo != blank -%}
+        <img src="{{ logo | image_url: height: 60 }}" alt="{{ logo_alt | escape }}" height="36" loading="lazy">
+      {%- else -%}
+        <span class="pcr-header__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+    <button class="pcr-mobile-menu__close js-pcr-menu-close" aria-label="Close navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6"  x2="6"  y2="18"/>
+        <line x1="6"  y1="6"  x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="pcr-mobile-menu__nav" aria-label="Mobile navigation">
+    <ul class="pcr-mobile-menu__list" role="list">
+      {%- for link in main_menu.links -%}
+        <li class="pcr-mobile-menu__item">
+          <a
+            href="{{ link.url }}"
+            class="pcr-mobile-menu__link{% if link.active %} is-active{% endif %}"
+            {% if link.current %}aria-current="page"{% endif %}
+          >
+            {{ link.title }}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+
+  {%- if shop.customer_accounts_enabled -%}
+    <div class="pcr-mobile-menu__footer">
+      <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="pcr-mobile-menu__account">
+        {%- if customer -%}My Account{%- else -%}Log In{%- endif -%}
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+{%- comment -%} Overlay backdrop {%- endcomment -%}
+<div class="pcr-menu-backdrop js-pcr-menu-close" aria-hidden="true" hidden></div>
+
+<script>
+  (function () {
+    const header   = document.querySelector('.js-pcr-header');
+    const openBtns = document.querySelectorAll('.js-pcr-menu-open');
+    const closeBtns= document.querySelectorAll('.js-pcr-menu-close');
+    const menu     = document.getElementById('pcr-mobile-menu');
+    const backdrop = document.querySelector('.pcr-menu-backdrop');
+
+    function openMenu() {
+      menu.hidden     = false;
+      backdrop.hidden = false;
+      document.body.style.overflow = 'hidden';
+      openBtns.forEach(b => b.setAttribute('aria-expanded', 'true'));
+      menu.querySelector('a, button') && menu.querySelector('a, button').focus();
+    }
+    function closeMenu() {
+      menu.hidden     = true;
+      backdrop.hidden = true;
+      document.body.style.overflow = '';
+      openBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
+    }
+
+    openBtns.forEach(b  => b.addEventListener('click', openMenu));
+    closeBtns.forEach(b => b.addEventListener('click', closeMenu));
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.hidden) closeMenu();
+    });
+
+    // ── Sticky on scroll up ──
+    if (header) {
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', function () {
+        const currentY = window.scrollY;
+        if (currentY < 80) {
+          header.classList.remove('pcr-header--hidden');
+        } else if (currentY > lastY) {
+          header.classList.add('pcr-header--hidden');    // scrolling down — hide
+        } else {
+          header.classList.remove('pcr-header--hidden'); // scrolling up — show
+        }
+        lastY = currentY;
+      }, { passive: true });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "PCR Header",
+  "tag": "section",
+  "class": "pcr-section-header",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Recommended: SVG or PNG 2x, transparent background, max 400px wide."
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu_handle",
+      "label": "Main navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "FREE SHIPPING ON SUBSCRIPTIONS AND ORDERS OVER $50"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PCR Header"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,173 @@
+{% comment %}
+  Pacific Coast Roasters — Custom product card snippet
+  Replaces Dawn's card-product.liquid inside pcr-featured-products section.
+
+  Features:
+  - Roast level badge (absolute top-right, from product.vendor)
+  - Flavor note pills (from product.metafields.custom.flavor_notes list)
+  - Origin/type line above title (from product.product_type)
+  - Price + size label + Add to Cart footer row
+  - Hover: second image swap (if product has 2+ images)
+  - Quick variant selector (size: 12oz / 1kg) if product has variants
+  - Sold out state
+
+  Usage:
+    {% render 'pcr-card-product', card_product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign the_product     = card_product
+  assign first_variant   = the_product.selected_or_first_available_variant
+  assign product_url     = the_product.url
+  assign image_primary   = the_product.featured_media
+  assign image_hover     = the_product.media[1]
+  assign vendor          = the_product.vendor
+  assign product_type    = the_product.product_type
+  assign flavor_notes    = the_product.metafields.custom.flavor_notes.value
+  assign sold_out        = false
+  if first_variant.available == false
+    assign sold_out = true
+  endif
+-%}
+
+<div class="pcr-product-card{% if sold_out %} pcr-product-card--sold-out{% endif %}">
+
+  {%- comment -%} ── Image ── {%- endcomment -%}
+  <a href="{{ product_url }}" class="pcr-product-card__media-link" tabindex="-1" aria-hidden="true">
+    <div class="pcr-product-card__media">
+
+      {%- if image_primary != blank -%}
+        <img
+          src="{{ image_primary | image_url: width: 600 }}"
+          srcset="
+            {{ image_primary | image_url: width: 300 }} 300w,
+            {{ image_primary | image_url: width: 600 }} 600w,
+            {{ image_primary | image_url: width: 900 }} 900w
+          "
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          alt="{{ image_primary.alt | escape }}"
+          class="pcr-product-card__img pcr-product-card__img--primary"
+          loading="lazy"
+          width="{{ image_primary.width }}"
+          height="{{ image_primary.height }}"
+        >
+        {%- if image_hover != blank -%}
+          <img
+            src="{{ image_hover | image_url: width: 600 }}"
+            srcset="
+              {{ image_hover | image_url: width: 300 }} 300w,
+              {{ image_hover | image_url: width: 600 }} 600w,
+              {{ image_hover | image_url: width: 900 }} 900w
+            "
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            alt="{{ image_hover.alt | escape }}"
+            class="pcr-product-card__img pcr-product-card__img--hover"
+            loading="lazy"
+            width="{{ image_hover.width }}"
+            height="{{ image_hover.height }}"
+            aria-hidden="true"
+          >
+        {%- endif -%}
+      {%- else -%}
+        <div class="pcr-product-card__img-placeholder">
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Roast level badge — top right {%- endcomment -%}
+      {%- if vendor != blank -%}
+        <span class="pcr-card__roast-badge" aria-label="Roast level: {{ vendor }}">
+          {{ vendor }}
+        </span>
+      {%- endif -%}
+
+      {%- comment -%} Sold out badge — top left {%- endcomment -%}
+      {%- if sold_out -%}
+        <span class="pcr-product-card__sold-out-badge">Sold out</span>
+      {%- endif -%}
+
+    </div>
+  </a>
+
+  {%- comment -%} ── Body ── {%- endcomment -%}
+  <div class="pcr-product-card__body">
+
+    {%- comment -%} Origin / product type {%- endcomment -%}
+    {%- if product_type != blank -%}
+      <p class="pcr-card__origin">{{ product_type }}</p>
+    {%- endif -%}
+
+    {%- comment -%} Title {%- endcomment -%}
+    <h3 class="pcr-product-card__title">
+      <a href="{{ product_url }}">{{ the_product.title }}</a>
+    </h3>
+
+    {%- comment -%} Flavor note pills {%- endcomment -%}
+    {%- if flavor_notes != blank -%}
+      <ul class="pcr-card__notes" aria-label="Flavor notes">
+        {%- for note in flavor_notes -%}
+          <li class="pcr-card__note">{{ note }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- comment -%} Variant size selector (if product has size variants) {%- endcomment -%}
+    {%- if the_product.variants.size > 1 -%}
+      <div class="pcr-product-card__variants" id="variants-{{ the_product.id }}">
+        {%- for variant in the_product.variants -%}
+          <label class="pcr-product-card__variant-label{% if variant == first_variant %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}">
+            <input
+              type="radio"
+              name="size-{{ the_product.id }}"
+              value="{{ variant.id }}"
+              data-url="{{ the_product.url }}?variant={{ variant.id }}"
+              data-price="{{ variant.price | money }}"
+              data-available="{{ variant.available }}"
+              {% if variant == first_variant %}checked{% endif %}
+              {% unless variant.available %}disabled{% endunless %}
+              class="pcr-product-card__variant-input visually-hidden"
+            >
+            <span>{{ variant.title }}</span>
+          </label>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ── Footer: price + ATC ── {%- endcomment -%}
+    <div class="pcr-card__footer">
+      <div class="pcr-card__price-wrap">
+        <span class="pcr-card__price" id="price-{{ the_product.id }}">
+          {{- first_variant.price | money -}}
+        </span>
+        <span class="pcr-card__size">
+          {%- if the_product.variants.size == 1 -%}
+            {{ first_variant.title }}
+          {%- else -%}
+            12oz. bag
+          {%- endif -%}
+        </span>
+      </div>
+
+      {%- if sold_out -%}
+        <button class="button button--secondary pcr-card__atc" disabled aria-disabled="true">
+          Sold out
+        </button>
+      {%- else -%}
+        {%- assign atc_form_id    = 'atc-form-'    | append: the_product.id -%}
+        {%- assign variant_inp_id = 'variant-id-'  | append: the_product.id -%}
+        {%- form 'product', the_product, id: atc_form_id, class: 'pcr-product-card__atc-form' -%}
+          <input type="hidden" name="id" value="{{ first_variant.id }}" id="{{ variant_inp_id }}">
+          <button
+            type="submit"
+            name="add"
+            class="button button--secondary pcr-card__atc"
+            aria-label="Add {{ the_product.title | escape }} to cart"
+          >
+            Add to Cart
+          </button>
+        {%- endform -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>

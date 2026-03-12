@@ -1,0 +1,153 @@
+{% comment %}
+  Pacific Coast Roasters — Memorial / Brand Story section
+  "In memory of a Pacific Coast coffee legend, Mike Gobel"
+
+  Add to homepage via Theme Editor: Add Section → pcr-memorial
+  Schema settings allow editing copy and video URL without touching code.
+{% endcomment %}
+
+
+<div class="pcr-memorial">
+  <div class="pcr-memorial__inner page-width">
+
+    {%- comment -%} Video column {%- endcomment -%}
+    <div class="pcr-memorial__media">
+      {%- if section.settings.video_url != blank -%}
+        <a
+          href="{{ section.settings.video_url }}"
+          class="pcr-memorial__video-link"
+          aria-label="Watch: {{ section.settings.video_label | default: 'Behind the Roastery' }}"
+          target="_blank"
+          rel="noopener"
+        >
+          {%- if section.settings.video_thumbnail != blank -%}
+            <img
+              src="{{ section.settings.video_thumbnail | image_url: width: 900 }}"
+              alt="{{ section.settings.video_label | default: 'Video thumbnail' }}"
+              class="pcr-memorial__thumbnail"
+              loading="lazy"
+              width="900"
+              height="506"
+            >
+          {%- else -%}
+            <div class="pcr-memorial__thumbnail-placeholder">
+              <span class="pcr-memorial__placeholder-label">
+                {{ section.settings.video_label | default: 'BEHIND THE ROASTERY (VIDEO)' }}
+              </span>
+            </div>
+          {%- endif -%}
+          <span class="pcr-memorial__play-btn" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <polygon points="10,7 24,14 10,21" fill="black"/>
+            </svg>
+          </span>
+        </a>
+      {%- else -%}
+        <div class="pcr-memorial__thumbnail-placeholder">
+          <span class="pcr-memorial__placeholder-label">
+            {{ section.settings.video_label | default: 'BEHIND THE ROASTERY (VIDEO)' }}
+          </span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Story column {%- endcomment -%}
+    <div class="pcr-memorial__content">
+      <h2 class="pcr-memorial__heading">
+        {{ section.settings.heading | default: 'In memory of a Pacific Coast coffee legend, Mike Gobel' }}
+      </h2>
+
+      <div class="pcr-memorial__body rte">
+        {%- if section.settings.body != blank -%}
+          {{ section.settings.body }}
+        {%- else -%}
+          <p>
+            It all started in the early 2010s when Dave walked into Mike's Highway 9 coffee shop
+            and the two hit it off instantly. What began as a friendship turned into a full-blown
+            partnership, with the two buying a coffee roaster together and bonding over their love
+            of the craft.
+          </p>
+          <p>
+            Tragically, we lost Mike in 2024. Losing a friend and partner hit Dave hard, but it
+            also sparked a deeper connection. This loss brought him closer to the Pacific Coast
+            recovery community, and today he's a dedicated advocate for addiction and rehabilitation,
+            keeping Mike's story alive along the way.
+          </p>
+          <p>
+            10% of every bag of Mike's Blend goes straight to supporting the Pacific Coast recovery
+            community — a small way of honoring the guy who inspired it all.
+          </p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
+        <a href="{{ section.settings.cta_url }}" class="button button--secondary pcr-memorial__cta">
+          {{ section.settings.cta_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PCR Memorial Story",
+  "tag": "section",
+  "class": "pcr-section-memorial",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "In memory of a Pacific Coast coffee legend, Mike Gobel"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Story body",
+      "info": "Leave blank to use default Mike Gobel story copy."
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL",
+      "info": "YouTube, Vimeo, or any external link. Opens in new tab."
+    },
+    {
+      "type": "image_picker",
+      "id": "video_thumbnail",
+      "label": "Video thumbnail image"
+    },
+    {
+      "type": "text",
+      "id": "video_label",
+      "label": "Video placeholder label",
+      "default": "BEHIND THE ROASTERY (VIDEO)"
+    },
+    {
+      "type": "header",
+      "content": "Optional CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PCR Memorial Story"
+    }
+  ]
+}
+{% endschema %}

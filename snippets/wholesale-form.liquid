@@ -1,0 +1,169 @@
+{% comment %}
+  Pacific Coast Roasters — Wholesale inquiry form snippet
+  Rendered via: {% render 'wholesale-form' %}
+  Submissions are routed to the store contact email (Settings → Notifications).
+  To change the destination: Settings → Notifications → Contact form.
+{% endcomment %}
+
+{%- form 'contact', id: 'wholesale-inquiry-form', class: 'pcr-wholesale-form' -%}
+
+  {%- comment -%} Success state — must be inside form block to access form.posted_successfully? {%- endcomment -%}
+  {%- if form.posted_successfully? -%}
+    <div class="pcr-form__success" role="alert">
+      <p>
+        <strong>Application received — thank you!</strong><br>
+        We'll review your submission and follow up within 3–5 business days.
+      </p>
+    </div>
+  {%- else -%}
+
+    {%- if form.errors -%}
+      <div class="pcr-form__errors" role="alert">
+        {{ form.errors | default_errors }}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Hidden field to tag this as a wholesale inquiry in the email subject {%- endcomment -%}
+    <input type="hidden" name="contact[tags]" value="wholesale-inquiry">
+
+    <div class="pcr-form__row">
+      <div class="pcr-form__field pcr-form__field--half">
+        <label for="wholesale-business-name" class="pcr-form__label">
+          Business name <span aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="wholesale-business-name"
+          name="contact[business_name]"
+          class="pcr-form__input"
+          required
+          autocomplete="organization"
+          placeholder="Acme Coffee Co."
+        >
+      </div>
+
+      <div class="pcr-form__field pcr-form__field--half">
+        <label for="wholesale-contact-name" class="pcr-form__label">
+          Your name <span aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="wholesale-contact-name"
+          name="contact[name]"
+          class="pcr-form__input"
+          required
+          autocomplete="name"
+          placeholder="Jane Smith"
+        >
+      </div>
+    </div>
+
+    <div class="pcr-form__row">
+      <div class="pcr-form__field pcr-form__field--half">
+        <label for="wholesale-email" class="pcr-form__label">
+          Email address <span aria-hidden="true">*</span>
+        </label>
+        <input
+          type="email"
+          id="wholesale-email"
+          name="contact[email]"
+          class="pcr-form__input"
+          required
+          autocomplete="email"
+          placeholder="jane@acmecoffee.com"
+        >
+      </div>
+
+      <div class="pcr-form__field pcr-form__field--half">
+        <label for="wholesale-website" class="pcr-form__label">
+          Website or social handle
+        </label>
+        <input
+          type="url"
+          id="wholesale-website"
+          name="contact[website]"
+          class="pcr-form__input"
+          autocomplete="url"
+          placeholder="https://acmecoffee.com or @acmecoffee"
+        >
+      </div>
+    </div>
+
+    <div class="pcr-form__row">
+      <div class="pcr-form__field pcr-form__field--half">
+        <label for="wholesale-business-type" class="pcr-form__label">
+          Type of business <span aria-hidden="true">*</span>
+        </label>
+        <select
+          id="wholesale-business-type"
+          name="contact[business_type]"
+          class="pcr-form__select"
+          required
+        >
+          <option value="" disabled selected>Select one…</option>
+          <option value="cafe">Café / Coffee shop</option>
+          <option value="retailer">Retailer / Specialty store</option>
+          <option value="restaurant">Restaurant / Hotel</option>
+          <option value="distributor">Distributor</option>
+          <option value="corporate">Corporate / Office</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="pcr-form__field pcr-form__field--half">
+        <label for="wholesale-order-size" class="pcr-form__label">
+          Estimated first order size
+        </label>
+        <select
+          id="wholesale-order-size"
+          name="contact[estimated_order_size]"
+          class="pcr-form__select"
+        >
+          <option value="" disabled selected>Select a range…</option>
+          <option value="under-25lbs">Under 25 lbs</option>
+          <option value="25-50lbs">25–50 lbs</option>
+          <option value="50-100lbs">50–100 lbs</option>
+          <option value="100lbs-plus">100+ lbs</option>
+          <option value="not-sure">Not sure yet</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="pcr-form__field">
+      <label for="wholesale-message" class="pcr-form__label">
+        Anything else you'd like us to know?
+      </label>
+      <textarea
+        id="wholesale-message"
+        name="contact[body]"
+        class="pcr-form__textarea"
+        rows="4"
+        placeholder="Tell us about your business, coffee preferences, or any specific needs…"
+      ></textarea>
+    </div>
+
+    <div class="pcr-form__field pcr-form__field--consent">
+      <label class="pcr-form__checkbox-label">
+        <input
+          type="checkbox"
+          name="contact[consent]"
+          class="pcr-form__checkbox"
+          required
+          value="yes"
+        >
+        I agree to the
+        <a href="/pages/terms-of-service" target="_blank">Terms of Service</a>
+        and consent to receive email communications about my application.
+        <span aria-hidden="true"> *</span>
+      </label>
+    </div>
+
+    <div class="pcr-form__actions">
+      <button type="submit" class="button button--primary pcr-form__submit">
+        Submit application
+      </button>
+    </div>
+
+  {%- endif -%}
+
+{%- endform -%}
