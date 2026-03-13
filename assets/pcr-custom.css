@@ -3414,7 +3414,7 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 }
 
 /* ── Product card font-size +10% ─────────────────────────── */
-.pcr-product-card__title        { font-size: 1.07rem; }
+.pcr-product-card__title        { font-size: 1.284rem; }
 .pcr-card__origin               { font-size: 0.77rem; }
 .pcr-card__note                 { font-size: 0.77rem; }
 .pcr-card__price                { font-size: 1.21rem; }
