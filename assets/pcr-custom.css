@@ -3110,7 +3110,7 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 /* ── Follow CTA ── */
 .pcr-social-proof__cta-wrap { text-align: center; }
 .pcr-social-proof__instagram-heading {
-  margin: 0 0 0.5rem;
+  margin: 50px 0 0.75rem;
   font-size: 1.75rem;
 }
 
@@ -3118,7 +3118,6 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
   padding: 1rem 2.75rem !important;
   background-color: #ffffff !important;
   border: 0.2rem solid #111111 !important;
