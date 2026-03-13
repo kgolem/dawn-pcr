@@ -2827,7 +2827,7 @@ shop-follow-button,
 .footer-block__brand-desc,
 .footer-block__brand-desc.rte {
   margin-top: 1.5rem !important;
-  max-width: 75% !important;
+  max-width: 97.5% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   font-size: 1.14rem !important;
@@ -2868,7 +2868,7 @@ h2.footer-block__heading.inline-richtext {
 .footer-block__details-content,
 .footer-block__details-content.rte,
 .footer-block__details-content p {
-  font-size: 0.95rem !important;
+  font-size: 1.14rem !important;
   line-height: 1.75 !important;
   color: #111111 !important;
   margin-top: 0 !important;
