@@ -2312,6 +2312,7 @@ a:hover {
 .pcr-ws-testimonial__author span { font-size: 0.8rem; color: #9ca3af; }
 
 /* ── 8. FAQ ── */
+.pcr-ws-faq { padding-top: 2.5rem; }
 .pcr-ws-faq__inner { max-width: 48rem; margin-inline: auto; }
 .pcr-ws-faq__list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
 .pcr-ws-faq__item {
