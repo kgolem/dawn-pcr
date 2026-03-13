@@ -93,30 +93,6 @@
   </div>
 </section>
 
-{%- comment -%}══ 4. PROGRAM STEPS ══{%- endcomment -%}
-{%- if step_blocks.size > 0 -%}
-<section class="pcr-ws-section pcr-ws-steps bg-white">
-  <div class="page-width">
-    <div class="pcr-ws-section__header">
-      <h2 class="pcr-ws-section__title">{{ section.settings.steps_title }}</h2>
-    </div>
-    <div class="pcr-ws-grid pcr-ws-grid--4">
-      {%- for block in step_blocks -%}
-        <div class="pcr-ws-step" {{ block.shopify_attributes }}>
-          {%- if block.settings.number != blank -%}
-            <div class="pcr-ws-step__number" aria-hidden="true">{{ block.settings.number }}</div>
-          {%- endif -%}
-          <h3 class="pcr-ws-step__title">{{ block.settings.title }}</h3>
-          {%- if block.settings.description != blank -%}
-            <p class="pcr-ws-step__desc">{{ block.settings.description }}</p>
-          {%- endif -%}
-        </div>
-      {%- endfor -%}
-    </div>
-  </div>
-</section>
-{%- endif -%}
-
 {%- comment -%}══ 5. PRODUCTS ══{%- endcomment -%}
 {%- if product_blocks.size > 0 -%}
 <section id="ws-products" class="pcr-ws-section pcr-ws-products bg-black">
