@@ -69,10 +69,10 @@
       <a href="{{ routes.root_url }}" class="pcr-header__logo" aria-label="{{ shop.name }} — Home">
         {%- if logo != blank -%}
           <img
-            src="{{ logo | image_url: height: 160 }}"
-            srcset="{{ logo | image_url: height: 160 }} 1x, {{ logo | image_url: height: 320 }} 2x"
+            src="{{ logo | image_url: height: 320 }}"
+            srcset="{{ logo | image_url: height: 320 }} 1x, {{ logo | image_url: height: 640 }} 2x"
             alt="{{ logo_alt | escape }}"
-            height="80"
+            height="160"
             loading="eager"
             class="pcr-header__logo-img"
           >
