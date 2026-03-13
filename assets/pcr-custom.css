@@ -2772,7 +2772,14 @@ shop-follow-button,
 @media (max-width: 767px) {
   .footer__blocks-wrapper {
     flex-direction: column !important;
-    gap: 1rem !important;
+    gap: 0 !important;
+  }
+  /* Kill Dawn's 4rem margin on each footer block on mobile */
+  .footer-block.grid__item {
+    margin: 0.75rem 0 !important;
+  }
+  .footer-block.grid__item:first-child {
+    margin-top: 0 !important;
   }
   .footer__blocks-wrapper .footer-block,
   .footer__blocks-wrapper .footer-block:nth-child(1),
