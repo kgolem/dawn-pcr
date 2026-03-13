@@ -112,30 +112,20 @@
           {%- for variant in the_product.variants -%}
             {%- assign is_selected = false -%}
             {%- if variant == first_variant -%}{%- assign is_selected = true -%}{%- endif -%}
-            {%- assign roast_val   = variant.metafields.custom.roast_level.value -%}
-            {%- assign notes_val   = variant.metafields.custom.flavor_notes.value -%}
-            {%- assign roast_int   = roast_val | plus: 0 -%}
+            {%- comment -%} Roast + flavor notes from Theme Editor settings per blend position {%- endcomment -%}
             {%- assign roast_label = '' -%}
-            {%- if roast_int == 1 or roast_int == 2 -%}
-              {%- assign roast_label = 'Light' -%}
-            {%- elsif roast_int == 3 -%}
-              {%- assign roast_label = 'Medium' -%}
-            {%- elsif roast_int == 4 -%}
-              {%- assign roast_label = 'Medium-Dark' -%}
-            {%- elsif roast_int == 5 -%}
-              {%- assign roast_label = 'Dark' -%}
-            {%- else -%}
-              {%- assign roast_str = roast_val | downcase | strip -%}
-              {%- if roast_str contains 'medium' and roast_str contains 'dark' -%}
-                {%- assign roast_label = 'Medium-Dark' -%}
-              {%- elsif roast_str contains 'light' -%}
-                {%- assign roast_label = 'Light' -%}
-              {%- elsif roast_str contains 'medium' -%}
-                {%- assign roast_label = 'Medium' -%}
-              {%- elsif roast_str contains 'dark' -%}
-                {%- assign roast_label = 'Dark' -%}
-              {%- endif -%}
+            {%- assign notes_raw   = '' -%}
+            {%- if forloop.index == 1 -%}
+              {%- assign roast_label = section.settings.blend1_roast -%}
+              {%- assign notes_raw   = section.settings.blend1_notes -%}
+            {%- elsif forloop.index == 2 -%}
+              {%- assign roast_label = section.settings.blend2_roast -%}
+              {%- assign notes_raw   = section.settings.blend2_notes -%}
+            {%- elsif forloop.index == 3 -%}
+              {%- assign roast_label = section.settings.blend3_roast -%}
+              {%- assign notes_raw   = section.settings.blend3_notes -%}
             {%- endif -%}
+            {%- assign notes_val = notes_raw | split: ',' -%}
             {%- comment -%}
               Per-blend image override: use image_picker from section settings if set,
               otherwise fall back to variant image, then product featured media.
@@ -207,9 +197,9 @@
               <div class="pcr-bss__blend-body">
                 <h4 class="pcr-bss__blend-name">{{ variant.title }}</h4>
 
-                {%- if notes_val != blank -%}
+                {%- if notes_raw != blank -%}
                   <ul class="pcr-card__notes pcr-bss__blend-notes" aria-label="Flavor notes">
-                    {%- for note in notes_val -%}<li class="pcr-card__note">{{ note }}</li>{%- endfor -%}
+                    {%- for note in notes_val -%}<li class="pcr-card__note">{{ note | strip }}</li>{%- endfor -%}
                   </ul>
                 {%- endif -%}
 
@@ -490,9 +480,21 @@
     { "type": "text", "id": "hero_btn2_label", "label": "Button 2 label", "default": "How It Works" },
 
     { "type": "header", "content": "Blend Tile Images", "info": "Assign the individual product bag photo to each blend tile. If left blank, falls back to the variant image." },
-    { "type": "image_picker", "id": "blend1_image", "label": "Blend 1 image (Mike's Blend)" },
-    { "type": "image_picker", "id": "blend2_image", "label": "Blend 2 image (Rise & Gr!nd)" },
-    { "type": "image_picker", "id": "blend3_image", "label": "Blend 3 image (Shadow Work)" },
+    { "type": "image_picker", "id": "blend1_image", "label": "Blend 1 image" },
+    { "type": "image_picker", "id": "blend2_image", "label": "Blend 2 image" },
+    { "type": "image_picker", "id": "blend3_image", "label": "Blend 3 image" },
+
+    { "type": "header", "content": "Blend 1 Details" },
+    { "type": "select", "id": "blend1_roast", "label": "Roast level", "options": [{ "value": "", "label": "— None —" }, { "value": "Light", "label": "Light" }, { "value": "Medium", "label": "Medium" }, { "value": "Medium-Dark", "label": "Medium-Dark" }, { "value": "Dark", "label": "Dark" }], "default": "" },
+    { "type": "text", "id": "blend1_notes", "label": "Flavor notes", "info": "Comma-separated, e.g. Citrus, Caramel, Floral" },
+
+    { "type": "header", "content": "Blend 2 Details" },
+    { "type": "select", "id": "blend2_roast", "label": "Roast level", "options": [{ "value": "", "label": "— None —" }, { "value": "Light", "label": "Light" }, { "value": "Medium", "label": "Medium" }, { "value": "Medium-Dark", "label": "Medium-Dark" }, { "value": "Dark", "label": "Dark" }], "default": "" },
+    { "type": "text", "id": "blend2_notes", "label": "Flavor notes", "info": "Comma-separated, e.g. Rich Chocolate, Warm Spice, Smoke" },
+
+    { "type": "header", "content": "Blend 3 Details" },
+    { "type": "select", "id": "blend3_roast", "label": "Roast level", "options": [{ "value": "", "label": "— None —" }, { "value": "Light", "label": "Light" }, { "value": "Medium", "label": "Medium" }, { "value": "Medium-Dark", "label": "Medium-Dark" }, { "value": "Dark", "label": "Dark" }], "default": "" },
+    { "type": "text", "id": "blend3_notes", "label": "Flavor notes", "info": "Comma-separated, e.g. Dark Chocolate, Earthy, Bold" },
 
     { "type": "header", "content": "Subscription Builder" },
     { "type": "text", "id": "builder_title", "label": "Section heading", "default": "Build Your Subscription" },
