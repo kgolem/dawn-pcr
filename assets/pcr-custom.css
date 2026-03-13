@@ -755,19 +755,30 @@ a:hover {
 .pcr-card__atc {
   width: auto;
   flex-shrink: 0;
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.56rem;
+  font-weight: 700;
   text-transform: none;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   border: 1.5px solid var(--pcr-black);
   background: transparent;
   color: var(--pcr-black);
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transform: translateY(0);
+  box-shadow: none;
+  transition: background 0.2s ease, color 0.2s ease,
+              transform 0.15s ease, box-shadow 0.15s ease;
 }
 .pcr-card__atc:hover {
   background: var(--pcr-black);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+}
+.pcr-card__atc:active {
+  transform: translateY(0);
+  box-shadow: none;
+  background: #333;
   color: white;
 }
 
