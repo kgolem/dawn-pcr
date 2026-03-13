@@ -71,30 +71,21 @@
 
   {%- comment -%} ── Instagram photo grid ── {%- endcomment -%}
   {%- assign photo_blocks = section.blocks | where: 'type', 'photo' -%}
-  {%- assign has_embed = false -%}
-  {%- for block in photo_blocks -%}
-    {%- if block.settings.image == blank and block.settings.post_url != blank -%}
-      {%- assign has_embed = true -%}
-    {%- endif -%}
-  {%- endfor -%}
-
   {%- if photo_blocks.size > 0 -%}
     <div class="pcr-social-proof__grid-wrap">
       <ul class="pcr-social-proof__grid" role="list">
         {%- for block in photo_blocks -%}
-          <li class="pcr-social-proof__grid-item{% if block.settings.image == blank and block.settings.post_url != blank %} pcr-social-proof__grid-item--embed{% endif %}" {{ block.shopify_attributes }}>
-
+          <li class="pcr-social-proof__grid-item" {{ block.shopify_attributes }}>
             {%- if block.settings.image != blank -%}
-              {%- assign img_link = block.settings.post_url | default: block.settings.link -%}
-              {%- if img_link != blank -%}
-                <a href="{{ img_link }}" class="pcr-social-proof__grid-link" target="_blank" rel="noopener" aria-label="{{ block.settings.alt | default: 'View on Instagram' }}">
+              {%- if block.settings.post_url != blank -%}
+                <a href="{{ block.settings.post_url }}" class="pcr-social-proof__grid-link" target="_blank" rel="noopener" aria-label="{{ block.settings.alt | default: 'View on Instagram' }}">
               {%- endif -%}
               <img
-                src="{{ block.settings.image | image_url: width: 1920 }}"
+                src="{{ block.settings.image | image_url: width: 600 }}"
                 srcset="
-                  {{ block.settings.image | image_url: width: 480 }} 480w,
-                  {{ block.settings.image | image_url: width: 960 }} 960w,
-                  {{ block.settings.image | image_url: width: 1920 }} 1920w
+                  {{ block.settings.image | image_url: width: 300 }} 300w,
+                  {{ block.settings.image | image_url: width: 600 }} 600w,
+                  {{ block.settings.image | image_url: width: 900 }} 900w
                 "
                 sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                 alt="{{ block.settings.alt | escape | default: 'Pacific Coast Roasters on Instagram' }}"
@@ -103,16 +94,16 @@
                 width="{{ block.settings.image.width }}"
                 height="{{ block.settings.image.height }}"
               >
-              {%- if img_link != blank -%}</a>{%- endif -%}
-
-            {%- elsif block.settings.post_url != blank -%}
-              <blockquote
-                class="instagram-media pcr-social-proof__ig-embed"
-                data-instgrm-permalink="{{ block.settings.post_url }}"
-                data-instgrm-version="14"
-                style="margin: 0 auto; max-width: 100%; width: 100%;"
-              ></blockquote>
-
+              {%- if block.settings.post_url != blank -%}
+                <div class="pcr-social-proof__grid-overlay" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                  </svg>
+                </div>
+                </a>
+              {%- endif -%}
             {%- else -%}
               <div class="pcr-social-proof__grid-placeholder" aria-hidden="true">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
@@ -122,15 +113,10 @@
                 </svg>
               </div>
             {%- endif -%}
-
           </li>
         {%- endfor -%}
       </ul>
     </div>
-  {%- endif -%}
-
-  {%- if has_embed -%}
-    <script async src="//www.instagram.com/embed.js"></script>
   {%- endif -%}
 
   {%- comment -%} ── Instagram CTA button ── {%- endcomment -%}
@@ -243,19 +229,19 @@
     },
     {
       "type": "photo",
-      "name": "Instagram photo",
+      "name": "Instagram post",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "Upload a screenshot or export of the Instagram post. Square crops work best."
+        },
         {
           "type": "url",
           "id": "post_url",
           "label": "Instagram post URL",
-          "info": "Paste the URL of an Instagram post or Reel. If no image is uploaded below, the post will be embedded live. If an image is uploaded, it links to this URL."
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Photo (optional)",
-          "info": "Upload a screenshot or photo. Recommended: 1920×1080px. Leave blank to embed the Instagram post live using the URL above."
+          "info": "Paste the URL of the post. Clicking the photo will open it on Instagram."
         },
         {
           "type": "text",
