@@ -12,7 +12,8 @@
     "pcr-collection-hero": {
       "type": "pcr-collection-hero",
       "settings": {
-        "heading": "SEASONAL EXOTIC COFFEE BEANS",
+        "hero_image": "shopify://shop_images/IMG_0015.jpg",
+        "heading": "BEST-SELLERS",
         "description": "",
         "cta_label": "",
         "cta_url": ""
