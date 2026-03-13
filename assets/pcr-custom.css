@@ -35,13 +35,21 @@
 .pcr-col-hero__eyebrow,
 .pcr-social-proof__eyebrow {
   font-family: var(--pcr-font-body);
-  font-size: 0.9rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--pcr-gold);
-  margin: 0 0 0.375rem;
+  margin: 0 0 0.281rem;
   display: block;
+}
+/* Zero out heading top-margin so eyebrow→heading gap is always just the eyebrow margin-bottom */
+.pcr-eyebrow + *,
+.pcr-wholesale__eyebrow + *,
+.pcr-ws-hero__eyebrow + *,
+.pcr-col-hero__eyebrow + *,
+.pcr-social-proof__eyebrow + * {
+  margin-top: 0;
 }
 
 body {
@@ -2998,12 +3006,13 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 
 /* ── Instagram widget embed ── */
 .pcr-social-proof__widget-wrap {
+  margin-top: 25px;
   margin-bottom: 2.5rem;
   width: 100%;
 }
 
 /* ── Instagram photo grid ── */
-.pcr-social-proof__grid-wrap { margin-bottom: 2.5rem; }
+.pcr-social-proof__grid-wrap { margin-top: 25px; margin-bottom: 2.5rem; }
 
 .pcr-social-proof__grid {
   list-style: none;
