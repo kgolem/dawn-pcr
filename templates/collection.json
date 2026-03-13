@@ -11,7 +11,12 @@
   "sections": {
     "pcr-collection-hero": {
       "type": "pcr-collection-hero",
-      "settings": {}
+      "settings": {
+        "heading": "Best-Selling Coffee Beans",
+        "description": "",
+        "cta_label": "",
+        "cta_url": ""
+      }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
@@ -21,9 +26,11 @@
         "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "quick_add": "none",
         "enable_filtering": false,
         "filter_type": "horizontal",
         "enable_sorting": false,
