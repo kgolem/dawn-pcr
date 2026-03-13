@@ -9,14 +9,38 @@
 
 
 {%- liquid
-  assign img = section.settings.image
+  assign img          = section.settings.image
+  assign gif_url      = section.settings.gif_url
+  assign video_url    = section.settings.video_url
   assign height_class = section.settings.banner_height
 -%}
 
 <div class="pcr-hero pcr-hero--{{ height_class }}">
 
-  {%- comment -%} Background image {%- endcomment -%}
-  {%- if img != blank -%}
+  {%- comment -%} Background: video > GIF > static image {%- endcomment -%}
+  {%- if video_url != blank -%}
+    <div class="pcr-hero__bg" aria-hidden="true">
+      <video
+        class="pcr-hero__bg-img"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="{{ video_url }}" type="video/mp4">
+      </video>
+    </div>
+  {%- elsif gif_url != blank -%}
+    <div class="pcr-hero__bg" aria-hidden="true">
+      <img
+        src="{{ gif_url }}"
+        alt="Hero background"
+        loading="eager"
+        class="pcr-hero__bg-img"
+      >
+    </div>
+  {%- elsif img != blank -%}
     <div class="pcr-hero__bg" aria-hidden="true">
       <img
         src="{{ img | image_url: width: 1800 }}"
@@ -103,10 +127,26 @@
   "class": "pcr-section-hero",
   "settings": [
     {
+      "type": "header",
+      "content": "Background media (video takes priority, then GIF, then image)"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Background video URL (MP4)",
+      "info": "Upload an MP4 to Shopify Admin → Content → Files, then paste the URL here. Video will autoplay, loop, and be muted."
+    },
+    {
+      "type": "text",
+      "id": "gif_url",
+      "label": "Background GIF URL",
+      "info": "Upload a GIF to Shopify Admin → Content → Files, then paste the URL here. Used only if no video URL is set."
+    },
+    {
       "type": "image_picker",
       "id": "image",
-      "label": "Background image",
-      "info": "Recommended: 1800×900px or wider. B&W sketch or hero photography."
+      "label": "Background image (static fallback)",
+      "info": "Recommended: 1800×900px or wider. Used only if no video or GIF URL is set."
     },
     {
       "type": "select",
