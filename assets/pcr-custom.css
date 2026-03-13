@@ -3285,3 +3285,14 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter) {
   z-index: 2;
   pointer-events: none;
 }
+
+/* ── Product card font-size +10% ─────────────────────────── */
+.pcr-product-card__title        { font-size: 1.07rem; }
+.pcr-card__origin               { font-size: 0.77rem; }
+.pcr-card__note                 { font-size: 0.77rem; }
+.pcr-card__price                { font-size: 1.21rem; }
+.pcr-card__size                 { font-size: 0.77rem; }
+.pcr-card__atc                  { font-size: 0.83rem; }
+.pcr-card__roast-badge          { font-size: 0.77rem; }
+.pcr-card__popular-badge        { font-size: 0.72rem; }
+.pcr-product-card__variant-label{ font-size: 0.77rem; }
