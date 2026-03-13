@@ -2966,9 +2966,22 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 }
 
 .pcr-social-proof__grid-item {
-  aspect-ratio: 1;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;
+}
+
+/* Embed cells: full-width row, no fixed aspect ratio */
+.pcr-social-proof__grid-item--embed {
+  aspect-ratio: unset;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+.pcr-social-proof__ig-embed {
+  width: 100% !important;
+  max-width: 540px !important;
 }
 
 .pcr-social-proof__grid-link {
