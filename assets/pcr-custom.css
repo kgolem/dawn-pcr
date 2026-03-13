@@ -10,7 +10,7 @@
    BRAND TOKENS
    ========================================================= */
 :root {
-  --pcr-gold:         #DAB556;  /* Heritage Gold — promo banners, secondary buttons, accent bg */
+  --pcr-gold:         #EBB826;  /* Heritage Gold — promo banners, secondary buttons, accent bg */
   --pcr-black:        #111111;  /* Roaster Black — primary text, primary buttons, borders */
   --pcr-red:          #E3342F;  /* Crimson Red — sale tags, badges, critical CTAs only */
   --pcr-blue:         #2A4365;  /* Pacific Blue — link hover, nav/footer interactive states */
@@ -2381,7 +2381,7 @@ a:hover {
 }
 .pcr-ws-form__input:focus,
 .pcr-ws-form__select:focus,
-.pcr-ws-form__textarea:focus { outline: none; border-color: var(--pcr-gold); box-shadow: 0 0 0 3px rgba(218,181,86,0.2); }
+.pcr-ws-form__textarea:focus { outline: none; border-color: var(--pcr-gold); box-shadow: 0 0 0 3px rgba(235,184,38,0.2); }
 .pcr-ws-form__textarea { resize: vertical; }
 .pcr-ws-form__note { text-align: center; font-size: 0.8rem; color: #9ca3af; margin: 1rem 0 0; }
 .pcr-ws-form__note-link { color: var(--pcr-gold); text-decoration: none; }
