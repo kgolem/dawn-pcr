@@ -2755,7 +2755,10 @@ shop-follow-button,
 }
 .footer-block__brand-desc,
 .footer-block__brand-desc.rte {
-  margin-top: 0.4rem !important;
+  margin-top: 1.5rem !important;
+  max-width: 75% !important;
+  font-size: 1.14rem !important;
+  font-weight: 700 !important;
 }
 /* pcr-brand logo wrapper — width set by inline style from logo_width slider; no CSS override */
 .pcr-brand-logo-wrap {
@@ -2802,7 +2805,7 @@ h2.footer-block__heading.inline-richtext {
 .footer-block__details-content .link--text,
 .list-menu__item--link.link--text {
   font-size: 0.9rem !important;
-  color: #9ca3af !important;
+  color: #e5e7eb !important;
   text-decoration: none !important;
   padding: 0.35rem 0 !important;
   display: block;
