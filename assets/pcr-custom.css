@@ -3075,9 +3075,25 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 .pcr-social-proof__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.4em;
-  min-width: 220px;
   justify-content: center;
+  gap: 0.4em;
+  padding: 1rem 2.75rem;
+  background-color: var(--pcr-gold) !important;
+  border: 0.2rem solid var(--pcr-gold) !important;
+  color: #111111 !important;
+  font-family: var(--pcr-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.pcr-social-proof__cta:hover {
+  background-color: #c49a3a !important;
+  border-color: #c49a3a !important;
+  color: #111111 !important;
 }
 
 /* =========================================================
