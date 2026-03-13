@@ -3113,7 +3113,7 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
   align-items: center;
   justify-content: center;
   gap: 0.4em;
-  padding: 0.563rem 1.545rem !important;
+  padding: 0.563rem 1.931rem !important;
   background-color: var(--pcr-gold) !important;
   border: 0.15rem solid var(--pcr-gold) !important;
   color: #111111 !important;
