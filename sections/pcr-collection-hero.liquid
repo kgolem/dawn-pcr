@@ -46,12 +46,6 @@
   <div class="pcr-col-hero__content page-width">
     <div class="pcr-col-hero__box{% unless has_image %} pcr-col-hero__box--no-image{% endunless %}">
 
-      {%- comment -%} Eyebrow: product count {%- endcomment -%}
-      <p class="pcr-col-hero__eyebrow">
-        {{ col.products_count }}
-        {%- if col.products_count == 1 %} coffee{%- else %} coffees{%- endif %}
-      </p>
-
       <h1 class="pcr-col-hero__title">
         {{- section.settings.heading | default: col.title -}}
       </h1>

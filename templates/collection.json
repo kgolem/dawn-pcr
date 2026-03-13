@@ -26,79 +26,14 @@
         "show_rating": false,
         "enable_filtering": false,
         "filter_type": "horizontal",
-        "enable_sorting": true,
+        "enable_sorting": false,
         "padding_top": 24,
         "padding_bottom": 36
-      }
-    },
-    "pcr-collection-education": {
-      "type": "pcr-collection-education",
-      "blocks": {
-        "tile-choc": {
-          "type": "tile",
-          "settings": {
-            "icon": "🍫",
-            "label": "Smooth & Chocolatey",
-            "description": "Classic, crowd-pleasing cups. Rich chocolate, warm spice, and rounded sweetness. Great for espresso and milk drinks.",
-            "cta_label": "Shop smooth & chocolatey",
-            "cta_url": "/collections/all?filter.p.vendor=Medium+Roast"
-          }
-        },
-        "tile-fruity": {
-          "type": "tile",
-          "settings": {
-            "icon": "🍋",
-            "label": "Fruity & Bright",
-            "description": "Citrus, berries, and floral notes. Light-roasted for clarity and sparkle. Best as pour over or cold brew.",
-            "cta_label": "Shop fruity & bright",
-            "cta_url": "/collections/exotics"
-          }
-        },
-        "tile-dark": {
-          "type": "tile",
-          "settings": {
-            "icon": "🌑",
-            "label": "Dark & Bold",
-            "description": "Full body, smoky depth, and low acidity. Built for those who want their coffee to hit hard.",
-            "cta_label": "Shop dark & bold",
-            "cta_url": "/collections/all?filter.p.vendor=Dark+Roast"
-          }
-        },
-        "faq-grind": {
-          "type": "faq",
-          "settings": {
-            "question": "What grind should I choose?",
-            "answer": "<p>Choose whole bean if you have a grinder — it stays fresh longest. Otherwise pick the brew method you use most: drip, pour over, French press, or espresso.</p>"
-          }
-        },
-        "faq-fresh": {
-          "type": "faq",
-          "settings": {
-            "question": "How fresh is the coffee when it ships?",
-            "answer": "<p>We roast to order. Every bag ships within 48 hours of roasting from our Watsonville, CA facility.</p>"
-          }
-        },
-        "faq-blends": {
-          "type": "faq",
-          "settings": {
-            "question": "What's the difference between blends and single origins?",
-            "answer": "<p>Our blends (Mike's Blend, Rise & Gr!nd, Shadow Work) are crafted for consistency year-round. Our single origins (Peaberry, Pinkerton, Tanzania) showcase a specific farm — more complex, seasonal, and best appreciated black.</p>"
-          }
-        }
-      },
-      "block_order": ["tile-choc", "tile-fruity", "tile-dark", "faq-grind", "faq-fresh", "faq-blends"],
-      "settings": {
-        "enabled": true,
-        "heading": "Not sure where to start?",
-        "subheading": "Every coffee has a personality. Here's how to find yours.",
-        "faq_heading": "Common questions",
-        "anchor_id": "collection-education"
       }
     }
   },
   "order": [
     "pcr-collection-hero",
-    "product-grid",
-    "pcr-collection-education"
+    "product-grid"
   ]
 }
