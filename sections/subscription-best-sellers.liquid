@@ -112,8 +112,30 @@
           {%- for variant in the_product.variants -%}
             {%- assign is_selected = false -%}
             {%- if variant == first_variant -%}{%- assign is_selected = true -%}{%- endif -%}
-            {%- assign roast_val = variant.metafields.custom.roast_level.value -%}
-            {%- assign notes_val = variant.metafields.custom.flavor_notes.value -%}
+            {%- assign roast_val   = variant.metafields.custom.roast_level.value -%}
+            {%- assign notes_val   = variant.metafields.custom.flavor_notes.value -%}
+            {%- assign roast_int   = roast_val | plus: 0 -%}
+            {%- assign roast_label = '' -%}
+            {%- if roast_int == 1 or roast_int == 2 -%}
+              {%- assign roast_label = 'Light' -%}
+            {%- elsif roast_int == 3 -%}
+              {%- assign roast_label = 'Medium' -%}
+            {%- elsif roast_int == 4 -%}
+              {%- assign roast_label = 'Medium-Dark' -%}
+            {%- elsif roast_int == 5 -%}
+              {%- assign roast_label = 'Dark' -%}
+            {%- else -%}
+              {%- assign roast_str = roast_val | downcase | strip -%}
+              {%- if roast_str contains 'medium' and roast_str contains 'dark' -%}
+                {%- assign roast_label = 'Medium-Dark' -%}
+              {%- elsif roast_str contains 'light' -%}
+                {%- assign roast_label = 'Light' -%}
+              {%- elsif roast_str contains 'medium' -%}
+                {%- assign roast_label = 'Medium' -%}
+              {%- elsif roast_str contains 'dark' -%}
+                {%- assign roast_label = 'Dark' -%}
+              {%- endif -%}
+            {%- endif -%}
             {%- comment -%}
               Per-blend image override: use image_picker from section settings if set,
               otherwise fall back to variant image, then product featured media.
@@ -164,9 +186,9 @@
                 {%- endif -%}
 
                 {%- comment -%} Roast badge — top right, same style as product cards {%- endcomment -%}
-                {%- if roast_val != blank -%}
-                  <span class="pcr-card__roast-badge" aria-label="Roast level: {{ roast_val }}">
-                    {{ roast_val }}
+                {%- if roast_label != blank -%}
+                  <span class="pcr-card__roast-badge" aria-label="Roast level: {{ roast_label }}">
+                    {{ roast_label }}
                   </span>
                 {%- endif -%}
 
@@ -189,6 +211,13 @@
                   <ul class="pcr-card__notes pcr-bss__blend-notes" aria-label="Flavor notes">
                     {%- for note in notes_val -%}<li class="pcr-card__note">{{ note }}</li>{%- endfor -%}
                   </ul>
+                {%- endif -%}
+
+                {%- if roast_label != blank -%}
+                  <p class="pcr-bss__blend-roast">
+                    <span class="pcr-bss__roast-label">Roast</span>
+                    <span class="pcr-bss__roast-value">{{ roast_label }}</span>
+                  </p>
                 {%- endif -%}
               </div>
 

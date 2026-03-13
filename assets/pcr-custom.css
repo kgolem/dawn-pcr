@@ -2490,7 +2490,7 @@ a:hover {
   z-index: 1;
 }
 
-/* Body: name + flavor notes */
+/* Body: name + flavor notes + roast */
 .pcr-bss__blend-body {
   padding: 0.9rem 1rem 0;
   flex: 1;
@@ -2500,6 +2500,30 @@ a:hover {
   font-size: 1.05rem;
   font-weight: 700;
   margin: 0 0 0.5rem;
+}
+
+/* Roast level row */
+.pcr-bss__blend-roast {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.6rem 0 0;
+  font-size: 0.75rem;
+}
+.pcr-bss__roast-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+.pcr-bss__roast-value {
+  background: var(--pcr-gold);
+  color: var(--pcr-black);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.7rem;
 }
 
 /* Footer: selected state indicator */
