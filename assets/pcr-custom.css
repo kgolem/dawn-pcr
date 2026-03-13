@@ -3077,12 +3077,12 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
   align-items: center;
   justify-content: center;
   gap: 0.4em;
-  padding: 1rem 2.75rem;
+  padding: 0.75rem 2.06rem;
   background-color: var(--pcr-gold) !important;
-  border: 0.2rem solid var(--pcr-gold) !important;
+  border: 0.15rem solid var(--pcr-gold) !important;
   color: #111111 !important;
   font-family: var(--pcr-font-body);
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
