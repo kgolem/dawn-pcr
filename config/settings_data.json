@@ -10,9 +10,6 @@
 {
   "current": {
     "logo_width": 100,
-    "brand_image": "shopify://shop_images/logo-transparent.png",
-    "brand_image_width": 160,
-    "brand_description": "<p>Small-batch, specialty coffee roasted in Watsonville, CA. In memory of Mike Gobel — 10% of every Mike's Blend goes to the Pacific Coast recovery community.</p>",
     "favicon": "",
     "type_header_font": "abril_fatface_n4",
     "heading_scale": 150,
@@ -61,6 +58,9 @@
     "blog_card_shadow_vertical_offset": 0,
     "blog_card_shadow_blur": 0,
     "badge_position": "bottom left",
+    "brand_description": "<p>Small-batch, specialty coffee roasted in Watsonville, CA. In memory of Mike Gobel — 10% of every Mike's Blend goes to the Pacific Coast recovery community.</p>",
+    "brand_image": "shopify://shop_images/logo-transparent.png",
+    "brand_image_width": 160,
     "social_facebook_link": "",
     "social_instagram_link": "https://instagram.com/pacificcoastroasters",
     "social_youtube_link": "",
@@ -87,6 +87,7 @@
         "settings": {
           "logo": "shopify://shop_images/logo-transparent.png",
           "main_menu_handle": "main-menu",
+          "nav_left_count": 2,
           "announcement_text": "FREE SHIPPING ON SUBSCRIPTIONS AND ORDERS OVER $50"
         }
       }
