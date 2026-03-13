@@ -104,7 +104,7 @@
             "use_label": "Espresso · Milk Drinks",
             "name": "Mike's Blend",
             "description": "Our flagship wholesale espresso. Rich dark chocolate, warm spice, and caramel sweetness. Cuts through milk perfectly — built for volume and consistency.",
-            "format": "12oz & 1kg bags"
+            "format": "12oz, 2.2kg, 5lb. bags"
           }
         },
         "product-rise": {
@@ -113,7 +113,7 @@
             "use_label": "Batch Brew · Drip",
             "name": "Rise & Gr!nd",
             "description": "A crowd-pleasing light roast perfect for high-volume filter programs. Bright, clean, and consistent year round — a cup that works for every palate.",
-            "format": "12oz & 1kg bags"
+            "format": "12oz, 2.2kg, 5lb. bags"
           }
         },
         "product-shadow": {
@@ -122,7 +122,7 @@
             "use_label": "Pour Over · Bold Drinkers",
             "name": "Shadow Work",
             "description": "A dark roast for those who want their coffee to mean something. Smoky, full-bodied, and complex — great as espresso or a bold drip option on your menu.",
-            "format": "12oz & 1kg bags"
+            "format": "12oz, 2.2kg, 5lb. bags"
           }
         },
         "product-seasonal": {
@@ -131,7 +131,7 @@
             "use_label": "Retail Shelf · Pour Over",
             "name": "Seasonal Single Origins",
             "description": "Rotating selections from our exotic sourcing program — Tanzanian Peaberry, Kenya Pinkerton, and more. Ideal for specialty menus and retail shelves.",
-            "format": "12oz bags & retail 2-packs"
+            "format": "8oz. tins"
           }
         },
         "testimonial-1": {
@@ -194,19 +194,37 @@
         }
       },
       "block_order": [
-        "who-cafe", "who-office", "who-hotel",
-        "benefit-fresh", "benefit-support", "benefit-ease",
-        "step-1", "step-2", "step-3", "step-4",
-        "product-mikes", "product-rise", "product-shadow", "product-seasonal",
-        "testimonial-1", "testimonial-2",
-        "faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6"
+        "who-cafe",
+        "who-office",
+        "who-hotel",
+        "benefit-fresh",
+        "benefit-support",
+        "benefit-ease",
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4",
+        "product-mikes",
+        "product-rise",
+        "product-shadow",
+        "product-seasonal",
+        "testimonial-1",
+        "testimonial-2",
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5",
+        "faq-6"
       ],
       "settings": {
         "hero_eyebrow": "Wholesale Partnership Program",
         "hero_heading": "Premium Small-Batch Coffee for Your Business",
         "hero_subheading": "Freshly roasted to order in Watsonville, CA. Delivered fast, backed by real support. We make serving exceptional coffee simple.",
         "hero_btn1_label": "Apply for Wholesale",
+        "hero_btn1_url": "",
         "hero_btn2_label": "View Our Coffees",
+        "hero_btn2_url": "",
         "who_title": "Who We Partner With",
         "who_subtitle": "We build tailored coffee programs for businesses that care about quality and consistency.",
         "value_title": "More Than Just Coffee Beans",
@@ -216,7 +234,7 @@
         "products_subtitle": "Our full lineup. Every coffee ships with brew recipes and dial-in parameters.",
         "products_catalog_label": "Request Full Catalog →",
         "pricing_title": "Pricing & Volume Tiers",
-        "pricing_desc": "Our pricing is designed to grow alongside your business. Competitive margins for retail bags and volume discounts for bulk service.",
+        "pricing_desc": "Our pricing is designed to grow alongside your business. Competitive margins for retail bags and volume discounts for bulk purchases.",
         "moq_label": "Standard MOQ",
         "moq_value": "10 lbs / week",
         "tier1_label": "Tier 1 Volume",
@@ -235,11 +253,13 @@
         "equip_desc": "We help source and recommend commercial equipment suited to your volume and budget, and provide ongoing maintenance guidance.",
         "testimonials_title": "Trusted by Local Businesses",
         "faq_title": "Frequently Asked Questions",
-        "form_title": "Start Your Wholesale Partnership",
+        "form_title": "Want more info about our wholesale program?",
         "form_subtitle": "Fill out the details below and our team will reach out within 24 hours to arrange a tasting.",
         "contact_email": "wholesale@pacificcoastroasters.com"
       }
     }
   },
-  "order": ["pcr-wholesale"]
+  "order": [
+    "pcr-wholesale"
+  ]
 }
