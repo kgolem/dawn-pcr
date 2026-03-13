@@ -2760,7 +2760,7 @@ shop-follow-button,
   margin-left: auto !important;
   margin-right: auto !important;
   font-size: 1.14rem !important;
-  font-weight: 700 !important;
+  font-weight: 400 !important;
   text-align: center !important;
 }
 /* pcr-brand logo wrapper — width set by inline style from logo_width slider; no CSS override */
