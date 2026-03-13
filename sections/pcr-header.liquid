@@ -201,19 +201,10 @@
       if (e.key === 'Escape' && !menu.hidden) closeMenu();
     });
 
-    // ── Sticky on scroll up ──
+    // ── Floating header on scroll ──
     if (header) {
-      let lastY = window.scrollY;
       window.addEventListener('scroll', function () {
-        const currentY = window.scrollY;
-        if (currentY < 80) {
-          header.classList.remove('pcr-header--hidden');
-        } else if (currentY > lastY) {
-          header.classList.add('pcr-header--hidden');    // scrolling down — hide
-        } else {
-          header.classList.remove('pcr-header--hidden'); // scrolling up — show
-        }
-        lastY = currentY;
+        header.classList.toggle('pcr-header--scrolled', window.scrollY > 40);
       }, { passive: true });
     }
   })();
