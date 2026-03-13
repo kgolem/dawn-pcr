@@ -850,10 +850,10 @@ a:hover {
    ========================================================= */
 #product-grid.product-grid {
   justify-content: center;
-  column-gap: 5px;
+  column-gap: 6px;
 }
 @media screen and (min-width: 750px) {
-  #product-grid.product-grid { column-gap: 10px; }
+  #product-grid.product-grid { column-gap: 13px; }
 }
 
 /* =========================================================
@@ -1778,11 +1778,12 @@ a:hover {
 }
 .pcr-col-hero__title {
   font-family: var(--pcr-font-heading);
-  font-size: clamp(0.684rem, 1.521vw, 0.936rem);
+  font-size: clamp(0.821rem, 1.825vw, 1.123rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1.1;
+  text-decoration: underline;
   margin-bottom: 0.28rem;
   color: var(--pcr-black);
   text-align: center;
