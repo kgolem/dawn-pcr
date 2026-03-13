@@ -101,24 +101,21 @@
         "slide-2": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-13_at_10.15.08_AM.png",
             "alt": ""
           }
         },
         "slide-3": {
           "type": "slide",
           "settings": {
-            "alt": ""
-          }
-        },
-        "slide-4": {
-          "type": "slide",
-          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-13_at_10.16.41_AM.png",
             "alt": ""
           }
         },
         "slide-5": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-13_at_10.15.56_AM.png",
             "alt": ""
           }
         }
@@ -127,7 +124,6 @@
         "slide-1",
         "slide-2",
         "slide-3",
-        "slide-4",
         "slide-5"
       ],
       "settings": {
