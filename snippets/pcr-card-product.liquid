@@ -143,7 +143,7 @@
       </div>
 
       {%- if sold_out -%}
-        <button class="button button--secondary pcr-card__atc" disabled aria-disabled="true">
+        <button class="pcr-card__atc pcr-card__atc--soldout" disabled aria-disabled="true">
           Sold out
         </button>
       {%- else -%}
@@ -154,7 +154,7 @@
           <button
             type="submit"
             name="add"
-            class="button button--secondary pcr-card__atc"
+            class="pcr-card__atc"
             aria-label="Add {{ the_product.title | escape }} to cart"
           >
             Add to Cart

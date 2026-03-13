@@ -753,13 +753,18 @@ a:hover {
   white-space: nowrap;
 }
 .pcr-card__atc {
-  width: auto;
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  padding: 0.35rem 0.7rem;
-  font-size: 0.56rem;
-  font-weight: 700;
-  text-transform: none;
-  letter-spacing: 0.04em;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--pcr-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
   border: 1.5px solid var(--pcr-black);
   background: transparent;
   color: var(--pcr-black);
@@ -771,7 +776,7 @@ a:hover {
 }
 .pcr-card__atc:hover {
   background: var(--pcr-black);
-  color: white;
+  color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.18);
 }
@@ -779,7 +784,11 @@ a:hover {
   transform: translateY(0);
   box-shadow: none;
   background: #333;
-  color: white;
+  color: #fff;
+}
+.pcr-card__atc--soldout {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 /* =========================================================
