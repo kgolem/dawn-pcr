@@ -3,8 +3,7 @@
   Layout (top to bottom):
     1. Stars + review count headline — "LOVED BY THE COMMUNITY"
     2. Optional review quote cards (up to 4 blocks)
-    3. Instagram photo grid — 4 columns desktop / 2×2 tablet / 1 col mobile
-    4. Follow @PacificCoastRoasters CTA button
+    3. Follow @PacificCoastRoasters CTA button
 
   Add to homepage via Theme Editor: Add Section → PCR Social Proof
   Position: after PCR Memorial Story, before Footer.
@@ -62,66 +61,6 @@
             {%- endif -%}
             {%- if block.settings.author != blank -%}
               <cite class="pcr-social-proof__review-author">— {{ block.settings.author }}</cite>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    </div>
-  {%- endif -%}
-
-  {%- comment -%} ── Instagram widget embed (custom HTML) ── {%- endcomment -%}
-  {%- assign widget_blocks = section.blocks | where: 'type', 'instagram_widget' -%}
-  {%- for block in widget_blocks -%}
-    {%- if block.settings.embed_code != blank -%}
-      <div class="pcr-social-proof__widget-wrap page-width" {{ block.shopify_attributes }}>
-        {{ block.settings.embed_code }}
-      </div>
-    {%- endif -%}
-  {%- endfor -%}
-
-  {%- comment -%} ── Instagram photo grid ── {%- endcomment -%}
-  {%- assign photo_blocks = section.blocks | where: 'type', 'photo' -%}
-  {%- if photo_blocks.size > 0 -%}
-    <div class="pcr-social-proof__grid-wrap">
-      <ul class="pcr-social-proof__grid" role="list">
-        {%- for block in photo_blocks -%}
-          <li class="pcr-social-proof__grid-item" {{ block.shopify_attributes }}>
-            {%- if block.settings.image != blank -%}
-              {%- if block.settings.post_url != blank -%}
-                <a href="{{ block.settings.post_url }}" class="pcr-social-proof__grid-link" target="_blank" rel="noopener" aria-label="{{ block.settings.alt | default: 'View on Instagram' }}">
-              {%- endif -%}
-              <img
-                src="{{ block.settings.image | image_url: width: 600 }}"
-                srcset="
-                  {{ block.settings.image | image_url: width: 300 }} 300w,
-                  {{ block.settings.image | image_url: width: 600 }} 600w,
-                  {{ block.settings.image | image_url: width: 900 }} 900w
-                "
-                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                alt="{{ block.settings.alt | escape | default: 'Pacific Coast Roasters on Instagram' }}"
-                class="pcr-social-proof__grid-img"
-                loading="lazy"
-                width="{{ block.settings.image.width }}"
-                height="{{ block.settings.image.height }}"
-              >
-              {%- if block.settings.post_url != blank -%}
-                <div class="pcr-social-proof__grid-overlay" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                  </svg>
-                </div>
-                </a>
-              {%- endif -%}
-            {%- else -%}
-              <div class="pcr-social-proof__grid-placeholder" aria-hidden="true">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                </svg>
-              </div>
             {%- endif -%}
           </li>
         {%- endfor -%}
@@ -237,46 +176,6 @@
         }
       ]
     },
-    {
-      "type": "instagram_widget",
-      "name": "Instagram widget",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "Paste your embed code from LightWidget, Elfsight, Juicer, or any Instagram feed service. The widget will render full-width above the photo grid."
-        },
-        {
-          "type": "html",
-          "id": "embed_code",
-          "label": "Embed code"
-        }
-      ]
-    },
-    {
-      "type": "photo",
-      "name": "Instagram post",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Photo",
-          "info": "Upload a screenshot or export of the Instagram post. Square crops work best."
-        },
-        {
-          "type": "url",
-          "id": "post_url",
-          "label": "Instagram post URL",
-          "info": "Paste the URL of the post. Clicking the photo will open it on Instagram."
-        },
-        {
-          "type": "text",
-          "id": "alt",
-          "label": "Alt text",
-          "default": "Pacific Coast Roasters on Instagram"
-        }
-      ]
-    }
   ],
   "presets": [
     {
@@ -305,18 +204,6 @@
             "quote": "I love that 10% of Mike's Blend supports the recovery community. Great coffee, great cause.",
             "author": "Verified Buyer"
           }
-        },
-        {
-          "type": "photo"
-        },
-        {
-          "type": "photo"
-        },
-        {
-          "type": "photo"
-        },
-        {
-          "type": "photo"
         }
       ]
     }
