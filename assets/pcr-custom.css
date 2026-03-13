@@ -3302,3 +3302,10 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter) {
 
 /* ── Add to Cart +15% (font + padding) ───────────────────── */
 .pcr-card__atc                  { font-size: 0.96rem; padding: 0.46rem 0.98rem; }
+
+/* ── Exotics lineup separator ────────────────────────────── */
+/* Second PCR featured-products section gets a warm off-white tint */
+.pcr-section-featured-products + .pcr-section-featured-products {
+  border-top: 2px solid var(--pcr-gold);
+  background: #f7f3ed;
+}

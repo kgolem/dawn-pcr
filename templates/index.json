@@ -71,6 +71,19 @@
         "sub_cta": "Subscribe Now"
       }
     },
+    "pcr-featured-exotics": {
+      "type": "pcr-featured-products",
+      "settings": {
+        "heading": "Exotics Lineup",
+        "subheading": "Single-origin rarities. Seasonal, complex, and best appreciated black.",
+        "collection": "exotics",
+        "view_all_label": "View Exotics",
+        "sub_title": "Tour De Coast Coffee Subscription",
+        "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
+        "sub_url": "/collections/all",
+        "sub_cta": "Subscribe Now"
+      }
+    },
     "pcr-memorial": {
       "type": "pcr-memorial",
       "settings": {
@@ -163,6 +176,7 @@
     "pcr-hero",
     "pcr-trust-bar",
     "pcr-featured-products",
+    "pcr-featured-exotics",
     "pcr-memorial",
     "pcr-social-proof"
   ]
