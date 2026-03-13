@@ -2480,11 +2480,13 @@ a:hover {
   left: 0;
   background: var(--pcr-gold);
   color: var(--pcr-black);
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-family: var(--pcr-font-body);
+  font-size: 1.121rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.25rem 0.6rem;
+  letter-spacing: 0.12em;
+  padding: 0.473rem 0.783rem;
+  line-height: 1;
   z-index: 1;
 }
 
