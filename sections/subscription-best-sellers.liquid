@@ -114,7 +114,19 @@
             {%- if variant == first_variant -%}{%- assign is_selected = true -%}{%- endif -%}
             {%- assign roast_val = variant.metafields.custom.roast_level.value -%}
             {%- assign notes_val = variant.metafields.custom.flavor_notes.value -%}
+            {%- comment -%}
+              Per-blend image override: use image_picker from section settings if set,
+              otherwise fall back to variant image, then product featured media.
+              Blend 1 = first variant, Blend 2 = second, Blend 3 = third.
+            {%- endcomment -%}
             {%- assign tile_img = variant.image | default: the_product.featured_media -%}
+            {%- if forloop.index == 1 and section.settings.blend1_image != blank -%}
+              {%- assign tile_img = section.settings.blend1_image -%}
+            {%- elsif forloop.index == 2 and section.settings.blend2_image != blank -%}
+              {%- assign tile_img = section.settings.blend2_image -%}
+            {%- elsif forloop.index == 3 and section.settings.blend3_image != blank -%}
+              {%- assign tile_img = section.settings.blend3_image -%}
+            {%- endif -%}
 
             <label
               class="pcr-bss__blend-card{% if is_selected %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
@@ -447,6 +459,11 @@
     { "type": "textarea", "id": "hero_subheading", "label": "Subheading", "default": "Pick your blend, set your cadence, and never run out of the coffee you love. Free shipping on every order." },
     { "type": "text", "id": "hero_btn1_label", "label": "Button 1 label", "default": "Build Your Subscription" },
     { "type": "text", "id": "hero_btn2_label", "label": "Button 2 label", "default": "How It Works" },
+
+    { "type": "header", "content": "Blend Tile Images", "info": "Assign the individual product bag photo to each blend tile. If left blank, falls back to the variant image." },
+    { "type": "image_picker", "id": "blend1_image", "label": "Blend 1 image (Mike's Blend)" },
+    { "type": "image_picker", "id": "blend2_image", "label": "Blend 2 image (Rise & Gr!nd)" },
+    { "type": "image_picker", "id": "blend3_image", "label": "Blend 3 image (Shadow Work)" },
 
     { "type": "header", "content": "Subscription Builder" },
     { "type": "text", "id": "builder_title", "label": "Section heading", "default": "Build Your Subscription" },
