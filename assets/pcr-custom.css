@@ -2735,25 +2735,33 @@ a:hover {
   padding-bottom: 1.25rem !important;
 }
 
-/* Block headings: shrink from Dawn's h2 default (~1.5rem) to a tight label */
+/* Block headings — column labels */
 .footer-block__heading,
 h2.footer-block__heading,
 h2.footer-block__heading.inline-richtext {
-  font-size: 0.68rem !important;
+  font-size: 0.75rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.14em !important;
   color: var(--pcr-gold) !important;
-  margin-bottom: 1rem !important;
+  margin-bottom: 1.25rem !important;
   font-family: var(--pcr-font-body) !important;
 }
 
-/* Body text in brand info / text blocks */
+/* Brand block: logo sizing */
+.footer-block--brand .footer-block__brand-image,
+.footer-block--brand-information .footer-block__brand-image {
+  max-width: 160px !important;
+  margin-bottom: 1rem;
+}
+
+/* Body text in brand / text blocks */
 .footer-block__details-content,
 .footer-block__details-content.rte,
-.footer-block__details-content p {
-  font-size: 0.825rem !important;
-  line-height: 1.55 !important;
+.footer-block__details-content p,
+.footer__brand-info p {
+  font-size: 0.9rem !important;
+  line-height: 1.65 !important;
   color: #a8a29e;
 }
 
@@ -2761,10 +2769,10 @@ h2.footer-block__heading.inline-richtext {
 .footer-block__details-content.list-unstyled { padding: 0; margin: 0; }
 .footer-block__details-content .link--text,
 .list-menu__item--link.link--text {
-  font-size: 0.825rem !important;
+  font-size: 0.9rem !important;
   color: #a8a29e !important;
   text-decoration: none !important;
-  padding: 0.2rem 0 !important;
+  padding: 0.3rem 0 !important;
   display: block;
   transition: color 0.15s;
 }
@@ -2774,10 +2782,10 @@ h2.footer-block__heading.inline-richtext {
   text-decoration: none !important;
 }
 
-/* Newsletter heading: same label style */
+/* Newsletter heading */
 .footer-block--newsletter .footer-block__heading,
 h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter) {
-  font-size: 0.68rem !important;
+  font-size: 0.75rem !important;
 }
 .footer-block--newsletter {
   border-top: 1px solid rgba(255,255,255,0.08);
