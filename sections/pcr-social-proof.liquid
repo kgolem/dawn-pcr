@@ -71,6 +71,9 @@
   {%- comment -%} ── Instagram CTA button ── {%- endcomment -%}
   {%- if section.settings.instagram_label != blank and section.settings.instagram_url != blank -%}
     <div class="pcr-social-proof__cta-wrap page-width">
+      {%- if section.settings.instagram_heading != blank -%}
+        <h2 class="pcr-social-proof__instagram-heading">{{ section.settings.instagram_heading }}</h2>
+      {%- endif -%}
       <a
         href="{{ section.settings.instagram_url }}"
         class="button button--outline pcr-social-proof__cta"
@@ -134,6 +137,12 @@
     {
       "type": "header",
       "content": "Instagram"
+    },
+    {
+      "type": "text",
+      "id": "instagram_heading",
+      "label": "Instagram section heading",
+      "default": "Follow Along on Instagram"
     },
     {
       "type": "text",
