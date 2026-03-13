@@ -59,13 +59,13 @@
     "pcr-featured-products": {
       "type": "pcr-featured-products",
       "settings": {
-        "heading": "Our Best Sellers",
+        "heading": "BEST-SELLERS AT PACIFIC COAST ROASTERS",
         "subheading": "Fresh roasted and shipped within 48 hours.",
         "collection": "best-sellers",
         "view_all_label": "View Catalog",
         "sub_title": "Tour De Coast Coffee Subscription",
         "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
-        "sub_url": "/collections/all",
+        "sub_url": "shopify://products/subscription-sellers-subscription",
         "sub_cta": "Subscribe Now"
       }
     },
