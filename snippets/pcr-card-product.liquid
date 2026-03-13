@@ -35,13 +35,13 @@
     assign roast_label = 'Dark'
   else
     assign roast_str = roast_val | downcase | strip
-    if roast_str == 'light'
-      assign roast_label = 'Light'
-    elsif roast_str == 'medium'
-      assign roast_label = 'Medium'
-    elsif roast_str == 'medium-dark' or roast_str == 'medium dark'
+    if roast_str contains 'medium' and roast_str contains 'dark'
       assign roast_label = 'Medium-Dark'
-    elsif roast_str == 'dark'
+    elsif roast_str contains 'light'
+      assign roast_label = 'Light'
+    elsif roast_str contains 'medium'
+      assign roast_label = 'Medium'
+    elsif roast_str contains 'dark'
       assign roast_label = 'Dark'
     endif
   endif
