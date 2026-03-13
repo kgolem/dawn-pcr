@@ -18,7 +18,7 @@
           "type": "pcr_brand",
           "settings": {
             "logo": "shopify://shop_images/logo-transparent.png",
-            "logo_width": 100,
+            "logo_width": 90,
             "description": "<p><em>Small-batch, third wave coffee roasters in Watsonville, CA.</em> <br/><strong>In loving memory of Mike Gobel.</strong></p>"
           }
         },
