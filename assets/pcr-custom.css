@@ -1361,13 +1361,13 @@ a:hover {
   align-items: center;
 }
 .pcr-header__logo-img {
-  height: 59px;
+  height: 71px;
   width: auto;
   display: block;
   object-fit: contain;
 }
 @media (min-width: 1024px) {
-  .pcr-header__logo-img { height: 85px; }
+  .pcr-header__logo-img { height: 102px; }
 }
 .pcr-header__logo-text {
   font-family: var(--pcr-font-heading);
