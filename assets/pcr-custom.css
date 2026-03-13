@@ -1752,7 +1752,7 @@ a:hover {
 .pcr-col-hero__box {
   background: white;
   border: 1px solid var(--pcr-black);
-  padding: 0.7rem 0.85rem;
+  padding: 0.56rem 0.85rem;
   max-width: 315px;
   margin-inline: auto;
   text-align: center;
@@ -1774,7 +1774,7 @@ a:hover {
 }
 .pcr-col-hero__title {
   font-family: var(--pcr-font-heading);
-  font-size: clamp(0.76rem, 1.69vw, 1.04rem);
+  font-size: clamp(0.684rem, 1.521vw, 0.936rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
