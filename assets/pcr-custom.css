@@ -2746,7 +2746,11 @@ shop-follow-button,
 .footer-block__brand-info {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0;
+}
+.footer-block__brand-desc,
+.footer-block__brand-desc.rte {
+  margin-top: 0.4rem !important;
 }
 .footer-block__image-wrapper {
   display: block;
