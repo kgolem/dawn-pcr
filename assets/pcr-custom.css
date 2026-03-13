@@ -1323,7 +1323,7 @@ a:hover {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  height: 118px;
+  height: 134px;
   gap: 5rem;
 }
 
@@ -1361,13 +1361,13 @@ a:hover {
   align-items: center;
 }
 .pcr-header__logo-img {
-  height: 71px;
+  height: 85px;
   width: auto;
   display: block;
   object-fit: contain;
 }
 @media (min-width: 1024px) {
-  .pcr-header__logo-img { height: 102px; }
+  .pcr-header__logo-img { height: 122px; }
 }
 .pcr-header__logo-text {
   font-family: var(--pcr-font-heading);
