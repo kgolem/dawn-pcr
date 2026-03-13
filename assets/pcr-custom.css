@@ -2942,7 +2942,7 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 }
 
 /* ── Review quote cards ── */
-.pcr-social-proof__reviews { margin-bottom: 25px; }
+.pcr-social-proof__reviews { margin-bottom: 50px; }
 
 .pcr-social-proof__review-list {
   list-style: none;
