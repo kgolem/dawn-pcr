@@ -2707,18 +2707,39 @@ shop-follow-button,
   justify-content: flex-start !important;
 }
 
-/* Grid: wide brand col + two compact nav cols */
+/* Desktop: flex row — 50% brand / 25% shop / 25% support */
 .footer__blocks-wrapper {
-  display: grid !important;
-  grid-template-columns: 2.5fr 1fr 1fr !important;
-  gap: 2.5rem !important;
-  align-items: start !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  gap: 3rem !important;
 }
-@media (max-width: 749px) {
+/* flex-grow ratios 2:1:1 = 50% / 25% / 25% of available space */
+.footer__blocks-wrapper .footer-block { min-width: 0; }
+.footer__blocks-wrapper .footer-block:nth-child(1) { flex: 2 0 0 !important; }
+.footer__blocks-wrapper .footer-block:nth-child(2) { flex: 1 0 0 !important; }
+.footer__blocks-wrapper .footer-block:nth-child(3) { flex: 1 0 0 !important; }
+
+/* Mobile (<768px): stack vertically — brand → shop → support */
+@media (max-width: 767px) {
   .footer__blocks-wrapper {
-    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
     gap: 2rem !important;
   }
+  .footer__blocks-wrapper .footer-block,
+  .footer__blocks-wrapper .footer-block:nth-child(1),
+  .footer__blocks-wrapper .footer-block:nth-child(2),
+  .footer__blocks-wrapper .footer-block:nth-child(3) {
+    flex: none !important;
+    width: 100% !important;
+  }
+  .footer-block__brand-info {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .footer-block__image-wrapper { margin: 0 auto; }
+  .footer-block__brand-info .rte p { text-align: center !important; }
 }
 
 /* Brand information block: logo + description */
