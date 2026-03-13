@@ -982,10 +982,10 @@ a:hover {
    4-col grid: 3 product cards + black subscription CTA card
    ========================================================= */
 .pcr-featured {
-  padding: 4rem 0;
+  padding: 2rem 0;
   background: #f9fafb;  /* gray-50 — matches wireframe */
 }
-@media (min-width: 640px) { .pcr-featured { padding: 5rem 0; } }
+@media (min-width: 640px) { .pcr-featured { padding: 2.5rem 0; } }
 
 .pcr-featured__grid {
   display: grid;
