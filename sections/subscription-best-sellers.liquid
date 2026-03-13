@@ -203,6 +203,12 @@
                   </ul>
                 {%- endif -%}
 
+                {%- if roast_label != blank -%}
+                  <p class="pcr-bss__blend-roast">
+                    <span class="pcr-bss__roast-label">Roast</span>
+                    <span class="pcr-bss__roast-value">{{ roast_label }}</span>
+                  </p>
+                {%- endif -%}
               </div>
 
               {%- comment -%} Selected checkmark footer {%- endcomment -%}
