@@ -163,7 +163,10 @@
         <span class="pcr-card__price" id="price-{{ the_product.id }}">
           {{- first_variant.price | money -}}
         </span>
-        <span class="pcr-card__size">12oz. bag</span>
+        {%- assign size_label = the_product.metafields.custom.size.value -%}
+        {%- if size_label != blank -%}
+          <span class="pcr-card__size">{{ size_label }}</span>
+        {%- endif -%}
       </div>
 
       {%- if sold_out -%}
