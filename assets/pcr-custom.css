@@ -2699,7 +2699,7 @@ shop-follow-button,
 
 /* Collapse Dawn's large built-in footer gaps */
 .footer__content-top {
-  padding-bottom: 1.5rem !important;
+  padding-bottom: 2.75rem !important;
 }
 /* Bottom bar */
 .footer__content-bottom {
