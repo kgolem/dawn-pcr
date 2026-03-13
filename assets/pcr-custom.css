@@ -31,6 +31,7 @@ body {
   background-color: var(--pcr-white);
   color: var(--pcr-black);
   font-family: var(--pcr-font-body);
+  font-size: 1.15rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
