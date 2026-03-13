@@ -50,9 +50,9 @@
         "perk_3": "Delivery every 2, 4, 6, or 8 weeks",
         "perk_4": "Swap, pause, or cancel anytime",
         "cta_label": "Start Your Subscription",
-        "cta_url": "/pages/subscription",
-        "secondary_label": "See how it works",
-        "secondary_url": "/pages/subscription",
+        "cta_url": "shopify://pages/subscription",
+        "secondary_label": "Join Wholesale Program",
+        "secondary_url": "shopify://pages/wholesale",
         "trust_copy": "No commitment — manage deliveries from your account"
       }
     }
