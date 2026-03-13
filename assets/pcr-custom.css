@@ -2118,9 +2118,9 @@ a:hover {
 .pcr-ws-btn--gold { background: var(--pcr-gold); color: var(--pcr-black); border: 2px solid var(--pcr-gold); }
 .pcr-ws-btn--gold:hover { background: #c9a340; border-color: #c9a340; }
 .pcr-ws-btn--outline { background: transparent; color: #ffffff; border: 2px solid rgba(255,255,255,0.4); }
-.pcr-ws-btn--outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+.pcr-ws-btn--outline:hover { background: var(--pcr-gold); border-color: var(--pcr-gold); color: #ffffff; }
 .pcr-ws-btn--ghost { background: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
-.pcr-ws-btn--ghost:hover { background: rgba(255,255,255,0.16); }
+.pcr-ws-btn--ghost:hover { background: var(--pcr-gold); border-color: var(--pcr-gold); color: #ffffff; }
 .pcr-ws-btn--submit { background: var(--pcr-gold); color: var(--pcr-black); border: none; width: 100%; padding: 1rem; font-size: 1rem; cursor: pointer; }
 .pcr-ws-btn--submit:hover { background: #c9a340; }
 
