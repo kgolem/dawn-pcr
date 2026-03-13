@@ -3,7 +3,6 @@
   Replaces Dawn's card-product.liquid inside pcr-featured-products section.
 
   Features:
-  - Roast level badge (absolute top-right, from product.vendor)
   - Flavor note pills (from product.metafields.custom.flavor_notes list)
   - Origin/type line above title (from product.product_type)
   - Price + size label + Add to Cart footer row
@@ -16,15 +15,14 @@
 {% endcomment %}
 
 {%- liquid
-  assign the_product     = card_product
-  assign first_variant   = the_product.selected_or_first_available_variant
-  assign product_url     = the_product.url
-  assign image_primary   = the_product.featured_media
-  assign image_hover     = the_product.media[1]
-  assign roast_level     = the_product.metafields.custom.roast_level.value | default: the_product.vendor
-  assign product_type    = the_product.product_type
-  assign flavor_notes    = the_product.metafields.custom.flavor_notes.value
-  assign sold_out        = false
+  assign the_product   = card_product
+  assign first_variant = the_product.selected_or_first_available_variant
+  assign product_url   = the_product.url
+  assign image_primary = the_product.featured_media
+  assign image_hover   = the_product.media[1]
+  assign product_type  = the_product.product_type
+  assign flavor_notes  = the_product.metafields.custom.flavor_notes.value
+  assign sold_out      = false
   if first_variant.available == false
     assign sold_out = true
   endif
@@ -72,13 +70,6 @@
         <div class="pcr-product-card__img-placeholder">
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
         </div>
-      {%- endif -%}
-
-      {%- comment -%} Roast level badge — top right {%- endcomment -%}
-      {%- if roast_level != blank -%}
-        <span class="pcr-card__roast-badge" aria-label="Roast level: {{ roast_level }}">
-          {{ roast_level }}
-        </span>
       {%- endif -%}
 
       {%- comment -%} Sold out badge — top left {%- endcomment -%}

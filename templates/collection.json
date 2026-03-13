@@ -13,51 +13,6 @@
       "type": "pcr-collection-hero",
       "settings": {}
     },
-    "pcr-utility-bar": {
-      "type": "pcr-collection-utility-bar",
-      "blocks": {
-        "chip-light": {
-          "type": "chip",
-          "settings": {
-            "label": "Light & Bright",
-            "icon": "",
-            "filter_key": "filter.p.vendor",
-            "filter_value": "Light Roast"
-          }
-        },
-        "chip-medium": {
-          "type": "chip",
-          "settings": {
-            "label": "Balanced",
-            "icon": "",
-            "filter_key": "filter.p.vendor",
-            "filter_value": "Medium Roast"
-          }
-        },
-        "chip-dark": {
-          "type": "chip",
-          "settings": {
-            "label": "Dark & Bold",
-            "icon": "",
-            "filter_key": "filter.p.vendor",
-            "filter_value": "Dark Roast"
-          }
-        },
-        "chip-decaf": {
-          "type": "chip",
-          "settings": {
-            "label": "Decaf",
-            "icon": "",
-            "filter_key": "filter.p.vendor",
-            "filter_value": "Decaf"
-          }
-        }
-      },
-      "block_order": ["chip-light", "chip-medium", "chip-dark", "chip-decaf"],
-      "settings": {
-        "show_sort": true
-      }
-    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -67,11 +22,11 @@
         "color_scheme": "scheme-1",
         "image_ratio": "square",
         "show_secondary_image": true,
-        "show_vendor": true,
+        "show_vendor": false,
         "show_rating": false,
         "enable_filtering": false,
         "filter_type": "horizontal",
-        "enable_sorting": false,
+        "enable_sorting": true,
         "padding_top": 24,
         "padding_bottom": 36
       }
@@ -143,7 +98,6 @@
   },
   "order": [
     "pcr-collection-hero",
-    "pcr-utility-bar",
     "product-grid",
     "pcr-collection-education"
   ]
