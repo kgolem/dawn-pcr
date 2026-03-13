@@ -1,0 +1,495 @@
+{% comment %}
+  Pacific Coast Roasters — Best Sellers Subscription
+  Product section for templates/product.subscription-best-sellers.json
+
+  Page flow:
+    1. Hero
+    2. Subscription builder (blend → plan → add-on → ATC)
+    3. How it works
+    4. Why subscribe (benefits)
+    5. Testimonials
+    6. FAQ
+    7. Footer CTA
+
+  Required Shopify setup:
+    • Product "Best Sellers Subscription" with one variant per blend (Mike's Blend, Rise & Gr!nd, Shadow Work)
+    • A selling plan group with selling plans on that product (configure via Shopify Subscriptions app)
+    • Metafields on each variant: custom.roast_level (single line text), custom.flavor_notes (list)
+    • Optional: "Single Origin Subscription" product → enter its variant ID + selling plan ID in section settings
+
+  Assign this template in: Products → Best Sellers Subscription → Theme template → subscription-best-sellers
+{% endcomment %}
+
+{%- liquid
+  assign the_product        = product
+  assign first_variant      = the_product.selected_or_first_available_variant
+  assign selling_plan_group = the_product.selling_plan_groups[0]
+  assign step_blocks        = section.blocks | where: 'type', 'step'
+  assign benefit_blocks     = section.blocks | where: 'type', 'benefit'
+  assign testimonial_blocks = section.blocks | where: 'type', 'testimonial'
+  assign faq_blocks         = section.blocks | where: 'type', 'faq_item'
+  assign popular_id         = section.settings.popular_variant_id | plus: 0
+-%}
+
+{%- comment -%}══ 1. HERO ══{%- endcomment -%}
+<section class="pcr-ws-hero">
+  {%- if section.settings.hero_image != blank -%}
+    <div class="pcr-ws-hero__bg" aria-hidden="true">
+      <img
+        src="{{ section.settings.hero_image | image_url: width: 1800 }}"
+        srcset="{{ section.settings.hero_image | image_url: width: 900 }} 900w, {{ section.settings.hero_image | image_url: width: 1400 }} 1400w, {{ section.settings.hero_image | image_url: width: 1800 }} 1800w"
+        sizes="100vw"
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+        class="pcr-ws-hero__bg-img"
+      >
+    </div>
+  {%- endif -%}
+  <div class="pcr-ws-hero__overlay" aria-hidden="true"></div>
+  <div class="pcr-ws-hero__content page-width">
+    {%- if section.settings.hero_eyebrow != blank -%}
+      <p class="pcr-ws-hero__eyebrow">{{ section.settings.hero_eyebrow }}</p>
+    {%- endif -%}
+    <h1 class="pcr-ws-hero__heading">{{ section.settings.hero_heading }}</h1>
+    {%- if section.settings.hero_subheading != blank -%}
+      <p class="pcr-ws-hero__subheading">{{ section.settings.hero_subheading }}</p>
+    {%- endif -%}
+    <div class="pcr-ws-hero__btns">
+      <a href="#sub-builder" class="pcr-ws-btn pcr-ws-btn--gold">
+        {{ section.settings.hero_btn1_label | default: 'Build Your Subscription' }}
+      </a>
+      <a href="#how-it-works" class="pcr-ws-btn pcr-ws-btn--outline">
+        {{ section.settings.hero_btn2_label | default: 'How It Works' }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{%- comment -%}══ 2. SUBSCRIPTION BUILDER ══{%- endcomment -%}
+<section id="sub-builder" class="pcr-ws-section bg-white">
+  <div class="page-width">
+
+    <div class="pcr-ws-section__header">
+      <h2 class="pcr-ws-section__title">{{ section.settings.builder_title | default: 'Build Your Subscription' }}</h2>
+      {%- if section.settings.builder_subtitle != blank -%}
+        <p class="pcr-ws-section__subtitle">{{ section.settings.builder_subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}
+      Single product form wraps all three steps. JS updates hidden inputs on
+      blend / plan selection and intercepts submit for dual-item add-on flow.
+    {%- endcomment -%}
+    {%- assign form_id = 'bss-product-form-' | append: the_product.id -%}
+    {%- form 'product', the_product, id: form_id, class: 'pcr-bss__form', novalidate: 'novalidate' -%}
+
+      {%- comment -%} Variant input — updated by JS when blend tile is clicked {%- endcomment -%}
+      <input type="hidden" name="id" id="bss-variant-id" value="{{ first_variant.id }}">
+
+      {%- comment -%} Selling plan input — updated by JS when plan card is clicked {%- endcomment -%}
+      {%- if selling_plan_group != blank and selling_plan_group.selling_plans.size > 0 -%}
+        <input type="hidden" name="selling_plan" id="bss-selling-plan" value="{{ selling_plan_group.selling_plans[0].id }}">
+      {%- else -%}
+        {%- comment -%}
+          TODO: No selling plans found on this product.
+          Install the Shopify Subscriptions app (or Recharge / Stay.ai) and create
+          selling plans for this product before this form will process as a subscription.
+        {%- endcomment -%}
+        <input type="hidden" name="selling_plan" id="bss-selling-plan" value="">
+      {%- endif -%}
+
+      {%- comment -%}══ STEP 1: CHOOSE YOUR COFFEE ══{%- endcomment -%}
+      <div class="pcr-bss__step" id="bss-step-1">
+        <div class="pcr-bss__step-header">
+          <span class="pcr-bss__step-num" aria-hidden="true">01</span>
+          <h3 class="pcr-bss__step-title">{{ section.settings.step1_title | default: 'Choose Your Coffee' }}</h3>
+        </div>
+
+        <div class="pcr-bss__blend-grid" role="group" aria-labelledby="bss-blend-label">
+          <span id="bss-blend-label" class="visually-hidden">Select your coffee blend</span>
+
+          {%- for variant in the_product.variants -%}
+            {%- assign is_selected = false -%}
+            {%- if variant == first_variant -%}{%- assign is_selected = true -%}{%- endif -%}
+            {%- assign roast_val = variant.metafields.custom.roast_level.value -%}
+            {%- assign notes_val = variant.metafields.custom.flavor_notes.value -%}
+
+            <label
+              class="pcr-bss__blend-card{% if is_selected %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
+              for="bss-blend-{{ variant.id }}"
+            >
+              <input
+                type="radio"
+                id="bss-blend-{{ variant.id }}"
+                name="bss-blend"
+                value="{{ variant.id }}"
+                class="visually-hidden pcr-bss__blend-input"
+                data-variant-id="{{ variant.id }}"
+                data-variant-price="{{ variant.price }}"
+                {% if is_selected %}checked{% endif %}
+                {% unless variant.available %}disabled{% endunless %}
+              >
+
+              {%- if popular_id > 0 and variant.id == popular_id -%}
+                <span class="pcr-bss__blend-badge">Most Popular</span>
+              {%- endif -%}
+
+              {%- if roast_val != blank -%}
+                <span class="pcr-bss__blend-roast">{{ roast_val }}</span>
+              {%- endif -%}
+
+              <h4 class="pcr-bss__blend-name">{{ variant.title }}</h4>
+
+              {%- if notes_val != blank -%}
+                <ul class="pcr-bss__blend-notes" aria-label="Flavor notes">
+                  {%- for note in notes_val -%}<li>{{ note }}</li>{%- endfor -%}
+                </ul>
+              {%- endif -%}
+
+              {%- unless variant.available -%}
+                <span class="pcr-bss__blend-soldout">Sold Out</span>
+              {%- endunless -%}
+
+              <span class="pcr-bss__blend-check" aria-hidden="true">✓</span>
+            </label>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%}══ STEP 2: CHOOSE YOUR PLAN ══{%- endcomment -%}
+      <div class="pcr-bss__step" id="bss-step-2">
+        <div class="pcr-bss__step-header">
+          <span class="pcr-bss__step-num" aria-hidden="true">02</span>
+          <h3 class="pcr-bss__step-title">{{ section.settings.step2_title | default: 'Choose Your Plan' }}</h3>
+        </div>
+
+        <div class="pcr-bss__plan-grid" role="group" aria-labelledby="bss-plan-label">
+          <span id="bss-plan-label" class="visually-hidden">Select your subscription plan</span>
+
+          {%- if selling_plan_group != blank and selling_plan_group.selling_plans.size > 0 -%}
+            {%- for plan in selling_plan_group.selling_plans -%}
+              {%- assign adj = plan.price_adjustments[0] -%}
+              {%- assign discount_pct = 0 -%}
+              {%- if adj.value_type == 'percentage' -%}
+                {%- assign discount_pct = adj.value -%}
+              {%- endif -%}
+
+              <label
+                class="pcr-bss__plan-card{% if forloop.first %} is-selected{% endif %}"
+                for="bss-plan-{{ plan.id }}"
+              >
+                <input
+                  type="radio"
+                  id="bss-plan-{{ plan.id }}"
+                  name="bss-plan"
+                  value="{{ plan.id }}"
+                  class="visually-hidden pcr-bss__plan-input"
+                  data-selling-plan-id="{{ plan.id }}"
+                  data-plan-name="{{ plan.name | escape }}"
+                  data-discount-pct="{{ discount_pct }}"
+                  {% if forloop.first %}checked{% endif %}
+                >
+                <span class="pcr-bss__plan-name">{{ plan.name }}</span>
+                <span class="pcr-bss__plan-price" data-price-display>
+                  {{- first_variant.price | money -}}
+                </span>
+                {%- if discount_pct > 0 -%}
+                  <span class="pcr-bss__plan-discount">Save {{ discount_pct }}%</span>
+                {%- endif -%}
+                <span class="pcr-bss__plan-check" aria-hidden="true">✓</span>
+              </label>
+            {%- endfor -%}
+          {%- else -%}
+            {%- comment -%}
+              TODO: No selling plans found on this product. Add selling plans via the
+              Shopify Subscriptions app, then re-save this section.
+            {%- endcomment -%}
+            <p class="pcr-bss__no-plans">
+              Subscription plans are being configured — check back soon.
+            </p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%}══ STEP 3: COMPLETE YOUR SUBSCRIPTION ══{%- endcomment -%}
+      <div class="pcr-bss__step pcr-bss__step--atc" id="bss-step-3">
+        <div class="pcr-bss__step-header">
+          <span class="pcr-bss__step-num" aria-hidden="true">03</span>
+          <h3 class="pcr-bss__step-title">{{ section.settings.step3_title | default: 'Complete Your Subscription' }}</h3>
+        </div>
+
+        {%- comment -%}── Single-origin add-on toggle (hidden if no variant ID configured) ──{%- endcomment -%}
+        {%- if section.settings.addon_variant_id != blank -%}
+          <div class="pcr-bss__addon">
+            <label class="pcr-bss__addon-label" for="bss-addon-toggle">
+              <span class="pcr-bss__addon-toggle-wrap" aria-hidden="true">
+                <input
+                  type="checkbox"
+                  id="bss-addon-toggle"
+                  class="pcr-bss__addon-input visually-hidden"
+                  data-addon-variant-id="{{ section.settings.addon_variant_id }}"
+                  data-addon-selling-plan-id="{{ section.settings.addon_selling_plan_id }}"
+                  aria-describedby="bss-addon-desc"
+                >
+                <span class="pcr-bss__addon-slider"></span>
+              </span>
+              <span class="pcr-bss__addon-copy">
+                <strong class="pcr-bss__addon-title">{{ section.settings.addon_title | default: 'Add 1 bag / month: Rotating Single-Origin Feature' }}</strong>
+                <span id="bss-addon-desc" class="pcr-bss__addon-sub">
+                  {{ section.settings.addon_description | default: "We pick our favorite seasonal single-origin each month — Tanzanian Peaberry, Kenya Pinkerton, and more." }}
+                  <strong class="pcr-bss__addon-price">+{{ section.settings.addon_price | default: '$16.00' }}/month</strong>
+                </span>
+              </span>
+            </label>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%}── Live order summary ──{%- endcomment -%}
+        <div class="pcr-bss__summary" id="bss-order-summary" aria-live="polite" aria-label="Order summary">
+          <div class="pcr-bss__summary-row">
+            <span class="pcr-bss__summary-label">Blend</span>
+            <span class="pcr-bss__summary-val" id="bss-summary-blend">{{ first_variant.title }}</span>
+          </div>
+          <div class="pcr-bss__summary-row">
+            <span class="pcr-bss__summary-label">Plan</span>
+            <span class="pcr-bss__summary-val" id="bss-summary-plan">
+              {%- if selling_plan_group != blank and selling_plan_group.selling_plans.size > 0 -%}
+                {{ selling_plan_group.selling_plans[0].name }}
+              {%- else -%}—{%- endif -%}
+            </span>
+          </div>
+          <div class="pcr-bss__summary-row pcr-bss__summary-row--total">
+            <span class="pcr-bss__summary-label">Per Shipment</span>
+            <span class="pcr-bss__summary-val pcr-bss__summary-price" id="bss-summary-price">
+              {{- first_variant.price | money -}}
+            </span>
+          </div>
+        </div>
+
+        {%- comment -%}── Add to Cart ──{%- endcomment -%}
+        <noscript>
+          <p class="pcr-bss__noscript">Please enable JavaScript to use the subscription builder.</p>
+        </noscript>
+        <button
+          type="submit"
+          id="bss-atc-btn"
+          class="pcr-ws-btn pcr-ws-btn--gold pcr-bss__atc"
+          aria-label="Subscribe now"
+        >
+          {{ section.settings.atc_label | default: 'Subscribe Now — Save 15%' }}
+        </button>
+        <p class="pcr-bss__atc-note">
+          {{ section.settings.atc_note | default: 'Free shipping · Cancel or pause anytime · No commitment' }}
+        </p>
+
+      </div>
+
+    {%- endform -%}
+  </div>
+</section>
+
+{%- comment -%}══ 3. HOW IT WORKS ══{%- endcomment -%}
+{%- if step_blocks.size > 0 -%}
+<section id="how-it-works" class="pcr-ws-section pcr-ws-steps bg-stone">
+  <div class="page-width">
+    <div class="pcr-ws-section__header">
+      <h2 class="pcr-ws-section__title">{{ section.settings.steps_title | default: 'How It Works' }}</h2>
+      {%- if section.settings.steps_subtitle != blank -%}
+        <p class="pcr-ws-section__subtitle">{{ section.settings.steps_subtitle }}</p>
+      {%- endif -%}
+    </div>
+    <div class="pcr-ws-grid pcr-ws-grid--4">
+      {%- for block in step_blocks -%}
+        <div class="pcr-ws-step" {{ block.shopify_attributes }}>
+          {%- if block.settings.number != blank -%}
+            <div class="pcr-ws-step__number" aria-hidden="true">{{ block.settings.number }}</div>
+          {%- endif -%}
+          <h3 class="pcr-ws-step__title">{{ block.settings.title }}</h3>
+          {%- if block.settings.description != blank -%}
+            <p class="pcr-ws-step__desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{%- comment -%}══ 4. WHY SUBSCRIBE ══{%- endcomment -%}
+{%- if benefit_blocks.size > 0 -%}
+<section class="pcr-ws-section bg-white">
+  <div class="page-width">
+    <div class="pcr-ws-section__header">
+      <h2 class="pcr-ws-section__title">{{ section.settings.benefits_title | default: 'Why Subscribe?' }}</h2>
+      {%- if section.settings.benefits_subtitle != blank -%}
+        <p class="pcr-ws-section__subtitle">{{ section.settings.benefits_subtitle }}</p>
+      {%- endif -%}
+    </div>
+    <div class="pcr-ws-grid pcr-ws-grid--3">
+      {%- for block in benefit_blocks -%}
+        <div class="pcr-ws-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="pcr-ws-card__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+          {%- endif -%}
+          <h3 class="pcr-ws-card__title">{{ block.settings.title }}</h3>
+          {%- if block.settings.description != blank -%}
+            <p class="pcr-ws-benefit__desc" style="margin-top:0.5rem">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{%- comment -%}══ 5. TESTIMONIALS ══{%- endcomment -%}
+{%- if testimonial_blocks.size > 0 -%}
+<section class="pcr-ws-section pcr-ws-testimonials bg-stone-mid">
+  <div class="page-width">
+    <div class="pcr-ws-section__header">
+      <h2 class="pcr-ws-section__title">{{ section.settings.testimonials_title | default: 'What Subscribers Are Saying' }}</h2>
+    </div>
+    <div class="pcr-ws-grid pcr-ws-grid--2 pcr-ws-grid--max4xl">
+      {%- for block in testimonial_blocks -%}
+        <div class="pcr-ws-testimonial" {{ block.shopify_attributes }}>
+          <div class="pcr-ws-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="pcr-ws-testimonial__quote">"{{ block.settings.quote }}"</blockquote>
+          <footer class="pcr-ws-testimonial__author">
+            <strong>{{ block.settings.author_name }}</strong>
+            <span>{{ block.settings.author_title }}</span>
+          </footer>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{%- comment -%}══ 6. FAQ ══{%- endcomment -%}
+{%- if faq_blocks.size > 0 -%}
+<section class="pcr-ws-section pcr-ws-faq bg-white">
+  <div class="page-width pcr-ws-faq__inner">
+    <h2 class="pcr-ws-section__title">{{ section.settings.faq_title | default: 'Subscription FAQs' }}</h2>
+    <div class="pcr-ws-faq__list">
+      {%- for block in faq_blocks -%}
+        <details class="pcr-ws-faq__item" {{ block.shopify_attributes }}>
+          <summary class="pcr-ws-faq__q">{{ block.settings.question }}</summary>
+          <div class="pcr-ws-faq__a">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{%- comment -%}══ 7. FOOTER CTA ══{%- endcomment -%}
+<section class="pcr-ws-section bg-black">
+  <div class="page-width pcr-bss__footer-cta">
+    <h2 class="pcr-ws-section__title pcr-ws-section__title--white">
+      {{ section.settings.footer_cta_heading | default: 'Fresh Coffee. Zero Effort.' }}
+    </h2>
+    <p class="pcr-bss__footer-cta-sub">
+      {{ section.settings.footer_cta_sub | default: 'Your next bag is already roasting. Join thousands of subscribers who never settle for stale.' }}
+    </p>
+    <a href="#sub-builder" class="pcr-ws-btn pcr-ws-btn--gold">
+      {{ section.settings.footer_cta_btn | default: 'Start Your Subscription' }}
+    </a>
+  </div>
+</section>
+
+{%- comment -%} Load subscription JS — defer ensures DOM is ready {%- endcomment -%}
+<script src="{{ 'subscription-best-sellers.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "PCR Subscription",
+  "tag": "section",
+  "class": "pcr-section-subscription-bss",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "image_picker", "id": "hero_image", "label": "Background image", "info": "Dark overlay applied automatically. Recommend a coffee bag or barista action shot." },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "Best Sellers Subscription" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Your Favorites. On Repeat. Save 15%." },
+    { "type": "textarea", "id": "hero_subheading", "label": "Subheading", "default": "Pick your blend, set your cadence, and never run out of the coffee you love. Free shipping on every order." },
+    { "type": "text", "id": "hero_btn1_label", "label": "Button 1 label", "default": "Build Your Subscription" },
+    { "type": "text", "id": "hero_btn2_label", "label": "Button 2 label", "default": "How It Works" },
+
+    { "type": "header", "content": "Subscription Builder" },
+    { "type": "text", "id": "builder_title", "label": "Section heading", "default": "Build Your Subscription" },
+    { "type": "text", "id": "builder_subtitle", "label": "Subtitle", "default": "Three simple choices. One perfect delivery." },
+    { "type": "text", "id": "step1_title", "label": "Step 1 label", "default": "Choose Your Coffee" },
+    { "type": "text", "id": "step2_title", "label": "Step 2 label", "default": "Choose Your Plan" },
+    { "type": "text", "id": "step3_title", "label": "Step 3 label", "default": "Complete Your Subscription" },
+    { "type": "number", "id": "popular_variant_id", "label": "\"Most Popular\" variant ID", "info": "Shopify Admin → Products → [product] → copy the variant ID from the URL. Set 0 to hide the badge." },
+    { "type": "text", "id": "atc_label", "label": "Subscribe button label", "default": "Subscribe Now — Save 15%" },
+    { "type": "text", "id": "atc_note", "label": "Reassurance note below button", "default": "Free shipping · Cancel or pause anytime · No commitment" },
+
+    { "type": "header", "content": "Single-Origin Add-On", "info": "Leave Variant ID blank to hide the add-on." },
+    { "type": "text", "id": "addon_variant_id", "label": "Add-on variant ID", "info": "Variant ID of the 'Single Origin Subscription' product." },
+    { "type": "text", "id": "addon_selling_plan_id", "label": "Add-on selling plan ID", "info": "Selling plan ID for the single-origin add-on. Find in Shopify Admin." },
+    { "type": "text", "id": "addon_title", "label": "Add-on toggle title", "default": "Add 1 bag / month: Rotating Single-Origin Feature" },
+    { "type": "textarea", "id": "addon_description", "label": "Add-on description", "default": "We pick our favorite seasonal single-origin each month — Tanzanian Peaberry, Kenya Pinkerton, and more. A new adventure in every delivery." },
+    { "type": "text", "id": "addon_price", "label": "Add-on display price (e.g. $16.00)", "default": "$16.00" },
+
+    { "type": "header", "content": "How It Works" },
+    { "type": "text", "id": "steps_title", "label": "Section title", "default": "How It Works" },
+    { "type": "text", "id": "steps_subtitle", "label": "Subtitle", "default": "From your first click to your first sip — here's the routine." },
+
+    { "type": "header", "content": "Why Subscribe" },
+    { "type": "text", "id": "benefits_title", "label": "Section title", "default": "Why Subscribe?" },
+    { "type": "text", "id": "benefits_subtitle", "label": "Subtitle", "default": "More than convenience — a smarter way to drink great coffee." },
+
+    { "type": "header", "content": "Testimonials" },
+    { "type": "text", "id": "testimonials_title", "label": "Section title", "default": "What Subscribers Are Saying" },
+
+    { "type": "header", "content": "FAQ" },
+    { "type": "text", "id": "faq_title", "label": "Section title", "default": "Subscription FAQs" },
+
+    { "type": "header", "content": "Footer CTA" },
+    { "type": "text", "id": "footer_cta_heading", "label": "Heading", "default": "Fresh Coffee. Zero Effort." },
+    { "type": "textarea", "id": "footer_cta_sub", "label": "Subtext", "default": "Your next bag is already roasting. Join thousands of subscribers who never settle for stale." },
+    { "type": "text", "id": "footer_cta_btn", "label": "Button label", "default": "Start Your Subscription" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "How It Works Step",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Step number", "default": "01" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Choose Your Blend" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Pick from our three best-selling roasts — each one a crowd-pleaser in its own right." }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Why Subscribe Benefit",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "💰" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Save 15% Every Order" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Subscribers automatically receive 15% off every shipment — no codes needed, forever." }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote (no quotation marks)", "default": "The subscription pays for itself. I brew better at home for less than I ever spent on mediocre cafe coffee." },
+        { "type": "text", "id": "author_name", "label": "Author name", "default": "Jamie L." },
+        { "type": "text", "id": "author_title", "label": "Author location / context", "default": "Subscriber since 2023 — San Jose, CA" }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Can I change my blend after subscribing?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Yes — log in to your account and update your subscription at any time. Changes take effect on your next billing cycle." }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "PCR Subscription: Best Sellers" }
+  ]
+}
+{% endschema %}

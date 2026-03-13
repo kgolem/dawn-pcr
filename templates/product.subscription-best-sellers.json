@@ -1,0 +1,176 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "subscription-main": {
+      "type": "subscription-best-sellers",
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Choose Your Blend",
+            "description": "Pick from our three best-selling roasts — each one a crowd-pleaser in its own right. Not sure? Mike's Blend is our most popular."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Pick Your Cadence",
+            "description": "Select how many bags and how often. Adjust anytime from your account — no locked-in schedules, ever."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "We Roast Fresh",
+            "description": "Every subscription is roasted to order the week it ships. Your coffee arrives days off the roaster, never sitting on a warehouse shelf."
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Delivered to You",
+            "description": "Free shipping on every order, straight to your door. Pause, skip, or cancel whenever you want — no friction."
+          }
+        },
+        "benefit-savings": {
+          "type": "benefit",
+          "settings": {
+            "icon": "💰",
+            "title": "Save 15% Every Order",
+            "description": "Subscribers receive 15% off the retail price on every single shipment — no coupon codes, no expiration, forever."
+          }
+        },
+        "benefit-shipping": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🚚",
+            "title": "Free Shipping Always",
+            "description": "Every subscription order ships free, no minimum. Your coffee arrives within 2–4 business days of roasting from our Watsonville, CA facility."
+          }
+        },
+        "benefit-control": {
+          "type": "benefit",
+          "settings": {
+            "icon": "⏸️",
+            "title": "Full Control, Zero Commitment",
+            "description": "Skip a delivery, pause your subscription, swap your blend, or cancel — all from your account in under a minute. No fees, no runaround."
+          }
+        },
+        "testimonial-1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried every bag in the lineup and Mike's is still my go-to. The subscription makes sure I never have to think about running out.",
+            "author_name": "Tyler M.",
+            "author_title": "Subscriber since 2023 — San Francisco, CA"
+          }
+        },
+        "testimonial-2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Rise & Gr!nd is exactly what I needed for my office pour-over setup. The subscription has been running for 8 months and I've never had to think about it.",
+            "author_name": "Rachel K.",
+            "author_title": "Subscriber since 2024 — Monterey, CA"
+          }
+        },
+        "testimonial-3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The single-origin add-on is a revelation. Every month there's something new alongside my regular order. This month was a Tanzanian Peaberry that blew my mind.",
+            "author_name": "Dan W.",
+            "author_title": "Subscriber since 2023 — Santa Cruz, CA"
+          }
+        },
+        "faq-1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do subscriptions work?",
+            "answer": "After checkout, your subscription is created automatically. We'll charge your card and roast your coffee on the schedule you chose. Everything is managed from your account dashboard — blend, cadence, billing date, and more."
+          }
+        },
+        "faq-2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I change my blend or plan after subscribing?",
+            "answer": "Yes — log in to your account and update your blend or cadence at any time. Changes apply to your next billing cycle. You can also switch between 1-bag and 2-bag plans whenever you need more or less coffee."
+          }
+        },
+        "faq-3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I skip or pause a delivery?",
+            "answer": "Absolutely. Log in to your account before your next order date to skip a shipment or pause your subscription entirely. No fees, no waiting, no questions asked."
+          }
+        },
+        "faq-4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the Single-Origin Add-On?",
+            "answer": "Once per month, we select a standout single-origin from our exotic sourcing program — rotating through Tanzanian Peaberry, Kenya Pinkerton, Ethiopian naturals, and others. Add 1 bag per month to your subscription for an extra $16. A new adventure with every delivery."
+          }
+        },
+        "faq-5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When does my coffee ship?",
+            "answer": "We roast on a weekly schedule and ship within 48 hours of roasting from our Watsonville, CA facility. You'll receive a tracking email when your order ships. Expect delivery within 2–4 business days."
+          }
+        },
+        "faq-6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I cancel my subscription?",
+            "answer": "Log in to your account, navigate to subscriptions, and select Cancel. There are no cancellation fees and you can resubscribe at any time. We'll be sad to see you go, but we make it completely painless."
+          }
+        }
+      },
+      "block_order": [
+        "step-1", "step-2", "step-3", "step-4",
+        "benefit-savings", "benefit-shipping", "benefit-control",
+        "testimonial-1", "testimonial-2", "testimonial-3",
+        "faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6"
+      ],
+      "settings": {
+        "hero_eyebrow": "Best Sellers Subscription",
+        "hero_heading": "Your Favorites. On Repeat. Save 15%.",
+        "hero_subheading": "Pick your blend, set your cadence, and never run out of the coffee you love. Free shipping on every order.",
+        "hero_btn1_label": "Build Your Subscription",
+        "hero_btn2_label": "How It Works",
+        "builder_title": "Build Your Subscription",
+        "builder_subtitle": "Three simple choices. One perfect delivery.",
+        "step1_title": "Choose Your Coffee",
+        "step2_title": "Choose Your Plan",
+        "step3_title": "Complete Your Subscription",
+        "popular_variant_id": 0,
+        "atc_label": "Subscribe Now — Save 15%",
+        "atc_note": "Free shipping · Cancel or pause anytime · No commitment",
+        "addon_variant_id": "",
+        "addon_selling_plan_id": "",
+        "addon_title": "Add 1 bag / month: Rotating Single-Origin Feature",
+        "addon_description": "We pick our favorite seasonal single-origin each month — Tanzanian Peaberry, Kenya Pinkerton, and more. A new adventure in every delivery.",
+        "addon_price": "$16.00",
+        "steps_title": "How It Works",
+        "steps_subtitle": "From your first click to your first sip — here's the routine.",
+        "benefits_title": "Why Subscribe?",
+        "benefits_subtitle": "More than convenience — a smarter way to drink great coffee.",
+        "testimonials_title": "What Subscribers Are Saying",
+        "faq_title": "Subscription FAQs",
+        "footer_cta_heading": "Fresh Coffee. Zero Effort.",
+        "footer_cta_sub": "Your next bag is already roasting. Join thousands of subscribers who never settle for stale.",
+        "footer_cta_btn": "Start Your Subscription"
+      }
+    }
+  },
+  "order": ["subscription-main"]
+}
