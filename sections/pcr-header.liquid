@@ -1,22 +1,17 @@
 {% comment %}
   Pacific Coast Roasters — Custom Header section
-  Matches wireframe exactly:
     Mobile:  [hamburger] [logo center] [cart]
-    Desktop: [logo left] [nav center]  [login + cart]
+    Desktop: [left nav] [logo center] [right nav + login + cart]
 
-  Sticky on scroll up. Black announcement bar above.
-  Mobile menu: full-screen overlay with nav links + Log In.
-
-  Usage: Replace Dawn's built-in Header section with this one,
-  OR use this as a standalone section placed first on all templates
-  via layout/theme.liquid (see theme-liquid-patch.md).
+  Split nav: first nav_left_count links go left of logo, rest go right.
 {% endcomment %}
 
 
 {%- liquid
-  assign main_menu = linklists[section.settings.main_menu_handle]
-  assign logo      = section.settings.logo
-  assign logo_alt  = section.settings.logo.alt | default: shop.name
+  assign main_menu     = linklists[section.settings.main_menu_handle]
+  assign logo          = section.settings.logo
+  assign logo_alt      = section.settings.logo.alt | default: shop.name
+  assign nav_left_count = section.settings.nav_left_count | default: 2
 -%}
 
 {%- comment -%} ══════ Announcement Bar ══════ {%- endcomment -%}
@@ -46,10 +41,10 @@
         </svg>
       </button>
 
-      {%- comment -%} Desktop navigation {%- endcomment -%}
-      <nav class="pcr-header__nav" aria-label="Main navigation">
+      {%- comment -%} Desktop nav — left side (first nav_left_count links) {%- endcomment -%}
+      <nav class="pcr-header__nav" aria-label="Main navigation left">
         <ul class="pcr-header__nav-list" role="list">
-          {%- for link in main_menu.links -%}
+          {%- for link in main_menu.links limit: nav_left_count -%}
             <li class="pcr-header__nav-item">
               <a
                 href="{{ link.url }}"
@@ -82,8 +77,24 @@
       </a>
     </div>
 
-    {%- comment -%} Right: Log In + Cart {%- endcomment -%}
+    {%- comment -%} Right: right nav (desktop) + Log In + Cart {%- endcomment -%}
     <div class="pcr-header__right">
+      {%- comment -%} Desktop nav — right side (remaining links) {%- endcomment -%}
+      <nav class="pcr-header__nav pcr-header__nav--right" aria-label="Main navigation right">
+        <ul class="pcr-header__nav-list" role="list">
+          {%- for link in main_menu.links offset: nav_left_count -%}
+            <li class="pcr-header__nav-item">
+              <a
+                href="{{ link.url }}"
+                class="pcr-header__nav-link{% if link.active %} pcr-header__nav-link--active{% endif %}"
+                {% if link.current %}aria-current="page"{% endif %}
+              >
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
       {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -226,6 +237,16 @@
       "id": "main_menu_handle",
       "label": "Main navigation menu",
       "default": "main-menu"
+    },
+    {
+      "type": "range",
+      "id": "nav_left_count",
+      "label": "Links left of logo",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 2,
+      "info": "Number of menu links that appear to the left of the logo. The rest appear to the right."
     },
     {
       "type": "header",
