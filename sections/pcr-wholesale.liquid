@@ -97,16 +97,11 @@
 {%- if product_blocks.size > 0 -%}
 <section id="ws-products" class="pcr-ws-section pcr-ws-products bg-black">
   <div class="page-width">
-    <div class="pcr-ws-products__header">
-      <a href="mailto:{{ contact_email }}" class="pcr-ws-btn pcr-ws-btn--ghost">
-        {{ section.settings.products_catalog_label | default: 'Request Full Catalog →' }}
-      </a>
-      <div>
-        <h2 class="pcr-ws-section__title pcr-ws-section__title--white">{{ section.settings.products_title }}</h2>
-        {%- if section.settings.products_subtitle != blank -%}
-          <p class="pcr-ws-products__subtitle">{{ section.settings.products_subtitle }}</p>
-        {%- endif -%}
-      </div>
+    <div class="pcr-ws-section__header">
+      <h2 class="pcr-ws-section__title pcr-ws-section__title--white">{{ section.settings.products_title }}</h2>
+      {%- if section.settings.products_subtitle != blank -%}
+        <p class="pcr-ws-products__subtitle">{{ section.settings.products_subtitle }}</p>
+      {%- endif -%}
     </div>
     <div class="pcr-ws-grid pcr-ws-grid--4">
       {%- for block in product_blocks -%}
@@ -124,6 +119,11 @@
           </div>
         </div>
       {%- endfor -%}
+    </div>
+    <div class="pcr-ws-products__cta-wrap">
+      <a href="mailto:{{ contact_email }}" class="pcr-ws-btn pcr-ws-btn--ghost">
+        {{ section.settings.products_catalog_label | default: 'Request Full Catalog →' }}
+      </a>
     </div>
   </div>
 </section>

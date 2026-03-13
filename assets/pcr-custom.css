@@ -2225,17 +2225,8 @@ a:hover {
 .pcr-ws-step__desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin: 0; }
 
 /* ── 5. Products ── */
-.pcr-ws-products__header {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-  align-items: flex-start;
-}
-@media (min-width: 768px) {
-  .pcr-ws-products__header { flex-direction: row; align-items: flex-end; justify-content: space-between; }
-}
 .pcr-ws-products__subtitle { font-size: 0.95rem; color: #a8a29e; margin: 0.5rem 0 0; }
+.pcr-ws-products__cta-wrap { text-align: center; margin-top: 2.5rem; }
 .pcr-ws-product-card {
   background: #1c1c1c;
   border: 1px solid #2d2d2d;
