@@ -2938,11 +2938,11 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
   font-family: var(--pcr-font-body);
   font-size: 0.9rem;
   color: #4b5563;
-  margin: 0;
+  margin: 0 0 25px;
 }
 
 /* ── Review quote cards ── */
-.pcr-social-proof__reviews { margin-bottom: 3rem; }
+.pcr-social-proof__reviews { margin-bottom: 25px; }
 
 .pcr-social-proof__review-list {
   list-style: none;
@@ -2962,12 +2962,12 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 }
 
 .pcr-social-proof__review-card {
-  border: 1px solid var(--pcr-black);
+  border: none;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  background: var(--pcr-white);
+  background: transparent;
 }
 
 .pcr-social-proof__review-stars {
