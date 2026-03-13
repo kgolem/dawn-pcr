@@ -821,6 +821,7 @@ a:hover {
   line-height: 1.25;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  color: white;
 }
 .pcr-sub-card__desc {
   font-size: 0.85rem;
