@@ -846,6 +846,13 @@ a:hover {
 }
 
 /* =========================================================
+   COLLECTION PAGE — center product grid items
+   ========================================================= */
+#product-grid.product-grid {
+  justify-content: center;
+}
+
+/* =========================================================
    FEATURED PRODUCTS SECTION LAYOUT
    4-col desktop, 2-col tablet, 1-col mobile
    Dawn's built-in featured-collection section handles the grid,
