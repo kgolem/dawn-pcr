@@ -14,9 +14,9 @@
       "settings": {
         "image": "shopify://shop_images/PCR-beans.jpg",
         "banner_height": "small",
-        "eyebrow": "Pacific Coast Roasters - Watsonville, CA",
-        "heading": "locally-roasted. always fresh. YOUR NEW FAVORITE COFFEE IS HERE.",
-        "subheading": "",
+        "eyebrow": "",
+        "heading": "locally-roasted. always fresh. made for you.",
+        "subheading": "Small batch, third wave coffee beans sourced responsibly from hand-picked farmers all around the world. Roasted-locally in Watsonville, CA.",
         "btn1_label": "Shop Best Sellers",
         "btn1_url": "/collections/best-sellers",
         "btn2_label": "Shop EXOTICS",
