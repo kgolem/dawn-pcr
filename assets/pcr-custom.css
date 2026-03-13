@@ -1717,16 +1717,16 @@ a:hover {
    ========================================================= */
 .pcr-col-hero {
   position: relative;
-  min-height: 90px;
+  min-height: 72px;
   display: flex;
   align-items: center;
   overflow: hidden;
   border-bottom: 1px solid #e5e7eb;
 }
-.pcr-col-hero--has-image { min-height: 128px; }
+.pcr-col-hero--has-image { min-height: 102px; }
 @media (min-width: 768px) {
-  .pcr-col-hero { min-height: 102px; }
-  .pcr-col-hero--has-image { min-height: 166px; }
+  .pcr-col-hero { min-height: 82px; }
+  .pcr-col-hero--has-image { min-height: 133px; }
 }
 
 .pcr-col-hero__bg {
@@ -1745,9 +1745,9 @@ a:hover {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: 0.96rem 1rem;
+  padding: 0.77rem 1rem;
 }
-@media (min-width: 640px) { .pcr-col-hero__content { padding: 1.28rem 1.5rem; } }
+@media (min-width: 640px) { .pcr-col-hero__content { padding: 1.02rem 1.5rem; } }
 
 .pcr-col-hero__box {
   background: white;
