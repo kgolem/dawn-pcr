@@ -14,6 +14,7 @@
       "settings": {
         "image": "shopify://shop_images/PCR-beans.jpg",
         "banner_height": "small",
+        "eyebrow": "",
         "heading": "locally-roasted. always fresh. made for you.",
         "subheading": "Small batch, third wave coffee beans sourced responsibly from hand-picked farmers all around the world. Roasted-locally in Watsonville, CA.",
         "btn1_label": "Shop Best Sellers",
@@ -59,7 +60,8 @@
     "pcr-featured-products": {
       "type": "pcr-featured-products",
       "settings": {
-        "heading": "Best Sellers Lineup",
+        "eyebrow": "BEST SELLERS",
+        "heading": "Tried & True, Freshly-Roasted Coffee Beans",
         "subheading": "Roasted daily. Dated for freshness. Shipped within 48 hours.",
         "collection": "best-sellers",
         "view_all_label": "View Catalog",
@@ -75,8 +77,9 @@
     "pcr-featured-exotics": {
       "type": "pcr-featured-products",
       "settings": {
-        "heading": "Exotics Lineup",
-        "subheading": "Single-origin rarities. Seasonal, complex, and best appreciated black.",
+        "eyebrow": "Exotics",
+        "heading": "Single-origin rarities. Limited Availability.",
+        "subheading": "",
         "collection": "exotics",
         "view_all_label": "View Exotics",
         "popular_product": "",
@@ -127,6 +130,7 @@
         "slide-5"
       ],
       "settings": {
+        "eyebrow": "Our Story",
         "heading": "10% to recovery. 100% in Mike's honor. Our mission is clear.",
         "body": "<p>It all started in the early 2010s when Dave walked into Mike’s Highway 9 coffee shop and the two hit it off instantly. What began as a friendship turned into a full-blown partnership, with the two buying a coffee roaster together and bonding over their love of the craft.<br/></p><p>Tragically, we lost Mike in 2024. Losing a friend and partner hit Dave hard, but it also sparked a deeper connection. This loss brought him closer to the Pacific Coast recovery community, and today he’s a dedicated advocate for addiction and rehabilitation, keeping Mike’s story alive along the way.<br/></p><p>10% of every bag of Mike’s Blend goes straight to supporting the Pacific Coast recovery community — a small way of honoring the guy who inspired it all.</p>",
         "cta_label": "",
