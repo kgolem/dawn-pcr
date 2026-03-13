@@ -48,35 +48,6 @@
   </div>
 </section>
 
-{%- comment -%}══ 2. WHO IT'S FOR ══{%- endcomment -%}
-{%- if who_blocks.size > 0 -%}
-<section class="pcr-ws-section pcr-ws-who bg-white">
-  <div class="page-width">
-    <div class="pcr-ws-section__header">
-      <h2 class="pcr-ws-section__title">{{ section.settings.who_title }}</h2>
-      {%- if section.settings.who_subtitle != blank -%}
-        <p class="pcr-ws-section__subtitle">{{ section.settings.who_subtitle }}</p>
-      {%- endif -%}
-    </div>
-    <div class="pcr-ws-grid pcr-ws-grid--3">
-      {%- for block in who_blocks -%}
-        <div class="pcr-ws-card" {{ block.shopify_attributes }}>
-          {%- if block.settings.icon != blank -%}
-            <div class="pcr-ws-card__icon" aria-hidden="true">{{ block.settings.icon }}</div>
-          {%- endif -%}
-          <h3 class="pcr-ws-card__title">{{ block.settings.title }}</h3>
-          <ul class="pcr-ws-card__list">
-            {%- if block.settings.bullet_1 != blank -%}<li>{{ block.settings.bullet_1 }}</li>{%- endif -%}
-            {%- if block.settings.bullet_2 != blank -%}<li>{{ block.settings.bullet_2 }}</li>{%- endif -%}
-            {%- if block.settings.bullet_3 != blank -%}<li>{{ block.settings.bullet_3 }}</li>{%- endif -%}
-          </ul>
-        </div>
-      {%- endfor -%}
-    </div>
-  </div>
-</section>
-{%- endif -%}
-
 {%- comment -%}══ 3. VALUE PROPS ══{%- endcomment -%}
 <section class="pcr-ws-section pcr-ws-value bg-stone">
   <div class="page-width">
