@@ -24,7 +24,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "enable_filtering": false,
+        "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
         "padding_top": 24,
