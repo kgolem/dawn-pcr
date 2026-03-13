@@ -86,12 +86,23 @@
     },
     "pcr-memorial": {
       "type": "pcr-memorial",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/511529744_18465312544072721_247037496943023666_n.jpg",
+            "alt": "Behind the roastery"
+          }
+        },
+        "slide-2": { "type": "slide", "settings": {} },
+        "slide-3": { "type": "slide", "settings": {} },
+        "slide-4": { "type": "slide", "settings": {} },
+        "slide-5": { "type": "slide", "settings": {} }
+      },
+      "block_order": ["slide-1", "slide-2", "slide-3", "slide-4", "slide-5"],
       "settings": {
         "heading": "10% to recovery. 100% in Mike's honor.",
         "body": "<p>Dave met Mike at his Highway 9 coffee shop in the early 2010s — a friendship that turned into a roasting partnership. When Mike passed in 2025, Dave found deeper purpose in the Pacific Coast recovery community, becoming a dedicated advocate in his honor.</p><p>10% of every bag of Mike's Blend goes directly to addiction advocacy and half-way housing programs around Santa Cruz County.</p><p></p>",
-        "video_url": "https://www.instagram.com/p/DS_5V3JDQ1D/",
-        "video_thumbnail": "shopify://shop_images/511529744_18465312544072721_247037496943023666_n.jpg",
-        "video_label": "BEHIND THE ROASTERY (VIDEO)",
         "cta_label": "",
         "cta_url": ""
       }

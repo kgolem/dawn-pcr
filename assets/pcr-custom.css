@@ -3309,3 +3309,49 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter) {
   border-top: 2px solid var(--pcr-gold);
   background: #f7f3ed;
 }
+
+/* ── Memorial image slider ───────────────────────────────── */
+.pcr-slider {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: #f3f4f6;
+}
+.pcr-slider__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.pcr-slider__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.pcr-slider__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pcr-slider__dots {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+}
+.pcr-slider__dot {
+  all: unset;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pcr-slider__dot.is-active {
+  background: var(--pcr-white);
+}

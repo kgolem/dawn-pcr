@@ -2,53 +2,68 @@
   Pacific Coast Roasters — Memorial / Brand Story section
   "In memory of a Pacific Coast coffee legend, Mike Gobel"
 
+  Left column: auto-advancing image slider (5 slide blocks, set in Theme Editor).
+  Right column: story copy + optional CTA.
+
   Add to homepage via Theme Editor: Add Section → pcr-memorial
-  Schema settings allow editing copy and video URL without touching code.
 {% endcomment %}
 
+{%- assign slide_blocks = section.blocks | where: 'type', 'slide' -%}
 
 <div class="pcr-memorial">
   <div class="pcr-memorial__inner page-width">
 
-    {%- comment -%} Video column {%- endcomment -%}
+    {%- comment -%} Image slider column {%- endcomment -%}
     <div class="pcr-memorial__media">
-      {%- if section.settings.video_url != blank -%}
-        <a
-          href="{{ section.settings.video_url }}"
-          class="pcr-memorial__video-link"
-          aria-label="Watch: {{ section.settings.video_label | default: 'Behind the Roastery' }}"
-          target="_blank"
-          rel="noopener"
-        >
-          {%- if section.settings.video_thumbnail != blank -%}
-            <img
-              src="{{ section.settings.video_thumbnail | image_url: width: 900 }}"
-              alt="{{ section.settings.video_label | default: 'Video thumbnail' }}"
-              class="pcr-memorial__thumbnail"
-              loading="lazy"
-              width="{{ section.settings.video_thumbnail.width | default: 900 }}"
-              height="{{ section.settings.video_thumbnail.height | default: 506 }}"
-            >
-          {%- else -%}
-            <div class="pcr-memorial__thumbnail-placeholder">
-              <span class="pcr-memorial__placeholder-label">
-                {{ section.settings.video_label | default: 'BEHIND THE ROASTERY (VIDEO)' }}
-              </span>
+      <div class="pcr-slider" id="memorial-slider-{{ section.id }}">
+        <div class="pcr-slider__track" id="memorial-track-{{ section.id }}">
+          {%- for block in slide_blocks -%}
+            <div class="pcr-slider__slide" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <img
+                  src="{{ block.settings.image | image_url: width: 900 }}"
+                  srcset="
+                    {{ block.settings.image | image_url: width: 450 }} 450w,
+                    {{ block.settings.image | image_url: width: 900 }} 900w
+                  "
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  alt="{{ block.settings.alt | default: block.settings.image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                  class="pcr-slider__img"
+                >
+              {%- else -%}
+                <div class="pcr-memorial__thumbnail-placeholder">
+                  <span class="pcr-memorial__placeholder-label">Photo {{ forloop.index }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+
+          {%- if slide_blocks.size == 0 -%}
+            <div class="pcr-slider__slide">
+              <div class="pcr-memorial__thumbnail-placeholder">
+                <span class="pcr-memorial__placeholder-label">Add slides in Theme Editor</span>
+              </div>
             </div>
           {%- endif -%}
-          <span class="pcr-memorial__play-btn" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-              <polygon points="10,7 24,14 10,21" fill="black"/>
-            </svg>
-          </span>
-        </a>
-      {%- else -%}
-        <div class="pcr-memorial__thumbnail-placeholder">
-          <span class="pcr-memorial__placeholder-label">
-            {{ section.settings.video_label | default: 'BEHIND THE ROASTERY (VIDEO)' }}
-          </span>
         </div>
-      {%- endif -%}
+
+        {%- if slide_blocks.size > 1 -%}
+          <div class="pcr-slider__dots" role="tablist" aria-label="Slide navigation">
+            {%- for block in slide_blocks -%}
+              <button
+                class="pcr-slider__dot{% if forloop.first %} is-active{% endif %}"
+                role="tab"
+                aria-label="Slide {{ forloop.index }}"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                data-index="{{ forloop.index0 }}"
+              ></button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
     </div>
 
     {%- comment -%} Story column {%- endcomment -%}
@@ -90,11 +105,47 @@
   </div>
 </div>
 
+<script>
+(function () {
+  var track  = document.getElementById('memorial-track-{{ section.id }}');
+  var dots   = document.querySelectorAll('#memorial-slider-{{ section.id }} .pcr-slider__dot');
+  if (!track || dots.length < 2) return;
+
+  var total   = dots.length;
+  var current = 0;
+  var timer;
+
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function (d, i) {
+      d.classList.toggle('is-active', i === current);
+      d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+    });
+  }
+
+  function advance() { goTo(current + 1); }
+
+  function startTimer() { timer = setInterval(advance, 4500); }
+  function resetTimer()  { clearInterval(timer); startTimer(); }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      goTo(parseInt(dot.dataset.index, 10));
+      resetTimer();
+    });
+  });
+
+  startTimer();
+})();
+</script>
+
 {% schema %}
 {
   "name": "PCR Memorial Story",
   "tag": "section",
   "class": "pcr-section-memorial",
+  "max_blocks": 8,
   "settings": [
     {
       "type": "text",
@@ -107,27 +158,6 @@
       "id": "body",
       "label": "Story body",
       "info": "Leave blank to use default Mike Gobel story copy."
-    },
-    {
-      "type": "header",
-      "content": "Video"
-    },
-    {
-      "type": "url",
-      "id": "video_url",
-      "label": "Video URL",
-      "info": "YouTube, Vimeo, or any external link. Opens in new tab."
-    },
-    {
-      "type": "image_picker",
-      "id": "video_thumbnail",
-      "label": "Video thumbnail image"
-    },
-    {
-      "type": "text",
-      "id": "video_label",
-      "label": "Video placeholder label",
-      "default": "BEHIND THE ROASTERY (VIDEO)"
     },
     {
       "type": "header",
@@ -144,9 +174,34 @@
       "label": "Button URL"
     }
   ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Photo slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "PCR Memorial Story"
+      "name": "PCR Memorial Story",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
     }
   ]
 }
