@@ -1,0 +1,204 @@
+{% comment %}
+  Pacific Coast Roasters — Collection Utility Bar
+  Single branded bar above the product grid: roast-level filter chips (left) + sort (right).
+
+  Replaces Dawn's built-in horizontal filter/sort bar — set the product grid section to
+  enable_filtering: false and enable_sorting: false when using this section.
+
+  Filter chips use Shopify's native URL filter params (?filter.p.vendor=...).
+  Sort uses ?sort_by=... and a small native <select> driven by inline JS.
+
+  Active chip state is detected from the current URL query string.
+  Chips are schema blocks — add/remove/reorder in Theme Editor.
+
+  Add to collection template: Add Section → PCR Collection Utility Bar
+  Place it immediately before the main product grid section.
+{% endcomment %}
+
+
+{%- liquid
+  assign sort_by       = collection.sort_by | default: collection.default_sort_by
+  assign filter_active = false
+  for filter in collection.filters
+    if filter.active_values.size > 0
+      assign filter_active = true
+    endif
+  endfor
+-%}
+
+<div class="pcr-util-bar">
+  <div class="pcr-util-bar__inner page-width">
+
+    {%- comment -%} ── Left: filter chips ── {%- endcomment -%}
+    <div class="pcr-util-bar__chips" role="group" aria-label="Filter by roast">
+
+      {%- comment -%} "All" chip — clears active filters {%- endcomment -%}
+      <a
+        href="{{ collection.url }}"
+        class="pcr-util-bar__chip{% unless filter_active %} is-active{% endunless %}"
+        {% unless filter_active %}aria-current="true"{% endunless %}
+      >All</a>
+
+      {%- for block in section.blocks -%}
+        {%- if block.settings.label == blank or block.settings.filter_value == blank -%}
+          {%- continue -%}
+        {%- endif -%}
+
+        {%- comment -%} Build the filtered URL — keep existing sort_by if set {%- endcomment -%}
+        {%- assign chip_url = collection.url | append: '?' | append: block.settings.filter_key | append: '=' | append: block.settings.filter_value | url_encode -%}
+        {%- if sort_by != collection.default_sort_by -%}
+          {%- assign chip_url = chip_url | append: '&sort_by=' | append: sort_by -%}
+        {%- endif -%}
+
+        {%- comment -%} Active detection: check if this filter value is applied {%- endcomment -%}
+        {%- assign chip_active = false -%}
+        {%- for filter in collection.filters -%}
+          {%- for value in filter.active_values -%}
+            {%- if value.value == block.settings.filter_value -%}
+              {%- assign chip_active = true -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+
+        <a
+          href="{{ chip_url }}"
+          class="pcr-util-bar__chip{% if chip_active %} is-active{% endif %}"
+          {% if chip_active %}aria-current="true"{% endif %}
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.icon != blank -%}
+            <span aria-hidden="true">{{ block.settings.icon }}</span>
+          {%- endif -%}
+          {{- block.settings.label -}}
+        </a>
+      {%- endfor -%}
+
+      {%- if filter_active -%}
+        <a href="{{ collection.url }}" class="pcr-util-bar__clear">Clear</a>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── Right: sort ── {%- endcomment -%}
+    {%- if section.settings.show_sort -%}
+      <div class="pcr-util-bar__sort">
+        <label for="pcr-sort-{{ section.id }}" class="pcr-util-bar__sort-label">Sort</label>
+        <select
+          id="pcr-sort-{{ section.id }}"
+          class="pcr-util-bar__sort-select"
+          aria-label="Sort products"
+          data-collection-url="{{ collection.url }}"
+        >
+          {%- for option in collection.sort_options -%}
+            <option
+              value="{{ option.value }}"
+              {% if option.value == sort_by %}selected{% endif %}
+            >{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    const sel = document.getElementById('pcr-sort-{{ section.id }}');
+    if (!sel) return;
+    sel.addEventListener('change', function () {
+      const base = sel.dataset.collectionUrl || window.location.pathname;
+      const params = new URLSearchParams(window.location.search);
+      params.set('sort_by', sel.value);
+      window.location.href = base + '?' + params.toString();
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "PCR Utility Bar",
+  "tag": "section",
+  "class": "pcr-section-utility-bar",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_sort",
+      "label": "Show sort dropdown",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Filter chip",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Light & Bright"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji, optional)"
+        },
+        {
+          "type": "text",
+          "id": "filter_key",
+          "label": "Filter URL key",
+          "default": "filter.p.vendor",
+          "info": "Use 'filter.p.vendor' to filter by roast level (requires Vendor = roast name on each product), or 'filter.p.tag' for product tags."
+        },
+        {
+          "type": "text",
+          "id": "filter_value",
+          "label": "Filter value",
+          "default": "Light Roast",
+          "info": "Must match the exact product vendor or tag in Shopify (case-sensitive)."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PCR Utility Bar",
+      "blocks": [
+        {
+          "type": "chip",
+          "settings": {
+            "label": "Light & Bright",
+            "filter_key": "filter.p.vendor",
+            "filter_value": "Light Roast"
+          }
+        },
+        {
+          "type": "chip",
+          "settings": {
+            "label": "Balanced",
+            "filter_key": "filter.p.vendor",
+            "filter_value": "Medium Roast"
+          }
+        },
+        {
+          "type": "chip",
+          "settings": {
+            "label": "Dark & Bold",
+            "filter_key": "filter.p.vendor",
+            "filter_value": "Dark Roast"
+          }
+        },
+        {
+          "type": "chip",
+          "settings": {
+            "label": "Decaf",
+            "filter_key": "filter.p.vendor",
+            "filter_value": "Decaf"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,258 @@
+{% comment %}
+  Pacific Coast Roasters — Collection Education Band
+  "Not sure where to start?" section below the product grid.
+
+  Two block types:
+    - tile: flavor profile card with icon, label, description, and CTA link
+    - faq:  simple accordion Q&A
+
+  Toggle visibility per collection with the "enabled" schema setting —
+  turn ON for Exotics (high discovery friction), turn OFF for Best Sellers
+  (shoppers there already know what they want).
+
+  Add to collection template: Add Section → PCR Collection Education
+  Place it after the main product grid section.
+{% endcomment %}
+
+
+{%- if section.settings.enabled == false -%}
+  {% comment %} Section disabled for this collection — toggle in Theme Editor {% endcomment %}
+{%- else -%}
+
+{%- assign tile_blocks = section.blocks | where: 'type', 'tile' -%}
+{%- assign faq_blocks  = section.blocks | where: 'type', 'faq'  -%}
+
+{%- if tile_blocks.size > 0 or faq_blocks.size > 0 -%}
+
+<div class="pcr-edu" id="{{ section.settings.anchor_id | default: 'collection-education' }}">
+  <div class="pcr-edu__inner page-width">
+
+    {%- comment -%} ── Header ── {%- endcomment -%}
+    {%- if section.settings.heading != blank -%}
+      <div class="pcr-edu__header">
+        <h2 class="pcr-edu__heading">{{ section.settings.heading }}</h2>
+        {%- if section.settings.subheading != blank -%}
+          <p class="pcr-edu__subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ── Flavor profile tiles ── {%- endcomment -%}
+    {%- if tile_blocks.size > 0 -%}
+      <ul class="pcr-edu__tiles" role="list">
+        {%- for block in tile_blocks -%}
+          <li class="pcr-edu__tile" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <span class="pcr-edu__tile-icon" aria-hidden="true">{{ block.settings.icon }}</span>
+            {%- endif -%}
+            <h3 class="pcr-edu__tile-label">{{ block.settings.label }}</h3>
+            {%- if block.settings.description != blank -%}
+              <p class="pcr-edu__tile-desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+            {%- if block.settings.cta_label != blank and block.settings.cta_url != blank -%}
+              <a href="{{ block.settings.cta_url }}" class="pcr-edu__tile-link">
+                {{ block.settings.cta_label }}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- comment -%} ── FAQ accordion ── {%- endcomment -%}
+    {%- if faq_blocks.size > 0 -%}
+      <div class="pcr-edu__faq">
+        {%- if section.settings.faq_heading != blank -%}
+          <h3 class="pcr-edu__faq-heading">{{ section.settings.faq_heading }}</h3>
+        {%- endif -%}
+        {%- for block in faq_blocks -%}
+          <details class="pcr-edu__faq-item" {{ block.shopify_attributes }}>
+            <summary class="pcr-edu__faq-summary">
+              {{ block.settings.question }}
+              <svg class="pcr-edu__faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="pcr-edu__faq-answer rte">{{ block.settings.answer }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "PCR Collection Education",
+  "tag": "section",
+  "class": "pcr-section-collection-education",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Show this section",
+      "default": true,
+      "info": "Turn off for Best Sellers. Turn on for Exotics or All Coffee."
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Not sure where to start?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every coffee has a personality. Here's how to find yours."
+    },
+    {
+      "type": "header",
+      "content": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading",
+      "default": "Common questions"
+    },
+    {
+      "type": "header",
+      "content": "Anchor"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "default": "collection-education",
+      "info": "Used by the hero CTA 'Not sure where to start?' link (#collection-education)."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Flavor profile tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "☕"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Profile label",
+          "default": "Smooth & Chocolatey"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Classic, crowd-pleasing cups with rich chocolate and warm, rounded sweetness."
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Link label",
+          "default": "Shop smooth & chocolatey →"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "Link URL",
+          "info": "e.g. /collections/all?filter.p.vendor=Medium+Roast"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What grind should I choose?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Choose whole bean if you have a grinder at home — it stays fresh longer. Otherwise select the brew method you use most (drip, pour over, espresso).</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PCR Collection Education",
+      "blocks": [
+        {
+          "type": "tile",
+          "settings": {
+            "icon": "🍫",
+            "label": "Smooth & Chocolatey",
+            "description": "Classic, crowd-pleasing cups. Rich chocolate, warm spice, and rounded sweetness. Great for espresso and milk drinks.",
+            "cta_label": "Shop smooth & chocolatey",
+            "cta_url": "/collections/all?filter.p.vendor=Medium+Roast"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "icon": "🍋",
+            "label": "Fruity & Bright",
+            "description": "Citrus, berries, and floral notes. Light-roasted for clarity and sparkle. Best as pour over or cold brew.",
+            "cta_label": "Shop fruity & bright",
+            "cta_url": "/collections/exotics"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "icon": "🌑",
+            "label": "Dark & Bold",
+            "description": "Full body, smoky depth, and low acidity. Built for those who want their coffee to hit hard.",
+            "cta_label": "Shop dark & bold",
+            "cta_url": "/collections/all?filter.p.vendor=Dark+Roast"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What grind should I choose?",
+            "answer": "<p>Choose whole bean if you have a grinder — it stays fresh longest. Otherwise pick the brew method you use most: drip, pour over, French press, or espresso.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How fresh is the coffee when it ships?",
+            "answer": "<p>We roast to order. Every bag ships within 48 hours of roasting from our Watsonville, CA facility.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What's the difference between your blends and single origins?",
+            "answer": "<p>Our blends (Mike's Blend, Rise & Gr!nd, Shadow Work) are crafted for consistency and approachability year-round. Our single origins (Peaberry, Pinkerton, Tanzania) showcase a specific farm or region — more complex, seasonal, and best appreciated black.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
