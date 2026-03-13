@@ -1754,6 +1754,8 @@ a:hover {
   border: 1px solid var(--pcr-black);
   padding: 1.25rem 1.5rem;
   max-width: 560px;
+  margin-inline: auto;
+  text-align: center;
 }
 .pcr-col-hero__box--no-image {
   background: transparent;
