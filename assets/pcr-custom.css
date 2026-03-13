@@ -1294,9 +1294,9 @@ a:hover {
 }
 .pcr-header__inner {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  height: 80px;
+  height: 96px;
   gap: 1rem;
 }
 
@@ -1305,6 +1305,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  justify-content: flex-start;
 }
 
 /* Hamburger — visible only on mobile */
@@ -1333,13 +1334,13 @@ a:hover {
   align-items: center;
 }
 .pcr-header__logo-img {
-  height: 36px;
+  height: 56px;
   width: auto;
   display: block;
   object-fit: contain;
 }
 @media (min-width: 1024px) {
-  .pcr-header__logo-img { height: 40px; }
+  .pcr-header__logo-img { height: 80px; }
 }
 .pcr-header__logo-text {
   font-family: var(--pcr-font-heading);
@@ -1356,19 +1357,7 @@ a:hover {
   text-align: center;
 }
 
-/* Desktop logo: shown only on desktop */
-.pcr-header__logo--desktop { display: none; }
-@media (min-width: 1024px) {
-  .pcr-header__logo--desktop { display: flex; }
-}
-
-/* Mobile logo: shown only on mobile */
-.pcr-header__logo--mobile { display: flex; }
-@media (min-width: 1024px) {
-  .pcr-header__logo--mobile { display: none; }
-}
-
-/* ── Center ── */
+/* ── Center: logo always visible, centered ── */
 .pcr-header__center {
   display: flex;
   align-items: center;

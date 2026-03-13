@@ -30,7 +30,7 @@
 <header class="pcr-header js-pcr-header" role="banner">
   <div class="pcr-header__inner page-width">
 
-    {%- comment -%} Left: hamburger (mobile) + logo (desktop) {%- endcomment -%}
+    {%- comment -%} Left: hamburger (mobile) + nav (desktop) {%- endcomment -%}
     <div class="pcr-header__left">
       {%- comment -%} Mobile hamburger {%- endcomment -%}
       <button
@@ -45,41 +45,6 @@
           <line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
-
-      {%- comment -%} Desktop logo {%- endcomment -%}
-      <a href="{{ routes.root_url }}" class="pcr-header__logo pcr-header__logo--desktop" aria-label="{{ shop.name }} — Home">
-        {%- if logo != blank -%}
-          <img
-            src="{{ logo | image_url: height: 60 }}"
-            srcset="{{ logo | image_url: height: 60 }} 1x, {{ logo | image_url: height: 120 }} 2x"
-            alt="{{ logo_alt | escape }}"
-            height="40"
-            loading="eager"
-            class="pcr-header__logo-img"
-          >
-        {%- else -%}
-          <span class="pcr-header__logo-text">{{ shop.name }}</span>
-        {%- endif -%}
-      </a>
-    </div>
-
-    {%- comment -%} Center: mobile logo + desktop nav {%- endcomment -%}
-    <div class="pcr-header__center">
-      {%- comment -%} Mobile logo {%- endcomment -%}
-      <a href="{{ routes.root_url }}" class="pcr-header__logo pcr-header__logo--mobile" aria-label="{{ shop.name }} — Home">
-        {%- if logo != blank -%}
-          <img
-            src="{{ logo | image_url: height: 60 }}"
-            srcset="{{ logo | image_url: height: 60 }} 1x, {{ logo | image_url: height: 120 }} 2x"
-            alt="{{ logo_alt | escape }}"
-            height="36"
-            loading="eager"
-            class="pcr-header__logo-img"
-          >
-        {%- else -%}
-          <span class="pcr-header__logo-text pcr-header__logo-text--mobile">{{ shop.name }}</span>
-        {%- endif -%}
-      </a>
 
       {%- comment -%} Desktop navigation {%- endcomment -%}
       <nav class="pcr-header__nav" aria-label="Main navigation">
@@ -97,6 +62,24 @@
           {%- endfor -%}
         </ul>
       </nav>
+    </div>
+
+    {%- comment -%} Center: logo (all screen sizes) {%- endcomment -%}
+    <div class="pcr-header__center">
+      <a href="{{ routes.root_url }}" class="pcr-header__logo" aria-label="{{ shop.name }} — Home">
+        {%- if logo != blank -%}
+          <img
+            src="{{ logo | image_url: height: 160 }}"
+            srcset="{{ logo | image_url: height: 160 }} 1x, {{ logo | image_url: height: 320 }} 2x"
+            alt="{{ logo_alt | escape }}"
+            height="80"
+            loading="eager"
+            class="pcr-header__logo-img"
+          >
+        {%- else -%}
+          <span class="pcr-header__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
     </div>
 
     {%- comment -%} Right: Log In + Cart {%- endcomment -%}
