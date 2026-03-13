@@ -2752,11 +2752,12 @@ shop-follow-button,
 .footer-block__brand-desc.rte {
   margin-top: 0.4rem !important;
 }
-.footer-block__image-wrapper {
+/* pcr-brand logo wrapper — width set by inline style from logo_width slider; no CSS override */
+.pcr-brand-logo-wrap {
   display: block;
-  max-width: 200px !important;
+  flex-shrink: 0;
 }
-.footer-block__image-wrapper img {
+.pcr-brand-logo-wrap img {
   display: block;
   width: 100%;
   height: auto;

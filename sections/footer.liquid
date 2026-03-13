@@ -136,15 +136,17 @@
                     <div class="footer-block__brand-info">
                       {%- if block.settings.logo != blank -%}
                         {%- assign pcr_logo_alt = block.settings.logo.alt | default: shop.name -%}
-                        {%- assign pcr_logo_2x = block.settings.logo_width | times: 2 -%}
-                        {%- assign pcr_logo_src = block.settings.logo | image_url: width: block.settings.logo_width -%}
-                        {%- assign pcr_logo_src_2x = block.settings.logo | image_url: width: pcr_logo_2x -%}
-                        <div class="footer-block__image-wrapper" style="max-width: min(100%, {{ block.settings.logo_width }}px);">
+                        {%- comment -%}
+                          Always fetch at 600px — high enough for any display size up to 300px @2x.
+                          The wrapper inline style controls the visual width; CSS must NOT override it.
+                        {%- endcomment -%}
+                        {%- assign pcr_logo_src    = block.settings.logo | image_url: width: 600 -%}
+                        {%- assign pcr_logo_src_2x = block.settings.logo | image_url: width: 1200 -%}
+                        <div class="pcr-brand-logo-wrap" style="width: {{ block.settings.logo_width }}px; max-width: 100%;">
                           <img
                             src="{{ pcr_logo_src }}"
                             srcset="{{ pcr_logo_src }} 1x, {{ pcr_logo_src_2x }} 2x"
                             alt="{{ pcr_logo_alt | escape }}"
-                            width="{{ block.settings.logo_width }}"
                             loading="lazy"
                             style="display:block; width:100%; height:auto;"
                           >
