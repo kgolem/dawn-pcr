@@ -3424,8 +3424,8 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 /* ── Roast badge +15% (font + padding) ───────────────────── */
 .pcr-card__roast-badge          { font-size: 0.89rem; padding: 0.35rem 0.75rem; }
 
-/* ── Most popular badge +15% (font + padding) ────────────── */
-.pcr-card__popular-badge        { font-size: 0.83rem; padding: 0.35rem 0.58rem; }
+/* ── Most popular badge +75% (font + padding) ────────────── */
+.pcr-card__popular-badge        { font-size: 1.453rem; padding: 0.613rem 1.015rem; }
 
 /* ── Add to Cart +15% (font + padding) ───────────────────── */
 .pcr-card__atc                  { font-size: 0.96rem; padding: 0.46rem 0.98rem; }
