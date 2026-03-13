@@ -2950,6 +2950,12 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
   letter-spacing: 0.06em;
 }
 
+/* ── Instagram widget embed ── */
+.pcr-social-proof__widget-wrap {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
 /* ── Instagram photo grid ── */
 .pcr-social-proof__grid-wrap { margin-bottom: 2.5rem; }
 

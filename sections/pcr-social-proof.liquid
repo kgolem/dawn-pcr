@@ -69,6 +69,16 @@
     </div>
   {%- endif -%}
 
+  {%- comment -%} ── Instagram widget embed (custom HTML) ── {%- endcomment -%}
+  {%- assign widget_blocks = section.blocks | where: 'type', 'instagram_widget' -%}
+  {%- for block in widget_blocks -%}
+    {%- if block.settings.embed_code != blank -%}
+      <div class="pcr-social-proof__widget-wrap page-width" {{ block.shopify_attributes }}>
+        {{ block.settings.embed_code }}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+
   {%- comment -%} ── Instagram photo grid ── {%- endcomment -%}
   {%- assign photo_blocks = section.blocks | where: 'type', 'photo' -%}
   {%- if photo_blocks.size > 0 -%}
@@ -224,6 +234,22 @@
           "id": "author",
           "label": "Reviewer name",
           "default": "Happy Customer"
+        }
+      ]
+    },
+    {
+      "type": "instagram_widget",
+      "name": "Instagram widget",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Paste your embed code from LightWidget, Elfsight, Juicer, or any Instagram feed service. The widget will render full-width above the photo grid."
+        },
+        {
+          "type": "html",
+          "id": "embed_code",
+          "label": "Embed code"
         }
       ]
     },
