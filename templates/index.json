@@ -78,10 +78,7 @@
         "subheading": "Single-origin rarities. Seasonal, complex, and best appreciated black.",
         "collection": "exotics",
         "view_all_label": "View Exotics",
-        "sub_title": "Tour De Coast Coffee Subscription",
-        "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
-        "sub_url": "/collections/all",
-        "sub_cta": "Subscribe Now"
+        "show_sub_card": false
       }
     },
     "pcr-memorial": {

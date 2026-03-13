@@ -66,6 +66,8 @@
       {%- endif -%}
 
       {%- comment -%} 4th slot: Subscription CTA card {%- endcomment -%}
+      {%- if section.settings.show_sub_card == false -%}{%- assign skip_sub = true -%}{%- endif -%}
+      {%- unless skip_sub -%}
       <li class="pcr-featured__item">
         <div class="pcr-sub-card">
           <svg class="pcr-sub-card__icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -91,6 +93,7 @@
           {%- endif -%}
         </div>
       </li>
+      {%- endunless -%}
 
     </ul>
 
@@ -146,6 +149,12 @@
     {
       "type": "header",
       "content": "Subscription CTA card"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sub_card",
+      "label": "Show subscription card",
+      "default": true
     },
     {
       "type": "text",
