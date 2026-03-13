@@ -135,17 +135,16 @@
                   {%- when 'pcr_brand' -%}
                     <div class="footer-block__brand-info">
                       {%- if block.settings.logo != blank -%}
+                        {%- assign pcr_logo_alt = block.settings.logo.alt | default: shop.name -%}
                         <div class="footer-block__image-wrapper" style="max-width: min(100%, {{ block.settings.logo_width }}px);">
-                          {{
-                            block.settings.logo
-                            | image_url: width: 600
-                            | image_tag:
-                              loading: 'lazy',
-                              widths: '100, 200, 300, 400, 600',
-                              width: block.settings.logo_width,
-                              height: block.settings.logo_width | divided_by: block.settings.logo.aspect_ratio,
-                              alt: block.settings.logo.alt | default: shop.name
-                          }}
+                          <img
+                            src="{{ block.settings.logo | image_url: width: block.settings.logo_width }}"
+                            srcset="{{ block.settings.logo | image_url: width: block.settings.logo_width }} 1x, {{ block.settings.logo | image_url: width: block.settings.logo_width | times: 2 }} 2x"
+                            alt="{{ pcr_logo_alt | escape }}"
+                            width="{{ block.settings.logo_width }}"
+                            loading="lazy"
+                            style="display:block; width:100%; height:auto;"
+                          >
                         </div>
                       {%- endif -%}
                       {%- if block.settings.description != blank -%}
