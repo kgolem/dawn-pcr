@@ -10,6 +10,9 @@
 {
   "current": {
     "logo_width": 100,
+    "brand_image": "shopify://shop_images/logo-transparent.png",
+    "brand_image_width": 160,
+    "brand_description": "<p>Small-batch, specialty coffee roasted in Watsonville, CA. In memory of Mike Gobel — 10% of every Mike's Blend goes to the Pacific Coast recovery community.</p>",
     "favicon": "",
     "type_header_font": "abril_fatface_n4",
     "heading_scale": 150,

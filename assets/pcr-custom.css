@@ -2754,16 +2754,20 @@ shop-follow-button,
   }
 }
 
-/* Brand block: wordmark as heading */
-.footer-block:first-child h2.footer-block__heading,
-.footer-block:first-child .footer-block__heading {
-  font-family: var(--pcr-font-heading) !important;
-  font-size: 1.35rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  color: #ffffff !important;
-  margin-bottom: 1rem !important;
+/* Brand information block: logo + description */
+.footer-block__brand-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.footer-block__image-wrapper {
+  display: block;
+}
+.footer-block__image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
 }
 
 /* Column label headings (Shop, Support) */
@@ -2780,6 +2784,8 @@ h2.footer-block__heading.inline-richtext {
 }
 
 /* Brand description */
+.footer-block__brand-info .rte,
+.footer-block__brand-info .rte p,
 .footer-block__details-content,
 .footer-block__details-content.rte,
 .footer-block__details-content p {
@@ -2787,6 +2793,7 @@ h2.footer-block__heading.inline-richtext {
   line-height: 1.7 !important;
   color: #9ca3af !important;
   max-width: 32ch;
+  margin-top: 0 !important;
 }
 
 /* Nav links */

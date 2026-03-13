@@ -6,10 +6,9 @@
       "type": "footer",
       "blocks": {
         "brand": {
-          "type": "text",
+          "type": "brand_information",
           "settings": {
-            "heading": "Pacific Coast Roasters",
-            "subtext": "<p>Small-batch, specialty coffee roasted in Watsonville, CA. In memory of Mike Gobel \u2014 10% of every Mike\u2019s Blend goes to the Pacific Coast recovery community.</p>"
+            "show_social": false
           }
         },
         "shop-menu": {
