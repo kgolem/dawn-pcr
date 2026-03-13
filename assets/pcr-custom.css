@@ -2797,6 +2797,8 @@ shop-follow-button,
   }
   .footer-block__image-wrapper { margin: 0 auto; }
   .footer-block__brand-info .rte p { text-align: center !important; }
+  .footer-block__brand-info .rte,
+  .footer-block__brand-info .rte p { font-size: 0.969rem !important; }
   /* Center headings and links */
   .footer-block__heading,
   h2.footer-block__heading,
