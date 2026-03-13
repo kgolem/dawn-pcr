@@ -1,17 +1,19 @@
 {% comment %}
   Pacific Coast Roasters — Wholesale Page Section
-  Full-page marketing section for wholesale partner acquisition.
-  Sections: hero → who it's for → value props → program steps →
-            products → pricing/support → testimonials → FAQ → contact form
+  All content is editable via the Shopify theme editor.
 {% endcomment %}
 
 {%- liquid
-  assign contact_email = 'wholesale@pacificcoastroasters.com'
+  assign contact_email = section.settings.contact_email | default: 'wholesale@pacificcoastroasters.com'
+  assign who_blocks         = section.blocks | where: 'type', 'who_card'
+  assign benefit_blocks     = section.blocks | where: 'type', 'benefit'
+  assign step_blocks        = section.blocks | where: 'type', 'step'
+  assign product_blocks     = section.blocks | where: 'type', 'product_card'
+  assign testimonial_blocks = section.blocks | where: 'type', 'testimonial'
+  assign faq_blocks         = section.blocks | where: 'type', 'faq_item'
 -%}
 
-{%- comment -%} ══════════════════════════════════════════
-  1. HERO
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 1. HERO ══{%- endcomment -%}
 <section class="pcr-ws-hero">
   {%- if section.settings.hero_image != blank -%}
     <div class="pcr-ws-hero__bg" aria-hidden="true">
@@ -28,89 +30,79 @@
   {%- endif -%}
   <div class="pcr-ws-hero__overlay" aria-hidden="true"></div>
   <div class="pcr-ws-hero__content page-width">
-    <p class="pcr-ws-hero__eyebrow">Wholesale Partnership Program</p>
-    <h1 class="pcr-ws-hero__heading">{{ section.settings.hero_heading | default: 'Premium Small-Batch Coffee for Your Business' }}</h1>
-    <p class="pcr-ws-hero__subheading">{{ section.settings.hero_subheading | default: 'Freshly roasted to order in Watsonville, CA. Delivered fast, backed by real support. We make serving exceptional coffee simple.' }}</p>
+    {%- if section.settings.hero_eyebrow != blank -%}
+      <p class="pcr-ws-hero__eyebrow">{{ section.settings.hero_eyebrow }}</p>
+    {%- endif -%}
+    <h1 class="pcr-ws-hero__heading">{{ section.settings.hero_heading }}</h1>
+    {%- if section.settings.hero_subheading != blank -%}
+      <p class="pcr-ws-hero__subheading">{{ section.settings.hero_subheading }}</p>
+    {%- endif -%}
     <div class="pcr-ws-hero__btns">
-      <a href="#ws-apply" class="pcr-ws-btn pcr-ws-btn--gold">Apply for Wholesale</a>
-      <a href="#ws-products" class="pcr-ws-btn pcr-ws-btn--outline">View Our Coffees</a>
+      {%- if section.settings.hero_btn1_label != blank -%}
+        <a href="{{ section.settings.hero_btn1_url | default: '#ws-apply' }}" class="pcr-ws-btn pcr-ws-btn--gold">{{ section.settings.hero_btn1_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.hero_btn2_label != blank -%}
+        <a href="{{ section.settings.hero_btn2_url | default: '#ws-products' }}" class="pcr-ws-btn pcr-ws-btn--outline">{{ section.settings.hero_btn2_label }}</a>
+      {%- endif -%}
     </div>
   </div>
 </section>
 
-{%- comment -%} ══════════════════════════════════════════
-  2. WHO IT'S FOR
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 2. WHO IT'S FOR ══{%- endcomment -%}
+{%- if who_blocks.size > 0 -%}
 <section class="pcr-ws-section pcr-ws-who bg-white">
   <div class="page-width">
     <div class="pcr-ws-section__header">
-      <h2 class="pcr-ws-section__title">Who We Partner With</h2>
-      <p class="pcr-ws-section__subtitle">We build tailored coffee programs for businesses that care about quality and consistency.</p>
+      <h2 class="pcr-ws-section__title">{{ section.settings.who_title }}</h2>
+      {%- if section.settings.who_subtitle != blank -%}
+        <p class="pcr-ws-section__subtitle">{{ section.settings.who_subtitle }}</p>
+      {%- endif -%}
     </div>
     <div class="pcr-ws-grid pcr-ws-grid--3">
-      <div class="pcr-ws-card">
-        <div class="pcr-ws-card__icon" aria-hidden="true">☕</div>
-        <h3 class="pcr-ws-card__title">Cafes &amp; Bakeries</h3>
-        <ul class="pcr-ws-card__list">
-          <li>Custom menu development and dial-in support</li>
-          <li>On-site barista training and workflow optimization</li>
-          <li>Whole bean and ground options in every roast level</li>
-        </ul>
-      </div>
-      <div class="pcr-ws-card">
-        <div class="pcr-ws-card__icon" aria-hidden="true">🏢</div>
-        <h3 class="pcr-ws-card__title">Offices &amp; Workplaces</h3>
-        <ul class="pcr-ws-card__list">
-          <li>Premium perks to attract and retain top talent</li>
-          <li>Automated standing orders and low-maintenance setups</li>
-          <li>Flexible formats — whole bean, ground, or portion packs</li>
-        </ul>
-      </div>
-      <div class="pcr-ws-card">
-        <div class="pcr-ws-card__icon" aria-hidden="true">🛒</div>
-        <h3 class="pcr-ws-card__title">Hotels &amp; Retail</h3>
-        <ul class="pcr-ws-card__list">
-          <li>Consistent, high-volume supply with no flavor compromises</li>
-          <li>Retail-ready 12oz bags with branded labels</li>
-          <li>Private label opportunities for qualifying partners</li>
-        </ul>
-      </div>
+      {%- for block in who_blocks -%}
+        <div class="pcr-ws-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="pcr-ws-card__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+          {%- endif -%}
+          <h3 class="pcr-ws-card__title">{{ block.settings.title }}</h3>
+          <ul class="pcr-ws-card__list">
+            {%- if block.settings.bullet_1 != blank -%}<li>{{ block.settings.bullet_1 }}</li>{%- endif -%}
+            {%- if block.settings.bullet_2 != blank -%}<li>{{ block.settings.bullet_2 }}</li>{%- endif -%}
+            {%- if block.settings.bullet_3 != blank -%}<li>{{ block.settings.bullet_3 }}</li>{%- endif -%}
+          </ul>
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
+{%- endif -%}
 
-{%- comment -%} ══════════════════════════════════════════
-  3. VALUE PROPS
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 3. VALUE PROPS ══{%- endcomment -%}
 <section class="pcr-ws-section pcr-ws-value bg-stone">
   <div class="page-width">
     <div class="pcr-ws-value__layout">
       <div class="pcr-ws-value__copy">
-        <h2 class="pcr-ws-section__title pcr-ws-section__title--left">More Than Just Coffee Beans</h2>
-        <p class="pcr-ws-value__lead">We know a successful coffee program requires reliability. That's why we focus on quality control, training, and making the ordering process completely stress-free for your team.</p>
-        <div class="pcr-ws-value__benefits">
-          <div class="pcr-ws-benefit">
-            <div class="pcr-ws-benefit__icon" aria-hidden="true">🚚</div>
-            <div>
-              <h4 class="pcr-ws-benefit__title">Freshness Guaranteed</h4>
-              <p class="pcr-ws-benefit__desc">Strict roast-to-order schedules. We roast weekly and ship within 48 hours to ensure every bag arrives at peak flavor.</p>
-            </div>
+        <h2 class="pcr-ws-section__title pcr-ws-section__title--left">{{ section.settings.value_title }}</h2>
+        {%- if section.settings.value_lead != blank -%}
+          <p class="pcr-ws-value__lead">{{ section.settings.value_lead }}</p>
+        {%- endif -%}
+        {%- if benefit_blocks.size > 0 -%}
+          <div class="pcr-ws-value__benefits">
+            {%- for block in benefit_blocks -%}
+              <div class="pcr-ws-benefit" {{ block.shopify_attributes }}>
+                {%- if block.settings.icon != blank -%}
+                  <div class="pcr-ws-benefit__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+                {%- endif -%}
+                <div>
+                  <h4 class="pcr-ws-benefit__title">{{ block.settings.title }}</h4>
+                  {%- if block.settings.description != blank -%}
+                    <p class="pcr-ws-benefit__desc">{{ block.settings.description }}</p>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
           </div>
-          <div class="pcr-ws-benefit">
-            <div class="pcr-ws-benefit__icon" aria-hidden="true">🔧</div>
-            <div>
-              <h4 class="pcr-ws-benefit__title">Comprehensive Support</h4>
-              <p class="pcr-ws-benefit__desc">From equipment consulting to emergency dial-in help, our team acts as an extension of your staff — not just a supplier.</p>
-            </div>
-          </div>
-          <div class="pcr-ws-benefit">
-            <div class="pcr-ws-benefit__icon" aria-hidden="true">⚙️</div>
-            <div>
-              <h4 class="pcr-ws-benefit__title">Operational Ease</h4>
-              <p class="pcr-ws-benefit__desc">Flexible ordering, predictable delivery windows, and standing order options. Less time managing coffee, more time on your business.</p>
-            </div>
-          </div>
-        </div>
+        {%- endif -%}
       </div>
       <div class="pcr-ws-value__image">
         {%- if section.settings.value_image != blank -%}
@@ -130,230 +122,189 @@
   </div>
 </section>
 
-{%- comment -%} ══════════════════════════════════════════
-  4. PROGRAM STEPS
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 4. PROGRAM STEPS ══{%- endcomment -%}
+{%- if step_blocks.size > 0 -%}
 <section class="pcr-ws-section pcr-ws-steps bg-white">
   <div class="page-width">
     <div class="pcr-ws-section__header">
-      <h2 class="pcr-ws-section__title">How the Program Works</h2>
+      <h2 class="pcr-ws-section__title">{{ section.settings.steps_title }}</h2>
     </div>
     <div class="pcr-ws-grid pcr-ws-grid--4">
-      <div class="pcr-ws-step">
-        <div class="pcr-ws-step__number" aria-hidden="true">01</div>
-        <h3 class="pcr-ws-step__title">Inquire &amp; Taste</h3>
-        <p class="pcr-ws-step__desc">Fill out the form below. We'll send you a curated sample kit tailored to your equipment and volume needs.</p>
-      </div>
-      <div class="pcr-ws-step">
-        <div class="pcr-ws-step__number" aria-hidden="true">02</div>
-        <h3 class="pcr-ws-step__title">Program Design</h3>
-        <p class="pcr-ws-step__desc">We help you select the right blends, determine volume needs, and source equipment if necessary.</p>
-      </div>
-      <div class="pcr-ws-step">
-        <div class="pcr-ws-step__number" aria-hidden="true">03</div>
-        <h3 class="pcr-ws-step__title">Staff Training</h3>
-        <p class="pcr-ws-step__desc">Before your first order ships, we train your team on dialing in espresso and maintaining quality day-to-day.</p>
-      </div>
-      <div class="pcr-ws-step">
-        <div class="pcr-ws-step__number" aria-hidden="true">04</div>
-        <h3 class="pcr-ws-step__title">Weekly Routine</h3>
-        <p class="pcr-ws-step__desc">Order by Sunday night. We roast Monday and ship by Wednesday — fresh coffee, every week, on schedule.</p>
-      </div>
+      {%- for block in step_blocks -%}
+        <div class="pcr-ws-step" {{ block.shopify_attributes }}>
+          {%- if block.settings.number != blank -%}
+            <div class="pcr-ws-step__number" aria-hidden="true">{{ block.settings.number }}</div>
+          {%- endif -%}
+          <h3 class="pcr-ws-step__title">{{ block.settings.title }}</h3>
+          {%- if block.settings.description != blank -%}
+            <p class="pcr-ws-step__desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
+{%- endif -%}
 
-{%- comment -%} ══════════════════════════════════════════
-  5. PRODUCTS
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 5. PRODUCTS ══{%- endcomment -%}
+{%- if product_blocks.size > 0 -%}
 <section id="ws-products" class="pcr-ws-section pcr-ws-products bg-black">
   <div class="page-width">
     <div class="pcr-ws-products__header">
       <div>
-        <h2 class="pcr-ws-section__title pcr-ws-section__title--white">Core Wholesale Offerings</h2>
-        <p class="pcr-ws-products__subtitle">Our full lineup. Every coffee ships with brew recipes and dial-in parameters.</p>
+        <h2 class="pcr-ws-section__title pcr-ws-section__title--white">{{ section.settings.products_title }}</h2>
+        {%- if section.settings.products_subtitle != blank -%}
+          <p class="pcr-ws-products__subtitle">{{ section.settings.products_subtitle }}</p>
+        {%- endif -%}
       </div>
       <a href="mailto:{{ contact_email }}" class="pcr-ws-btn pcr-ws-btn--ghost">
-        Request Full Catalog →
+        {{ section.settings.products_catalog_label | default: 'Request Full Catalog →' }}
       </a>
     </div>
     <div class="pcr-ws-grid pcr-ws-grid--4">
-      <div class="pcr-ws-product-card">
-        <span class="pcr-ws-product-card__use">Espresso · Milk Drinks</span>
-        <h3 class="pcr-ws-product-card__name">Mike's Blend</h3>
-        <p class="pcr-ws-product-card__desc">Our flagship wholesale espresso. Rich dark chocolate, warm spice, and caramel sweetness. Cuts through milk perfectly — built for volume and consistency.</p>
-        <div class="pcr-ws-product-card__footer">
-          <span class="pcr-ws-product-card__format-label">Available formats</span>
-          <span class="pcr-ws-product-card__format">12oz &amp; 1kg bags</span>
+      {%- for block in product_blocks -%}
+        <div class="pcr-ws-product-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.use_label != blank -%}
+            <span class="pcr-ws-product-card__use">{{ block.settings.use_label }}</span>
+          {%- endif -%}
+          <h3 class="pcr-ws-product-card__name">{{ block.settings.name }}</h3>
+          {%- if block.settings.description != blank -%}
+            <p class="pcr-ws-product-card__desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+          <div class="pcr-ws-product-card__footer">
+            <span class="pcr-ws-product-card__format-label">Available formats</span>
+            <span class="pcr-ws-product-card__format">{{ block.settings.format }}</span>
+          </div>
         </div>
-      </div>
-      <div class="pcr-ws-product-card">
-        <span class="pcr-ws-product-card__use">Batch Brew · Drip</span>
-        <h3 class="pcr-ws-product-card__name">Rise &amp; Gr!nd</h3>
-        <p class="pcr-ws-product-card__desc">A crowd-pleasing light roast perfect for high-volume filter programs. Bright, clean, and consistent year round — a cup that works for every palate.</p>
-        <div class="pcr-ws-product-card__footer">
-          <span class="pcr-ws-product-card__format-label">Available formats</span>
-          <span class="pcr-ws-product-card__format">12oz &amp; 1kg bags</span>
-        </div>
-      </div>
-      <div class="pcr-ws-product-card">
-        <span class="pcr-ws-product-card__use">Pour Over · Bold Drinkers</span>
-        <h3 class="pcr-ws-product-card__name">Shadow Work</h3>
-        <p class="pcr-ws-product-card__desc">A dark roast for those who want their coffee to mean something. Smoky, full-bodied, and complex — great as espresso or a bold drip option on your menu.</p>
-        <div class="pcr-ws-product-card__footer">
-          <span class="pcr-ws-product-card__format-label">Available formats</span>
-          <span class="pcr-ws-product-card__format">12oz &amp; 1kg bags</span>
-        </div>
-      </div>
-      <div class="pcr-ws-product-card">
-        <span class="pcr-ws-product-card__use">Retail Shelf · Pour Over</span>
-        <h3 class="pcr-ws-product-card__name">Seasonal Single Origins</h3>
-        <p class="pcr-ws-product-card__desc">Rotating selections from our exotic sourcing program — Tanzanian Peaberry, Kenya Pinkerton, and more. Ideal for specialty menus and retail shelves.</p>
-        <div class="pcr-ws-product-card__footer">
-          <span class="pcr-ws-product-card__format-label">Available formats</span>
-          <span class="pcr-ws-product-card__format">12oz bags &amp; retail 2-packs</span>
-        </div>
-      </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
+{%- endif -%}
 
-{%- comment -%} ══════════════════════════════════════════
-  6. PRICING & SUPPORT
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 6. PRICING & SUPPORT ══{%- endcomment -%}
 <section class="pcr-ws-section pcr-ws-pricing bg-stone">
   <div class="page-width">
     <div class="pcr-ws-grid pcr-ws-grid--2">
-
       <div class="pcr-ws-panel">
-        <h3 class="pcr-ws-panel__title">Pricing &amp; Volume Tiers</h3>
-        <p class="pcr-ws-panel__desc">Our pricing is designed to grow alongside your business. Competitive margins for retail bags and volume discounts for bulk service.</p>
+        <h3 class="pcr-ws-panel__title">{{ section.settings.pricing_title }}</h3>
+        {%- if section.settings.pricing_desc != blank -%}
+          <p class="pcr-ws-panel__desc">{{ section.settings.pricing_desc }}</p>
+        {%- endif -%}
         <table class="pcr-ws-pricing-table">
           <tbody>
-            <tr>
-              <td class="pcr-ws-pricing-table__label">Standard MOQ</td>
-              <td class="pcr-ws-pricing-table__value">10 lbs / week</td>
-            </tr>
-            <tr>
-              <td class="pcr-ws-pricing-table__label">Tier 1 Volume</td>
-              <td class="pcr-ws-pricing-table__value">30+ lbs / week</td>
-            </tr>
-            <tr>
-              <td class="pcr-ws-pricing-table__label">Tier 2 Volume</td>
-              <td class="pcr-ws-pricing-table__value">100+ lbs / week</td>
-            </tr>
+            {%- if section.settings.moq_label != blank -%}
+              <tr>
+                <td class="pcr-ws-pricing-table__label">{{ section.settings.moq_label }}</td>
+                <td class="pcr-ws-pricing-table__value">{{ section.settings.moq_value }}</td>
+              </tr>
+            {%- endif -%}
+            {%- if section.settings.tier1_label != blank -%}
+              <tr>
+                <td class="pcr-ws-pricing-table__label">{{ section.settings.tier1_label }}</td>
+                <td class="pcr-ws-pricing-table__value">{{ section.settings.tier1_value }}</td>
+              </tr>
+            {%- endif -%}
+            {%- if section.settings.tier2_label != blank -%}
+              <tr>
+                <td class="pcr-ws-pricing-table__label">{{ section.settings.tier2_label }}</td>
+                <td class="pcr-ws-pricing-table__value">{{ section.settings.tier2_value }}</td>
+              </tr>
+            {%- endif -%}
           </tbody>
         </table>
-        <div class="pcr-ws-callout">
-          <h4 class="pcr-ws-callout__title">New Business Launch Kit</h4>
-          <p class="pcr-ws-callout__desc">Opening soon? Ask about our starter bundle — waived minimums for the first 30 days and priority on-site training included.</p>
-        </div>
+        {%- if section.settings.callout_title != blank -%}
+          <div class="pcr-ws-callout">
+            <h4 class="pcr-ws-callout__title">{{ section.settings.callout_title }}</h4>
+            {%- if section.settings.callout_desc != blank -%}
+              <p class="pcr-ws-callout__desc">{{ section.settings.callout_desc }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
       </div>
 
       <div class="pcr-ws-panel">
-        <h3 class="pcr-ws-panel__title">Equipment &amp; Training</h3>
-        <p class="pcr-ws-panel__desc">Great beans only go so far without the right gear and knowledge. We help with both.</p>
+        <h3 class="pcr-ws-panel__title">{{ section.settings.equipment_title }}</h3>
+        {%- if section.settings.equipment_desc != blank -%}
+          <p class="pcr-ws-panel__desc">{{ section.settings.equipment_desc }}</p>
+        {%- endif -%}
         <div class="pcr-ws-support-list">
-          <div class="pcr-ws-support-item">
-            <div class="pcr-ws-support-item__icon" aria-hidden="true">📚</div>
-            <div>
-              <h4 class="pcr-ws-support-item__title">Education Program</h4>
-              <p class="pcr-ws-support-item__desc">Free quarterly training for your staff covering espresso fundamentals, milk science, and workflow optimization.</p>
+          {%- if section.settings.edu_title != blank -%}
+            <div class="pcr-ws-support-item">
+              <div class="pcr-ws-support-item__icon" aria-hidden="true">{{ section.settings.edu_icon | default: '📚' }}</div>
+              <div>
+                <h4 class="pcr-ws-support-item__title">{{ section.settings.edu_title }}</h4>
+                {%- if section.settings.edu_desc != blank -%}
+                  <p class="pcr-ws-support-item__desc">{{ section.settings.edu_desc }}</p>
+                {%- endif -%}
+              </div>
             </div>
-          </div>
-          <div class="pcr-ws-support-item">
-            <div class="pcr-ws-support-item__icon" aria-hidden="true">🛠️</div>
-            <div>
-              <h4 class="pcr-ws-support-item__title">Equipment Sourcing</h4>
-              <p class="pcr-ws-support-item__desc">We help source and recommend commercial equipment suited to your volume and budget, and provide ongoing maintenance guidance.</p>
+          {%- endif -%}
+          {%- if section.settings.equip_title != blank -%}
+            <div class="pcr-ws-support-item">
+              <div class="pcr-ws-support-item__icon" aria-hidden="true">{{ section.settings.equip_icon | default: '🛠️' }}</div>
+              <div>
+                <h4 class="pcr-ws-support-item__title">{{ section.settings.equip_title }}</h4>
+                {%- if section.settings.equip_desc != blank -%}
+                  <p class="pcr-ws-support-item__desc">{{ section.settings.equip_desc }}</p>
+                {%- endif -%}
+              </div>
             </div>
-          </div>
+          {%- endif -%}
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-{%- comment -%} ══════════════════════════════════════════
-  7. TESTIMONIALS
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 7. TESTIMONIALS ══{%- endcomment -%}
+{%- if testimonial_blocks.size > 0 -%}
 <section class="pcr-ws-section pcr-ws-testimonials bg-stone-mid">
   <div class="page-width">
     <div class="pcr-ws-section__header">
-      <h2 class="pcr-ws-section__title">Trusted by Local Businesses</h2>
+      <h2 class="pcr-ws-section__title">{{ section.settings.testimonials_title }}</h2>
     </div>
     <div class="pcr-ws-grid pcr-ws-grid--2 pcr-ws-grid--max4xl">
-      <div class="pcr-ws-testimonial">
-        <div class="pcr-ws-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote class="pcr-ws-testimonial__quote">"Switching to Pacific Coast Roasters was the best operational decision we made this year. The coffee is incredibly consistent, and their support team is always available when we need a dial-in."</blockquote>
-        <footer class="pcr-ws-testimonial__author">
-          <strong>Sarah Jenkins</strong>
-          <span>GM, The Daily Press Cafe — Santa Cruz, CA</span>
-        </footer>
-      </div>
-      <div class="pcr-ws-testimonial">
-        <div class="pcr-ws-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote class="pcr-ws-testimonial__quote">"They helped us build our office coffee program from scratch. The recommendations were spot on, the setup was painless, and our team genuinely looks forward to their morning cup now."</blockquote>
-        <footer class="pcr-ws-testimonial__author">
-          <strong>Marcus Chen</strong>
-          <span>Operations Director, TechFlow — San Jose, CA</span>
-        </footer>
-      </div>
+      {%- for block in testimonial_blocks -%}
+        <div class="pcr-ws-testimonial" {{ block.shopify_attributes }}>
+          <div class="pcr-ws-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="pcr-ws-testimonial__quote">"{{ block.settings.quote }}"</blockquote>
+          <footer class="pcr-ws-testimonial__author">
+            <strong>{{ block.settings.author_name }}</strong>
+            <span>{{ block.settings.author_title }}</span>
+          </footer>
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
+{%- endif -%}
 
-{%- comment -%} ══════════════════════════════════════════
-  8. FAQ
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 8. FAQ ══{%- endcomment -%}
+{%- if faq_blocks.size > 0 -%}
 <section class="pcr-ws-section pcr-ws-faq bg-white">
   <div class="page-width pcr-ws-faq__inner">
-    <h2 class="pcr-ws-section__title">Frequently Asked Questions</h2>
+    <h2 class="pcr-ws-section__title">{{ section.settings.faq_title }}</h2>
     <div class="pcr-ws-faq__list">
-
-      <details class="pcr-ws-faq__item">
-        <summary class="pcr-ws-faq__q">What is your minimum order quantity?</summary>
-        <div class="pcr-ws-faq__a">Our standard wholesale minimum is 10 lbs per week. We offer flexible terms for new businesses during their launch phase — mention it in your inquiry and we'll work something out.</div>
-      </details>
-
-      <details class="pcr-ws-faq__item">
-        <summary class="pcr-ws-faq__q">What bags and sizes do you offer?</summary>
-        <div class="pcr-ws-faq__a">All blends are available in 12oz (340g) and 1kg (35oz) bags. Our lineup includes Mike's Blend, Rise &amp; Gr!nd, Shadow Work, Decaf, and rotating seasonal single origins (Peaberry, Pinkerton, Tanzania, and more).</div>
-      </details>
-
-      <details class="pcr-ws-faq__item">
-        <summary class="pcr-ws-faq__q">How fast do you fulfill orders?</summary>
-        <div class="pcr-ws-faq__a">We roast weekly and ship within 48 hours of order confirmation from our Watsonville, CA facility. Order by Sunday night and expect delivery by Wednesday.</div>
-      </details>
-
-      <details class="pcr-ws-faq__item">
-        <summary class="pcr-ws-faq__q">Do you offer private label roasting?</summary>
-        <div class="pcr-ws-faq__a">Yes. We offer white-label services for grocery and high-volume accounts meeting a minimum of 50 lbs per week. Contact us for custom bagging and label options.</div>
-      </details>
-
-      <details class="pcr-ws-faq__item">
-        <summary class="pcr-ws-faq__q">What are your payment terms?</summary>
-        <div class="pcr-ws-faq__a">Initial orders are processed via credit card. After 30 days of consistent ordering, accounts in good standing can be transitioned to Net 15 or Net 30 terms.</div>
-      </details>
-
-      <details class="pcr-ws-faq__item">
-        <summary class="pcr-ws-faq__q">Can I request samples before committing?</summary>
-        <div class="pcr-ws-faq__a">Yes — mention it in your application and we'll arrange a curated sample kit suited to your equipment and brewing style. No commitment required.</div>
-      </details>
-
+      {%- for block in faq_blocks -%}
+        <details class="pcr-ws-faq__item" {{ block.shopify_attributes }}>
+          <summary class="pcr-ws-faq__q">{{ block.settings.question }}</summary>
+          <div class="pcr-ws-faq__a">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
     </div>
   </div>
 </section>
+{%- endif -%}
 
-{%- comment -%} ══════════════════════════════════════════
-  9. CONTACT FORM
-══════════════════════════════════════════ {%- endcomment -%}
+{%- comment -%}══ 9. CONTACT FORM ══{%- endcomment -%}
 <section id="ws-apply" class="pcr-ws-section pcr-ws-form-section bg-black">
   <div class="page-width pcr-ws-form__inner">
     <div class="pcr-ws-section__header pcr-ws-section__header--white">
-      <h2 class="pcr-ws-section__title pcr-ws-section__title--white">Start Your Wholesale Partnership</h2>
-      <p class="pcr-ws-form__subtitle">Fill out the details below and our team will reach out within 24 hours to arrange a tasting.</p>
+      <h2 class="pcr-ws-section__title pcr-ws-section__title--white">{{ section.settings.form_title }}</h2>
+      {%- if section.settings.form_subtitle != blank -%}
+        <p class="pcr-ws-form__subtitle">{{ section.settings.form_subtitle }}</p>
+      {%- endif -%}
     </div>
 
     {%- if form.posted_successfully? -%}
@@ -440,43 +391,126 @@
   "tag": "section",
   "class": "pcr-section-wholesale",
   "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "image_picker", "id": "hero_image", "label": "Background image", "info": "Dark overlay applied automatically." },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "Wholesale Partnership Program" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Premium Small-Batch Coffee for Your Business" },
+    { "type": "textarea", "id": "hero_subheading", "label": "Subheading", "default": "Freshly roasted to order in Watsonville, CA. Delivered fast, backed by real support. We make serving exceptional coffee simple." },
+    { "type": "text", "id": "hero_btn1_label", "label": "Button 1 label", "default": "Apply for Wholesale" },
+    { "type": "url", "id": "hero_btn1_url", "label": "Button 1 URL" },
+    { "type": "text", "id": "hero_btn2_label", "label": "Button 2 label", "default": "View Our Coffees" },
+    { "type": "url", "id": "hero_btn2_url", "label": "Button 2 URL" },
+
+    { "type": "header", "content": "Who It's For" },
+    { "type": "text", "id": "who_title", "label": "Section title", "default": "Who We Partner With" },
+    { "type": "textarea", "id": "who_subtitle", "label": "Subtitle", "default": "We build tailored coffee programs for businesses that care about quality and consistency." },
+
+    { "type": "header", "content": "Value Props" },
+    { "type": "text", "id": "value_title", "label": "Section title", "default": "More Than Just Coffee Beans" },
+    { "type": "textarea", "id": "value_lead", "label": "Lead text", "default": "We know a successful coffee program requires reliability. That's why we focus on quality control, training, and making the ordering process completely stress-free for your team." },
+    { "type": "image_picker", "id": "value_image", "label": "Side image (barista / pour shot)" },
+
+    { "type": "header", "content": "Program Steps" },
+    { "type": "text", "id": "steps_title", "label": "Section title", "default": "How the Program Works" },
+
+    { "type": "header", "content": "Products" },
+    { "type": "text", "id": "products_title", "label": "Section title", "default": "Core Wholesale Offerings" },
+    { "type": "textarea", "id": "products_subtitle", "label": "Subtitle", "default": "Our full lineup. Every coffee ships with brew recipes and dial-in parameters." },
+    { "type": "text", "id": "products_catalog_label", "label": "Catalog button label", "default": "Request Full Catalog →" },
+
+    { "type": "header", "content": "Pricing" },
+    { "type": "text", "id": "pricing_title", "label": "Panel title", "default": "Pricing & Volume Tiers" },
+    { "type": "textarea", "id": "pricing_desc", "label": "Description", "default": "Our pricing is designed to grow alongside your business. Competitive margins for retail bags and volume discounts for bulk service." },
+    { "type": "text", "id": "moq_label", "label": "Row 1 label", "default": "Standard MOQ" },
+    { "type": "text", "id": "moq_value", "label": "Row 1 value", "default": "10 lbs / week" },
+    { "type": "text", "id": "tier1_label", "label": "Row 2 label", "default": "Tier 1 Volume" },
+    { "type": "text", "id": "tier1_value", "label": "Row 2 value", "default": "30+ lbs / week" },
+    { "type": "text", "id": "tier2_label", "label": "Row 3 label", "default": "Tier 2 Volume" },
+    { "type": "text", "id": "tier2_value", "label": "Row 3 value", "default": "100+ lbs / week" },
+    { "type": "text", "id": "callout_title", "label": "Callout title", "default": "New Business Launch Kit" },
+    { "type": "textarea", "id": "callout_desc", "label": "Callout description", "default": "Opening soon? Ask about our starter bundle — waived minimums for the first 30 days and priority on-site training included." },
+
+    { "type": "header", "content": "Equipment & Training" },
+    { "type": "text", "id": "equipment_title", "label": "Panel title", "default": "Equipment & Training" },
+    { "type": "textarea", "id": "equipment_desc", "label": "Description", "default": "Great beans only go so far without the right gear and knowledge. We help with both." },
+    { "type": "text", "id": "edu_icon", "label": "Education icon (emoji)", "default": "📚" },
+    { "type": "text", "id": "edu_title", "label": "Education title", "default": "Education Program" },
+    { "type": "textarea", "id": "edu_desc", "label": "Education description", "default": "Free quarterly training for your staff covering espresso fundamentals, milk science, and workflow optimization." },
+    { "type": "text", "id": "equip_icon", "label": "Equipment sourcing icon (emoji)", "default": "🛠️" },
+    { "type": "text", "id": "equip_title", "label": "Equipment sourcing title", "default": "Equipment Sourcing" },
+    { "type": "textarea", "id": "equip_desc", "label": "Equipment sourcing description", "default": "We help source and recommend commercial equipment suited to your volume and budget, and provide ongoing maintenance guidance." },
+
+    { "type": "header", "content": "Testimonials" },
+    { "type": "text", "id": "testimonials_title", "label": "Section title", "default": "Trusted by Local Businesses" },
+
+    { "type": "header", "content": "FAQ" },
+    { "type": "text", "id": "faq_title", "label": "Section title", "default": "Frequently Asked Questions" },
+
+    { "type": "header", "content": "Contact Form" },
+    { "type": "text", "id": "form_title", "label": "Section title", "default": "Start Your Wholesale Partnership" },
+    { "type": "textarea", "id": "form_subtitle", "label": "Subtitle", "default": "Fill out the details below and our team will reach out within 24 hours to arrange a tasting." },
+    { "type": "text", "id": "contact_email", "label": "Contact email", "default": "wholesale@pacificcoastroasters.com" }
+  ],
+  "blocks": [
     {
-      "type": "header",
-      "content": "Hero"
+      "type": "who_card",
+      "name": "Partner Type",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "☕" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Cafes & Bakeries" },
+        { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "Custom menu development and dial-in support" },
+        { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "On-site barista training and workflow optimization" },
+        { "type": "text", "id": "bullet_3", "label": "Bullet 3", "default": "Whole bean and ground options in every roast level" }
+      ]
     },
     {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero background image",
-      "info": "Dark overlay is applied automatically."
+      "type": "benefit",
+      "name": "Value Benefit",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "🚚" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Freshness Guaranteed" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Strict roast-to-order schedules. We roast weekly and ship within 48 hours to ensure every bag arrives at peak flavor." }
+      ]
     },
     {
-      "type": "text",
-      "id": "hero_heading",
-      "label": "Hero heading",
-      "default": "Premium Small-Batch Coffee for Your Business"
+      "type": "step",
+      "name": "Program Step",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Step number", "default": "01" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Inquire & Taste" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Fill out the form below. We'll send you a curated sample kit tailored to your equipment and volume needs." }
+      ]
     },
     {
-      "type": "text",
-      "id": "hero_subheading",
-      "label": "Hero subheading",
-      "default": "Freshly roasted to order in Watsonville, CA. Delivered fast, backed by real support."
+      "type": "product_card",
+      "name": "Product",
+      "settings": [
+        { "type": "text", "id": "use_label", "label": "Use label", "default": "Espresso · Milk Drinks", "info": "e.g. Espresso · Milk Drinks" },
+        { "type": "text", "id": "name", "label": "Product name", "default": "Mike's Blend" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Our flagship wholesale espresso. Rich dark chocolate, warm spice, and caramel sweetness. Cuts through milk perfectly — built for volume and consistency." },
+        { "type": "text", "id": "format", "label": "Available formats", "default": "12oz & 1kg bags" }
+      ]
     },
     {
-      "type": "header",
-      "content": "Value Props"
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote (no quotation marks needed)", "default": "Switching to Pacific Coast Roasters was the best operational decision we made this year." },
+        { "type": "text", "id": "author_name", "label": "Author name", "default": "Sarah Jenkins" },
+        { "type": "text", "id": "author_title", "label": "Author title & business", "default": "GM, The Daily Press Cafe — Santa Cruz, CA" }
+      ]
     },
     {
-      "type": "image_picker",
-      "id": "value_image",
-      "label": "Side image (barista / pour shot)",
-      "info": "Displays alongside the value proposition copy."
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What is your minimum order quantity?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Our standard wholesale minimum is 10 lbs per week. We offer flexible terms for new businesses during their launch phase — mention it in your inquiry and we'll work something out." }
+      ]
     }
   ],
   "presets": [
-    {
-      "name": "PCR Wholesale"
-    }
+    { "name": "PCR Wholesale" }
   ]
 }
 {% endschema %}
