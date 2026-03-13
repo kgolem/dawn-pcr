@@ -2717,130 +2717,129 @@ a:hover {
 
 
 /* =========================================================
-   FOOTER — Compact PCR overrides for Dawn's footer section
-   Tightens spacing, scales down typography, and aligns with
-   the site's editorial / dark aesthetic.
+   FOOTER
    ========================================================= */
 
-/* Overall padding reduction */
-.footer__content-top.page-width {
-  padding-top: 3rem !important;
-  padding-bottom: 2rem !important;
-}
+/* Kill Follow on Shop widget (every selector Shopify uses) */
+shop-follow-button,
+.shopify-follow-on-shop,
+[class*="follow-on-shop"],
+[id*="follow-on-shop"] { display: none !important; }
+
+/* Hide payment icons */
+.footer__payment,
+.footer__content-bottom-wrapper .list-payment { display: none !important; }
+
+/* Bottom bar */
 .footer__content-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08) !important;
+  border-top: 1px solid rgba(255,255,255,0.1) !important;
 }
 .footer__content-bottom-wrapper {
   padding-top: 1.25rem !important;
   padding-bottom: 1.25rem !important;
+  justify-content: flex-start !important;
 }
 
-/* Block headings — column labels */
+/* Grid: 3 cols, first col wider */
+.footer__blocks-wrapper {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 1fr !important;
+  gap: 3rem !important;
+  align-items: start !important;
+}
+@media (max-width: 749px) {
+  .footer__blocks-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+/* Brand block: wordmark as heading */
+.footer-block:first-child h2.footer-block__heading,
+.footer-block:first-child .footer-block__heading {
+  font-family: var(--pcr-font-heading) !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: #ffffff !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Column label headings (Shop, Support) */
 .footer-block__heading,
 h2.footer-block__heading,
 h2.footer-block__heading.inline-richtext {
-  font-size: 0.75rem !important;
+  font-size: 0.72rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.14em !important;
   color: var(--pcr-gold) !important;
-  margin-bottom: 1.25rem !important;
+  margin-bottom: 1.1rem !important;
   font-family: var(--pcr-font-body) !important;
 }
 
-/* Brand block: logo sizing */
-.footer-block--brand .footer-block__brand-image,
-.footer-block--brand-information .footer-block__brand-image {
-  max-width: 160px !important;
-  margin-bottom: 1rem;
-}
-
-/* Body text in brand / text blocks */
+/* Brand description */
 .footer-block__details-content,
 .footer-block__details-content.rte,
-.footer-block__details-content p,
-.footer__brand-info p {
-  font-size: 0.9rem !important;
-  line-height: 1.65 !important;
-  color: #a8a29e;
+.footer-block__details-content p {
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  color: #9ca3af !important;
+  max-width: 32ch;
 }
 
-/* Nav link list */
+/* Nav links */
 .footer-block__details-content.list-unstyled { padding: 0; margin: 0; }
 .footer-block__details-content .link--text,
 .list-menu__item--link.link--text {
   font-size: 0.9rem !important;
-  color: #a8a29e !important;
+  color: #9ca3af !important;
   text-decoration: none !important;
   padding: 0.3rem 0 !important;
   display: block;
   transition: color 0.15s;
+  font-family: var(--pcr-font-body) !important;
 }
 .footer-block__details-content .link--text:hover,
 .list-menu__item--link.link--text:hover {
   color: #ffffff !important;
-  text-decoration: none !important;
 }
 
-/* Newsletter heading */
-.footer-block--newsletter .footer-block__heading,
-h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter) {
-  font-size: 0.75rem !important;
-}
-.footer-block--newsletter {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 2rem;
-  margin-top: 0.5rem;
-}
-
-/* Compact newsletter form */
-.newsletter-form__field-wrapper .field,
-.footer__newsletter .field {
-  max-width: 420px;
+/* Newsletter row */
+.footer__newsletter { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
+h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
+.footer__newsletter .footer-block__heading {
+  font-size: 0.72rem !important;
+  color: var(--pcr-gold) !important;
+  letter-spacing: 0.14em !important;
 }
 .footer__newsletter .field__input,
 .newsletter-form .field__input {
-  height: 40px !important;
-  font-size: 0.825rem !important;
+  height: 44px !important;
+  font-size: 0.875rem !important;
   padding: 0 1rem !important;
   border-radius: 0 !important;
   min-height: unset !important;
-}
-.footer__newsletter .field__label,
-.newsletter-form .field__label {
-  font-size: 0.825rem;
-  top: 50%;
-  transform: translateY(-50%);
+  max-width: 360px;
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+  color: #ffffff !important;
 }
 .newsletter-form__button.field__button {
-  width: 40px !important;
-  height: 40px !important;
-}
-
-/* Payment icons: smaller */
-.footer__payment { margin: 0; }
-.list-payment { gap: 0.35rem !important; }
-.list-payment .icon--full-color {
-  width: 32px !important;
-  height: 20px !important;
-}
-.list-payment__item {
-  display: flex;
-  align-items: center;
+  width: 44px !important;
+  height: 44px !important;
 }
 
 /* Copyright */
 .footer__copyright.caption,
 .footer__copyright .copyright__content,
 .footer__copyright small {
-  font-size: 0.72rem !important;
+  font-size: 0.75rem !important;
   color: #6b7280 !important;
 }
 .footer__copyright a { color: #6b7280 !important; }
 .footer__copyright a:hover { color: #a8a29e !important; }
-
-/* Grid gap tighter */
-.footer__blocks-wrapper { gap: 1.25rem !important; }
 
 /* =========================================================
    SOCIAL PROOF
