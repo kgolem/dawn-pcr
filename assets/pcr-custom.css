@@ -2707,17 +2707,17 @@ shop-follow-button,
   justify-content: flex-start !important;
 }
 
-/* Grid: equal 3-col layout */
+/* Grid: wide brand col + two compact nav cols */
 .footer__blocks-wrapper {
   display: grid !important;
-  grid-template-columns: 1.5fr 1fr 1fr !important;
-  gap: 4rem !important;
+  grid-template-columns: 2.5fr 1fr 1fr !important;
+  gap: 2.5rem !important;
   align-items: start !important;
 }
 @media (max-width: 749px) {
   .footer__blocks-wrapper {
     grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+    gap: 2rem !important;
   }
 }
 
@@ -2725,11 +2725,11 @@ shop-follow-button,
 .footer-block__brand-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 .footer-block__image-wrapper {
   display: block;
-  max-width: 160px !important;
+  max-width: 200px !important;
 }
 .footer-block__image-wrapper img {
   display: block;
