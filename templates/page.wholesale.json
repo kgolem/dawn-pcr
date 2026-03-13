@@ -104,7 +104,7 @@
             "use_label": "Espresso · Milk Drinks",
             "name": "Mike's Blend",
             "description": "Our flagship wholesale espresso. Rich dark chocolate, warm spice, and caramel sweetness. Cuts through milk perfectly — built for volume and consistency.",
-            "format": "12oz, 2.2kg, 5lb. bags"
+            "format": "12oz bags • 2.2kg bags • 5lb. bags"
           }
         },
         "product-rise": {
@@ -113,7 +113,7 @@
             "use_label": "Batch Brew · Drip",
             "name": "Rise & Gr!nd",
             "description": "A crowd-pleasing light roast perfect for high-volume filter programs. Bright, clean, and consistent year round — a cup that works for every palate.",
-            "format": "12oz, 2.2kg, 5lb. bags"
+            "format": "12oz bags • 2.2kg bag • 5lb. bags"
           }
         },
         "product-shadow": {
@@ -122,7 +122,7 @@
             "use_label": "Pour Over · Bold Drinkers",
             "name": "Shadow Work",
             "description": "A dark roast for those who want their coffee to mean something. Smoky, full-bodied, and complex — great as espresso or a bold drip option on your menu.",
-            "format": "12oz, 2.2kg, 5lb. bags"
+            "format": "12oz bags • 2.2kg • 5lb. bags"
           }
         },
         "product-seasonal": {
