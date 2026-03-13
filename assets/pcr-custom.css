@@ -3112,23 +3112,22 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4em;
-  padding: 0.563rem 1.931rem !important;
-  background-color: var(--pcr-gold) !important;
-  border: 0.15rem solid var(--pcr-gold) !important;
+  padding: 1rem 2.75rem !important;
+  background-color: #ffffff !important;
+  border: 0.2rem solid #111111 !important;
   color: #111111 !important;
   font-family: var(--pcr-font-body) !important;
-  font-size: 0.75rem !important;
-  font-weight: 500 !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.15s, border-color 0.15s;
+  transition: background-color 0.15s;
 }
 .pcr-social-proof__cta:hover {
-  background-color: #c49a3a !important;
-  border-color: #c49a3a !important;
+  background-color: #f9fafb !important;
+  border-color: #111111 !important;
   color: #111111 !important;
 }
 
