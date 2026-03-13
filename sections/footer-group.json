@@ -19,7 +19,7 @@
           "settings": {
             "logo": "shopify://shop_images/logo-transparent.png",
             "logo_width": 120,
-            "description": "<p>Small-batch, specialty coffee roasted in Watsonville, CA. </p><p>In memory of Mike Gobel.</p>"
+            "description": "<p><em>Small-batch, specialty coffee roasted in Watsonville, CA.</em> <br/><strong>In memory of Mike Gobel.</strong></p>"
           }
         },
         "shop-menu": {
