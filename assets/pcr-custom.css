@@ -543,7 +543,7 @@ a:hover {
    Between hero and featured products
    ========================================================= */
 .pcr-trust-bar {
-  padding: 1rem 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--pcr-black);
   background: white;
 }
