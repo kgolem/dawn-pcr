@@ -2314,7 +2314,10 @@ a:hover {
 /* ── 8. FAQ ── */
 #sub-builder { padding-bottom: 0; }
 .pcr-ws-faq { padding-top: 2.5rem; }
-.pcr-ws-faq__inner { max-width: 48rem; margin-inline: auto; }
+.pcr-ws-faq__inner { max-width: 48rem; margin-inline: auto; text-align: center; }
+.pcr-ws-faq__item,
+.pcr-ws-faq__q,
+.pcr-ws-faq__a { text-align: left; }
 .pcr-ws-faq__list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
 .pcr-ws-faq__item {
   border: 1px solid #e5e0d8;
