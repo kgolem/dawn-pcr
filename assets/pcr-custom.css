@@ -1632,9 +1632,9 @@ a:hover {
 
 /* Button 1: Solid black fill, white text */
 .pcr-hero__box .button--primary {
-  background-color: #111111 !important;
-  border: 0.2rem solid #111111 !important;
-  color: #ffffff !important;
+  background-color: var(--pcr-gold) !important;
+  border: 0.2rem solid var(--pcr-gold) !important;
+  color: #111111 !important;
   padding: 1rem 2.75rem;
   font-family: var(--pcr-font-body);
   font-size: 0.8rem;
@@ -1646,12 +1646,12 @@ a:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.15s;
+  transition: background-color 0.15s, border-color 0.15s;
 }
 .pcr-hero__box .button--primary:hover {
-  background-color: #2a2a2a !important;
-  border-color: #2a2a2a !important;
-  color: #ffffff !important;
+  background-color: #c49a3a !important;
+  border-color: #c49a3a !important;
+  color: #111111 !important;
 }
 
 /* Button 2: Transparent bg, thin gray border — matches wireframe "outline" */
