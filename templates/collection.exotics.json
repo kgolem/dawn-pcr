@@ -1,0 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pcr-collection-hero": {
+      "type": "pcr-collection-hero",
+      "settings": {}
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "sub-upsell": {
+      "type": "pcr-sub-upsell",
+      "settings": {
+        "eyebrow": "Subscribe & Save",
+        "heading": "Never Run Out. Save 15% Every Order.",
+        "description": "Turn your favorite bag into a recurring delivery. Pick your cadence, save 15% on every shipment, and manage everything from your account — no commitment required.",
+        "perk_1": "15% off every order, forever",
+        "perk_2": "Free shipping on all subscriptions",
+        "perk_3": "Delivery every 2, 4, 6, or 8 weeks",
+        "perk_4": "Swap, pause, or cancel anytime",
+        "cta_label": "Start Your Subscription",
+        "cta_url": "/pages/subscription",
+        "secondary_label": "See how it works",
+        "secondary_url": "/pages/subscription",
+        "trust_copy": "No commitment — manage deliveries from your account"
+      }
+    }
+  },
+  "order": [
+    "pcr-collection-hero",
+    "product-grid",
+    "sub-upsell"
+  ]
+}
