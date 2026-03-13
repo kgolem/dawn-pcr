@@ -2834,3 +2834,175 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter) {
 /* Grid gap tighter */
 .footer__blocks-wrapper { gap: 1.25rem !important; }
 
+/* =========================================================
+   SOCIAL PROOF
+   pcr-social-proof.liquid
+   ========================================================= */
+
+.pcr-social-proof {
+  padding: 4rem 0;
+  background: var(--pcr-white);
+  border-top: 1px solid var(--pcr-black);
+}
+
+/* ── Headline ── */
+.pcr-social-proof__headline {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.pcr-social-proof__eyebrow {
+  font-family: var(--pcr-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0 0 0.5rem;
+}
+
+.pcr-social-proof__heading {
+  font-family: var(--pcr-font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 1rem;
+  color: var(--pcr-black);
+}
+
+.pcr-social-proof__stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.15em;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.pcr-social-proof__star { color: #d1d5db; }
+.pcr-social-proof__star--filled { color: var(--pcr-gold); }
+
+.pcr-social-proof__summary {
+  font-family: var(--pcr-font-body);
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* ── Review quote cards ── */
+.pcr-social-proof__reviews { margin-bottom: 3rem; }
+
+.pcr-social-proof__review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .pcr-social-proof__review-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .pcr-social-proof__review-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+.pcr-social-proof__review-card {
+  border: 1px solid var(--pcr-black);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--pcr-white);
+}
+
+.pcr-social-proof__review-stars {
+  color: var(--pcr-gold);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.pcr-social-proof__review-quote {
+  font-family: var(--pcr-font-body);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #374151;
+  margin: 0;
+  font-style: italic;
+  flex: 1;
+}
+
+.pcr-social-proof__review-author {
+  font-family: var(--pcr-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--pcr-black);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Instagram photo grid ── */
+.pcr-social-proof__grid-wrap { margin-bottom: 2.5rem; }
+
+.pcr-social-proof__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 1024px) {
+  .pcr-social-proof__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.pcr-social-proof__grid-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.pcr-social-proof__grid-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pcr-social-proof__grid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pcr-social-proof__grid-item:hover .pcr-social-proof__grid-img {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+.pcr-social-proof__grid-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+}
+
+/* ── Follow CTA ── */
+.pcr-social-proof__cta-wrap { text-align: center; }
+
+.pcr-social-proof__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  min-width: 220px;
+  justify-content: center;
+}
+

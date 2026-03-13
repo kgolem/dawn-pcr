@@ -1,0 +1,300 @@
+{% comment %}
+  Pacific Coast Roasters — Social Proof section
+  Layout (top to bottom):
+    1. Stars + review count headline — "LOVED BY THE COMMUNITY"
+    2. Optional review quote cards (up to 4 blocks)
+    3. Instagram photo grid — 4 columns desktop / 2×2 tablet / 1 col mobile
+    4. Follow @PacificCoastRoasters CTA button
+
+  Add to homepage via Theme Editor: Add Section → PCR Social Proof
+  Position: after PCR Memorial Story, before Footer.
+{% endcomment %}
+
+
+<div class="pcr-social-proof">
+
+  {%- comment -%} ── Headline ── {%- endcomment -%}
+  <div class="pcr-social-proof__headline page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="pcr-social-proof__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    <h2 class="pcr-social-proof__heading">
+      {{ section.settings.heading | default: 'Loved by the Community' }}
+    </h2>
+
+    {%- if section.settings.show_stars -%}
+      <div class="pcr-social-proof__stars" aria-label="{{ section.settings.rating | default: '4.9' }} out of 5 stars">
+        {%- assign rating_num = section.settings.rating | default: '4.9' | times: 1.0 -%}
+        {%- for i in (1..5) -%}
+          {%- if i <= rating_num -%}
+            <span class="pcr-social-proof__star pcr-social-proof__star--filled" aria-hidden="true">★</span>
+          {%- else -%}
+            <span class="pcr-social-proof__star" aria-hidden="true">★</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.review_summary != blank -%}
+      <p class="pcr-social-proof__summary">{{ section.settings.review_summary }}</p>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ── Review quote cards (optional blocks) ── {%- endcomment -%}
+  {%- assign review_blocks = section.blocks | where: 'type', 'review' -%}
+  {%- if review_blocks.size > 0 -%}
+    <div class="pcr-social-proof__reviews page-width">
+      <ul class="pcr-social-proof__review-list" role="list">
+        {%- for block in review_blocks -%}
+          <li class="pcr-social-proof__review-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.stars > 0 -%}
+              <div class="pcr-social-proof__review-stars" aria-label="{{ block.settings.stars }} out of 5 stars">
+                {%- for i in (1..block.settings.stars) -%}
+                  <span aria-hidden="true">★</span>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.quote != blank -%}
+              <blockquote class="pcr-social-proof__review-quote">
+                "{{ block.settings.quote }}"
+              </blockquote>
+            {%- endif -%}
+            {%- if block.settings.author != blank -%}
+              <cite class="pcr-social-proof__review-author">— {{ block.settings.author }}</cite>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── Instagram photo grid ── {%- endcomment -%}
+  {%- assign photo_blocks = section.blocks | where: 'type', 'photo' -%}
+  {%- if photo_blocks.size > 0 -%}
+    <div class="pcr-social-proof__grid-wrap">
+      <ul class="pcr-social-proof__grid" role="list">
+        {%- for block in photo_blocks -%}
+          <li class="pcr-social-proof__grid-item" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}
+              <a
+                href="{{ block.settings.link }}"
+                class="pcr-social-proof__grid-link"
+                target="_blank"
+                rel="noopener"
+                aria-label="{{ block.settings.alt | default: 'View on Instagram' }}"
+              >
+            {%- endif -%}
+
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                srcset="
+                  {{ block.settings.image | image_url: width: 300 }} 300w,
+                  {{ block.settings.image | image_url: width: 600 }} 600w,
+                  {{ block.settings.image | image_url: width: 900 }} 900w
+                "
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                alt="{{ block.settings.alt | escape | default: 'Pacific Coast Roasters on Instagram' }}"
+                class="pcr-social-proof__grid-img"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {%- else -%}
+              <div class="pcr-social-proof__grid-placeholder" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── Instagram CTA button ── {%- endcomment -%}
+  {%- if section.settings.instagram_label != blank and section.settings.instagram_url != blank -%}
+    <div class="pcr-social-proof__cta-wrap page-width">
+      <a
+        href="{{ section.settings.instagram_url }}"
+        class="button button--outline pcr-social-proof__cta"
+        target="_blank"
+        rel="noopener"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:0.4em; flex-shrink:0;">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+        </svg>
+        {{ section.settings.instagram_label }}
+      </a>
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "PCR Social Proof",
+  "tag": "section",
+  "class": "pcr-section-social-proof",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "What people are saying"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Loved by the Community"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Show star rating",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Rating (e.g. 4.9)",
+      "default": "4.9",
+      "info": "Number between 1 and 5. Filled stars are floored to the nearest whole number."
+    },
+    {
+      "type": "text",
+      "id": "review_summary",
+      "label": "Review summary line",
+      "default": "4.9/5 based on 1,200+ reviews"
+    },
+    {
+      "type": "header",
+      "content": "Instagram"
+    },
+    {
+      "type": "text",
+      "id": "instagram_label",
+      "label": "Follow button label",
+      "default": "Follow @PacificCoastRoasters"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL",
+      "info": "Your Instagram profile URL."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review quote",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review text",
+          "default": "Best coffee I've ever had. Ships fast and tastes incredible."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Reviewer name",
+          "default": "Happy Customer"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "name": "Instagram photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "Square photos work best. Recommended: 600×600px."
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "default": "Pacific Coast Roasters on Instagram"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Instagram post URL (optional)",
+          "info": "Links the photo to the Instagram post."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PCR Social Proof",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "Best coffee I've had in years. Mike's Blend is our go-to for the café — smooth, consistent, and our customers keep asking what it is.",
+            "author": "The Hangar Café, Watsonville"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "The Rise & Gr!nd subscription is my morning ritual. Always fresh, always perfect.",
+            "author": "Verified Buyer"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "I love that 10% of Mike's Blend supports the recovery community. Great coffee, great cause.",
+            "author": "Verified Buyer"
+          }
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
