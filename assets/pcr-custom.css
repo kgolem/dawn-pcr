@@ -3355,3 +3355,32 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter) {
 .pcr-slider__dot.is-active {
   background: var(--pcr-white);
 }
+
+/* ── Footer cleanup ──────────────────────────────────────── */
+/* Hide Shopify "Follow on Shop" widget */
+.shopify-shop-pay-button-wrapper,
+shop-pay-button,
+[id*="follow-on-shop"],
+.follow-on-shop__button-container { display: none !important; }
+
+/* Newsletter row: compact + flush */
+.footer-block--newsletter {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.5rem !important;
+  margin-top: 0 !important;
+}
+
+/* Payment icons: smaller, muted */
+.footer__payment { justify-content: center; gap: 0.4rem; }
+.footer__payment .icon { height: 22px; }
+
+/* Brand block subheading matches card label style */
+.footer-block__details-content .h4,
+.footer-block__details-content h4 {
+  font-family: var(--pcr-font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pcr-gold);
+  margin-bottom: 0.5rem;
+}
