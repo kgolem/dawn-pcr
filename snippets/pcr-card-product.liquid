@@ -163,7 +163,9 @@
         <span class="pcr-card__price" id="price-{{ the_product.id }}">
           {{- first_variant.price | money -}}
         </span>
-        <span class="pcr-card__size">{{ first_variant.title }}</span>
+        {%- unless first_variant.options[0] == 'Default Title' -%}
+          <span class="pcr-card__size">{{ first_variant.options[0] }}</span>
+        {%- endunless -%}
       </div>
 
       {%- if sold_out -%}
