@@ -14,7 +14,7 @@
       "settings": {
         "image": "shopify://shop_images/PCR-beans.jpg",
         "banner_height": "small",
-        "heading": "santa cruz county coffee roasters",
+        "heading": "locally-roasted. always fresh. made for you.",
         "subheading": "Small batch, third wave coffee beans sourced responsibly from hand-picked farmers all around the world. Roasted-locally in Watsonville, CA.",
         "btn1_label": "Shop Best Sellers",
         "btn1_url": "/collections/best-sellers",
@@ -63,6 +63,8 @@
         "subheading": "Roasted daily. Dated for freshness. Shipped within 48 hours.",
         "collection": "best-sellers",
         "view_all_label": "View Catalog",
+        "popular_product": "mike-s-blend",
+        "popular_label": "Most Popular",
         "sub_title": "Tour De Coast Coffee Subscription",
         "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
         "sub_url": "/collections/all",
