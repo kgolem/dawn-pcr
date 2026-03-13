@@ -85,7 +85,7 @@ shopify theme package
 
 | Variable | Value | Usage |
 |----------|-------|-------|
-| `--pcr-gold` | `#DAB556` | Heritage Gold — promo banners, secondary buttons |
+| `--pcr-gold` | `#EBB826` | Heritage Gold — promo banners, secondary buttons |
 | `--pcr-black` | `#111111` | Roaster Black — primary text, buttons, borders |
 | `--pcr-red` | `#E3342F` | Crimson Red — sale tags only |
 | `--pcr-blue` | `#2A4365` | Pacific Blue — link hover, nav interactive states |
@@ -125,7 +125,7 @@ Do this before pushing the theme live. All steps are in the Shopify admin.
 ### Theme settings (Online Store → Themes → Customize → Gear icon)
 - [ ] Upload logo (SVG or 2x PNG, transparent background)
 - [ ] Colors — Scheme 1: bg `#FDFDFB`, text `#111111`, solid button `#111111`/white
-- [ ] Colors — Scheme 2: bg `#DAB556`, text `#111111` (gold accent sections)
+- [ ] Colors — Scheme 2: bg `#EBB826`, text `#111111` (gold accent sections)
 - [ ] Colors — Scheme 3: bg `#111111`, text `#FFFFFF` (footer)
 - [ ] Typography: heading = Arvo, body = Work Sans
 - [ ] Buttons: corner radius 0px
