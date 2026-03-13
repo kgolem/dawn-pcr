@@ -68,6 +68,9 @@
 
     {%- comment -%} Story column {%- endcomment -%}
     <div class="pcr-memorial__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pcr-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
       <h2 class="pcr-memorial__heading">
         {{ section.settings.heading | default: 'In memory of a Pacific Coast coffee legend, Mike Gobel' }}
       </h2>
@@ -147,6 +150,12 @@
   "class": "pcr-section-memorial",
   "max_blocks": 8,
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Our Story"
+    },
     {
       "type": "text",
       "id": "heading",

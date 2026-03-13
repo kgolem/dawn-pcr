@@ -23,6 +23,9 @@
     {%- comment -%} Section header: heading left, "View Catalog" right {%- endcomment -%}
     <div class="pcr-featured-header">
       <div class="pcr-featured-header__text">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="pcr-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
         <h2 class="pcr-featured-header__heading">
           {{ section.settings.heading | default: 'Small batch, third wave coffee sourced responsibly from hand-picked farmers all around the world.' }}
         </h2>
@@ -106,6 +109,12 @@
   "tag": "section",
   "class": "pcr-section-featured-products",
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Our Coffees"
+    },
     {
       "type": "text",
       "id": "heading",

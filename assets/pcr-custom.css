@@ -27,6 +27,23 @@
 /* =========================================================
    GLOBAL
    ========================================================= */
+
+/* Global eyebrow subheadline — used across all sections */
+.pcr-eyebrow,
+.pcr-wholesale__eyebrow,
+.pcr-ws-hero__eyebrow,
+.pcr-col-hero__eyebrow,
+.pcr-social-proof__eyebrow {
+  font-family: var(--pcr-font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pcr-gold);
+  margin: 0 0 0.5rem;
+  display: block;
+}
+
 body {
   background-color: var(--pcr-white);
   color: var(--pcr-black);

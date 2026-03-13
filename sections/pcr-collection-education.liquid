@@ -28,8 +28,11 @@
   <div class="pcr-edu__inner page-width">
 
     {%- comment -%} ── Header ── {%- endcomment -%}
-    {%- if section.settings.heading != blank -%}
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
       <div class="pcr-edu__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="pcr-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
         <h2 class="pcr-edu__heading">{{ section.settings.heading }}</h2>
         {%- if section.settings.subheading != blank -%}
           <p class="pcr-edu__subheading">{{ section.settings.subheading }}</p>
@@ -105,6 +108,11 @@
     {
       "type": "header",
       "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text"
     },
     {
       "type": "text",

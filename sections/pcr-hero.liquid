@@ -43,6 +43,10 @@
   <div class="pcr-hero__content-wrap page-width">
     <div class="pcr-hero__box">
 
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pcr-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
       {%- if section.settings.heading != blank -%}
         <h1 class="pcr-hero__heading">{{ section.settings.heading }}</h1>
       {%- endif -%}
@@ -114,6 +118,11 @@
         { "value": "large",  "label": "Large  (600px mobile / 720px desktop)" }
       ],
       "default": "medium"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text"
     },
     {
       "type": "text",
