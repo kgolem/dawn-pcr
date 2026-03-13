@@ -42,9 +42,14 @@
     <ul class="pcr-featured__grid list-unstyled" role="list">
 
       {%- if collection != blank and collection.products.size > 0 -%}
+        {%- assign popular_product = all_products[section.settings.popular_product] -%}
         {%- for product in collection.products limit: product_limit -%}
+          {%- assign card_badge = blank -%}
+          {%- if popular_product != blank and product.id == popular_product.id -%}
+            {%- assign card_badge = section.settings.popular_label -%}
+          {%- endif -%}
           <li class="pcr-featured__item">
-            {% render 'pcr-card-product', card_product: product %}
+            {% render 'pcr-card-product', card_product: product, badge: card_badge %}
           </li>
         {%- endfor -%}
       {%- else -%}
@@ -121,6 +126,22 @@
       "id": "view_all_label",
       "label": "\"View all\" link label",
       "default": "View Catalog"
+    },
+    {
+      "type": "header",
+      "content": "Most popular badge"
+    },
+    {
+      "type": "product",
+      "id": "popular_product",
+      "label": "Most popular product",
+      "info": "This product will get a banner badge on its card."
+    },
+    {
+      "type": "text",
+      "id": "popular_label",
+      "label": "Badge label",
+      "default": "Most Popular"
     },
     {
       "type": "header",

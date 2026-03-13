@@ -3265,3 +3265,23 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter) {
   padding-bottom: 1.25rem;
 }
 
+
+/* ── Most popular badge ───────────────────────────────────── */
+.pcr-card__popular-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--pcr-gold);
+  color: var(--pcr-black);
+  text-align: center;
+  font-family: var(--pcr-font-body);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.5rem;
+  line-height: 1;
+  z-index: 2;
+  pointer-events: none;
+}
