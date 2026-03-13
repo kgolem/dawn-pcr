@@ -26,8 +26,8 @@
               alt="{{ section.settings.video_label | default: 'Video thumbnail' }}"
               class="pcr-memorial__thumbnail"
               loading="lazy"
-              width="900"
-              height="506"
+              width="{{ section.settings.video_thumbnail.width | default: 900 }}"
+              height="{{ section.settings.video_thumbnail.height | default: 506 }}"
             >
           {%- else -%}
             <div class="pcr-memorial__thumbnail-placeholder">
