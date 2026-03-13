@@ -2776,7 +2776,7 @@ shop-follow-button,
 .footer-block__heading,
 h2.footer-block__heading,
 h2.footer-block__heading.inline-richtext {
-  font-size: 0.72rem !important;
+  font-size: 0.9rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.14em !important;
@@ -2818,7 +2818,7 @@ h2.footer-block__heading.inline-richtext {
 .footer__newsletter { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
 h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 .footer__newsletter .footer-block__heading {
-  font-size: 0.72rem !important;
+  font-size: 0.9rem !important;
   color: var(--pcr-gold) !important;
   letter-spacing: 0.14em !important;
 }
