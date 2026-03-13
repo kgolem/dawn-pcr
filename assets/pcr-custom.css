@@ -1402,10 +1402,10 @@ a:hover {
   white-space: nowrap;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
-  transition: border-color 0.15s;
+  transition: color 0.15s, border-color 0.15s;
 }
-.pcr-header__nav-link:hover { border-bottom-color: var(--pcr-black); }
-.pcr-header__nav-link--active { border-bottom-color: var(--pcr-black); }
+.pcr-header__nav-link:hover { color: var(--pcr-gold); border-bottom-color: var(--pcr-gold); }
+.pcr-header__nav-link--active { color: var(--pcr-gold); border-bottom-color: var(--pcr-gold); }
 
 /* ── Right ── */
 .pcr-header__right {
