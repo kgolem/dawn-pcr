@@ -1654,11 +1654,11 @@ a:hover {
   color: #111111 !important;
 }
 
-/* Button 2: Transparent bg, thin gray border — matches wireframe "outline" */
+/* Button 2: Black bg, white text */
 .pcr-hero__box .button--outline {
-  background-color: transparent !important;
-  border: 0.1rem solid #9ca3af !important;
-  color: #111111 !important;
+  background-color: #111111 !important;
+  border: 0.2rem solid #111111 !important;
+  color: #ffffff !important;
   padding: 1rem 2.75rem;
   font-family: var(--pcr-font-body);
   font-size: 0.8rem;
@@ -1670,11 +1670,12 @@ a:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: border-color 0.15s;
+  transition: background-color 0.15s, border-color 0.15s;
 }
 .pcr-hero__box .button--outline:hover {
-  border-color: #111111 !important;
-  color: #111111 !important;
+  background-color: #2a2a2a !important;
+  border-color: #2a2a2a !important;
+  color: #ffffff !important;
 }
 
 /* Button 3: White bg, thick black border — matches wireframe "secondary" */
