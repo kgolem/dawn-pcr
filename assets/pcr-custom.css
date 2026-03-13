@@ -3110,7 +3110,7 @@ h2.footer-block__heading.inline-richtext:has(~ .footer-block__newsletter),
 /* ── Follow CTA ── */
 .pcr-social-proof__cta-wrap { text-align: center; }
 .pcr-social-proof__instagram-heading {
-  margin: 75px 0 0.75rem;
+  margin: 75px 0 25px;
   font-size: 1.75rem;
 }
 
