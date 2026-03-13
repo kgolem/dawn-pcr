@@ -78,7 +78,7 @@
       "type": "pcr-featured-products",
       "settings": {
         "eyebrow": "Exotics",
-        "heading": "Single-origin rarities. Limited Availability.",
+        "heading": "Single-origin rarities. Extremely-limited quantities.",
         "subheading": "Unique coffees you won't find anywhere else. Trust us and try one out.",
         "collection": "exotics",
         "view_all_label": "View Exotics",
@@ -173,7 +173,7 @@
       "settings": {
         "eyebrow": "customer reviews",
         "heading": "coffee, culture & community",
-        "show_stars": true,
+        "show_stars": false,
         "rating": "4.9",
         "review_summary": "4.9/5 based on 1,200+ reviews"
       }
