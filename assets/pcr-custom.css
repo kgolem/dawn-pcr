@@ -2829,7 +2829,7 @@ shop-follow-button,
 .footer-block__brand-desc,
 .footer-block__brand-desc.rte {
   margin-top: 1.5rem !important;
-  max-width: 97.5% !important;
+  max-width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
   font-size: 1.14rem !important;
