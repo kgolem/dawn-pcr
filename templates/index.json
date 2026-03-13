@@ -77,7 +77,7 @@
     "pcr-featured-exotics": {
       "type": "pcr-featured-products",
       "settings": {
-        "eyebrow": "Exotics",
+        "eyebrow": "PCR Exotics",
         "heading": "Single-origin rarities. Extremely-limited quantities.",
         "subheading": "Unique coffees you won't find anywhere else. Trust us and try one out.",
         "collection": "exotics",
