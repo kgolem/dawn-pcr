@@ -563,49 +563,33 @@ a:hover {
   border-top: 1px solid var(--pcr-black);
   border-bottom: 1px solid var(--pcr-black);
 }
+/* Mobile: stacked, with breathing room between columns */
 .pcr-memorial__inner {
-  display: grid;
-  grid-template-columns: 1fr;           /* mobile: stacked */
-  gap: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 2.5rem !important;
 }
+
+/* Desktop: side-by-side, image left / story right */
 @media (min-width: 768px) {
   .pcr-memorial__inner {
-    grid-template-columns: 1fr 1fr;     /* desktop: side by side */
-    align-items: start;                 /* align to top so image drives height */
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr !important;
+    align-items: start !important;
+    gap: 5rem !important;
   }
 }
 
-/* Video / media side — no forced aspect ratio; image drives its own height */
+/* Media column */
 .pcr-memorial__media {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--pcr-black);
+  border: 1px solid var(--pcr-black);
 }
-@media (min-width: 768px) {
-  .pcr-memorial__media {
-    border-bottom: none;
-    border: 1px solid var(--pcr-black);
-  }
-}
-.pcr-memorial__video-link {
-  display: block;
-  position: relative;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
-}
-.pcr-memorial__thumbnail {
-  width: 100%;
-  height: auto;           /* show the full image, no forced crop */
-  display: block;
-  object-fit: unset;
-}
+
+/* Placeholder */
 .pcr-memorial__thumbnail-placeholder {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1;
   background: #e5e7eb;
   display: flex;
   align-items: center;
@@ -621,31 +605,14 @@ a:hover {
   text-align: center;
   padding: 1rem;
 }
-.pcr-memorial__play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 4rem;
-  height: 4rem;
-  background: white;
-  border: 2px solid var(--pcr-black);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s;
-}
-.pcr-memorial__video-link:hover .pcr-memorial__play-btn {
-  transform: translate(-50%, -50%) scale(1.1);
-}
 
 /* Text side */
 .pcr-memorial__content {
-  padding: 2.5rem 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-@media (min-width: 640px) { .pcr-memorial__content { padding: 2.5rem 1.5rem; } }
-@media (min-width: 768px) { .pcr-memorial__content { padding: 0; } }
 
 .pcr-memorial__heading {
   font-size: clamp(1.5rem, 3.5vw, 2rem);
