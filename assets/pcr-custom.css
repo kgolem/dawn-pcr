@@ -1394,7 +1394,7 @@ a:hover {
   margin: 0;
 }
 .pcr-header__nav-link {
-  font-size: 1.175rem;
+  font-size: 0.999rem;
   font-weight: 600;
   font-family: var(--pcr-font-body);
   color: var(--pcr-black);
