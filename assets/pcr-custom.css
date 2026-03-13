@@ -729,18 +729,13 @@ a:hover {
 /* Price + Add to Cart row */
 .pcr-card__footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.75rem;
   margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
-}
-@media (min-width: 1280px) {
-  .pcr-card__footer {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
 }
 .pcr-card__price-wrap {
   display: flex;
@@ -758,11 +753,22 @@ a:hover {
   white-space: nowrap;
 }
 .pcr-card__atc {
-  width: 100%;
-  text-align: center;
+  width: auto;
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  border: 1.5px solid var(--pcr-black);
+  background: transparent;
+  color: var(--pcr-black);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
 }
-@media (min-width: 1280px) {
-  .pcr-card__atc { width: auto; flex-shrink: 0; }
+.pcr-card__atc:hover {
+  background: var(--pcr-black);
+  color: white;
 }
 
 /* =========================================================
