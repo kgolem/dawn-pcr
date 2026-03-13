@@ -163,7 +163,7 @@
         <span class="pcr-card__price" id="price-{{ the_product.id }}">
           {{- first_variant.price | money -}}
         </span>
-        <span class="pcr-card__size">12oz. bag</span>
+        <span class="pcr-card__size">{{ first_variant.title }}</span>
       </div>
 
       {%- if sold_out -%}
