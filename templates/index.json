@@ -70,7 +70,7 @@
         "show_sub_card": true,
         "sub_title": "SUBSCRIBE & SAVE",
         "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
-        "sub_url": "/collections/all",
+        "sub_url": "shopify://pages/subscription",
         "sub_cta": "Subscribe Now"
       }
     },
