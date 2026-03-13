@@ -1772,6 +1772,7 @@ a:hover {
   line-height: 1.1;
   margin-bottom: 0.5rem;
   color: var(--pcr-black);
+  text-align: center;
 }
 .pcr-col-hero__desc {
   font-size: 0.9rem;
@@ -3540,4 +3541,114 @@ shop-pay-button,
   text-transform: uppercase;
   color: var(--pcr-gold);
   margin-bottom: 0.5rem;
+}
+
+/* =========================================================
+   SUBSCRIPTION UPSELL (collection page banner)
+   ========================================================= */
+.pcr-sub-upsell {
+  background: var(--pcr-black);
+  color: #ffffff;
+  padding: 4rem 0;
+}
+
+.pcr-sub-upsell__inner {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pcr-sub-upsell__inner { grid-template-columns: 1fr 380px; gap: 4rem; }
+}
+
+.pcr-sub-upsell__eyebrow {
+  color: var(--pcr-gold);
+  margin-bottom: 0.75rem;
+}
+
+.pcr-sub-upsell__heading {
+  font-family: var(--pcr-font-heading);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0 0 1rem;
+}
+
+.pcr-sub-upsell__desc {
+  font-size: 1rem;
+  color: #d1cdc8;
+  line-height: 1.7;
+  margin: 0 0 1.75rem;
+  max-width: 52ch;
+}
+
+.pcr-sub-upsell__perks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .pcr-sub-upsell__perks { grid-template-columns: 1fr; }
+}
+
+.pcr-sub-upsell__perk {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #e5e0d8;
+}
+
+.pcr-sub-upsell__perk-check {
+  color: var(--pcr-gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pcr-sub-upsell__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.pcr-sub-upsell__cta-secondary {
+  font-family: var(--pcr-font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.pcr-sub-upsell__cta-secondary:hover {
+  color: var(--pcr-gold);
+  border-color: var(--pcr-gold);
+}
+
+.pcr-sub-upsell__trust {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.pcr-sub-upsell__visual { display: flex; align-items: center; justify-content: center; }
+
+.pcr-sub-upsell__img {
+  width: 100%;
+  max-width: 360px;
+  display: block;
+  object-fit: cover;
 }
