@@ -22,18 +22,29 @@
   assign image_hover   = the_product.media[1]
   assign product_type  = the_product.product_type
   assign flavor_notes  = the_product.metafields.custom.flavor_notes.value
-  assign roast_raw   = the_product.metafields.custom.roast_level.value | upcase | strip
+  assign roast_val   = the_product.metafields.custom.roast_level.value
+  assign roast_int   = roast_val | plus: 0
   assign roast_label = ''
-  case roast_raw
-    when 'LIGHT', '1', '2'
+  if roast_int == 1 or roast_int == 2
+    assign roast_label = 'Light'
+  elsif roast_int == 3
+    assign roast_label = 'Medium'
+  elsif roast_int == 4
+    assign roast_label = 'Medium-Dark'
+  elsif roast_int == 5
+    assign roast_label = 'Dark'
+  else
+    assign roast_str = roast_val | downcase | strip
+    if roast_str == 'light'
       assign roast_label = 'Light'
-    when 'MEDIUM', '3'
+    elsif roast_str == 'medium'
       assign roast_label = 'Medium'
-    when 'MEDIUM-DARK', 'MEDIUM DARK', '4'
+    elsif roast_str == 'medium-dark' or roast_str == 'medium dark'
       assign roast_label = 'Medium-Dark'
-    when 'DARK', '5'
+    elsif roast_str == 'dark'
       assign roast_label = 'Dark'
-  endcase
+    endif
+  endif
   assign sold_out      = false
   if first_variant.available == false
     assign sold_out = true
