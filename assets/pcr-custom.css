@@ -2746,7 +2746,12 @@ shop-follow-button,
 .footer-block__brand-info {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0;
+}
+/* Center logo within the brand column */
+.pcr-brand-logo-wrap {
+  align-self: center;
 }
 .footer-block__brand-desc,
 .footer-block__brand-desc.rte {
