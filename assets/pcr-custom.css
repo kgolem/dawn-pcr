@@ -1037,11 +1037,11 @@ a:hover {
 
 /* Height variants */
 .pcr-hero { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.pcr-hero--small  { min-height: 400px; }
+.pcr-hero--small  { min-height: 300px; }
 .pcr-hero--medium { min-height: 500px; }
 .pcr-hero--large  { min-height: 600px; }
 @media (min-width: 768px) {
-  .pcr-hero--small  { min-height: 480px; }
+  .pcr-hero--small  { min-height: 360px; }
   .pcr-hero--medium { min-height: 600px; }
   .pcr-hero--large  { min-height: 720px; }
 }
