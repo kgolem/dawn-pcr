@@ -2697,10 +2697,15 @@ shop-follow-button,
 .footer__payment,
 .footer__content-bottom-wrapper .list-payment { display: none !important; }
 
+/* Collapse Dawn's large built-in footer gaps */
+.footer__content-top {
+  padding-bottom: 1.25rem !important;
+}
 /* Bottom bar */
 .footer__content-bottom {
   border-top: 1px solid rgba(255,255,255,0.1) !important;
   margin-top: 0 !important;
+  padding-top: 0.5rem !important;
 }
 .footer__content-bottom-wrapper {
   padding-top: 0.5rem !important;
@@ -2719,8 +2724,8 @@ shop-follow-button,
 /* flex-grow ratios 2:1:1 = 50% / 25% / 25% of available space */
 .footer__blocks-wrapper .footer-block { min-width: 0; }
 .footer__blocks-wrapper .footer-block:nth-child(1) { flex: 2 0 0 !important; }
-.footer__blocks-wrapper .footer-block:nth-child(2) { flex: 1 0 0 !important; }
-.footer__blocks-wrapper .footer-block:nth-child(3) { flex: 1 0 0 !important; }
+.footer__blocks-wrapper .footer-block:nth-child(2) { flex: 1 0 0 !important; margin-top: 20px !important; }
+.footer__blocks-wrapper .footer-block:nth-child(3) { flex: 1 0 0 !important; margin-top: 20px !important; }
 
 /* Mobile (<768px): stack vertically — brand → shop → support */
 @media (max-width: 767px) {
