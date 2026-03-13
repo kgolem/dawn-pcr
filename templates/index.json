@@ -59,8 +59,8 @@
     "pcr-featured-products": {
       "type": "pcr-featured-products",
       "settings": {
-        "heading": "BEST-SELLERS AT PACIFIC COAST ROASTERS",
-        "subheading": "Fresh roasted and shipped within 48 hours.",
+        "heading": "Best Sellers Lineup",
+        "subheading": "Roasted daily. Dated for freshness. Shipped within 48 hours.",
         "collection": "best-sellers",
         "view_all_label": "View Catalog",
         "sub_title": "Tour De Coast Coffee Subscription",
@@ -108,10 +108,34 @@
             "author": "Verified Buyer"
           }
         },
-        "photo-1": { "type": "photo", "settings": {} },
-        "photo-2": { "type": "photo", "settings": {} },
-        "photo-3": { "type": "photo", "settings": {} },
-        "photo-4": { "type": "photo", "settings": {} }
+        "photo-1": {
+          "type": "photo",
+          "settings": {
+            "alt": "Pacific Coast Roasters on Instagram",
+            "link": ""
+          }
+        },
+        "photo-2": {
+          "type": "photo",
+          "settings": {
+            "alt": "Pacific Coast Roasters on Instagram",
+            "link": ""
+          }
+        },
+        "photo-3": {
+          "type": "photo",
+          "settings": {
+            "alt": "Pacific Coast Roasters on Instagram",
+            "link": ""
+          }
+        },
+        "photo-4": {
+          "type": "photo",
+          "settings": {
+            "alt": "Pacific Coast Roasters on Instagram",
+            "link": ""
+          }
+        }
       },
       "block_order": [
         "review-1",
