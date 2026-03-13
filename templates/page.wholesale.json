@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "pcr-wholesale": {
+      "type": "pcr-wholesale",
+      "settings": {
+        "hero_heading": "Premium Small-Batch Coffee for Your Business",
+        "hero_subheading": "Freshly roasted to order in Watsonville, CA. Delivered fast, backed by real support. We make serving exceptional coffee simple."
+      }
+    }
+  },
+  "order": ["pcr-wholesale"]
+}
