@@ -2705,16 +2705,16 @@ shop-follow-button,
 .footer__content-bottom {
   border-top: 1px solid rgba(0,0,0,0.12) !important;
   margin-top: 0 !important;
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
 }
 .footer__content-bottom-wrapper {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 /* Copyright + policy: centered, no extra top margin */
 .footer__copyright {
