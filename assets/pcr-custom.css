@@ -2793,9 +2793,14 @@ shop-follow-button,
   h2.footer-block__heading.inline-richtext {
     text-align: center !important;
   }
-  .footer-block__details-content { text-align: center !important; }
+  .footer-block__details-content { text-align: center !important; margin-bottom: 0 !important; }
   .footer-block__details-content .link--text,
   .list-menu__item--link.link--text { text-align: center !important; }
+  /* Kill Dawn's 1rem top+bottom padding on each link */
+  .footer-block__details-content .list-menu__item--link {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
 }
 
 /* Brand block: logo + description */
