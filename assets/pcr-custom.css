@@ -2700,10 +2700,11 @@ shop-follow-button,
 /* Bottom bar */
 .footer__content-bottom {
   border-top: 1px solid rgba(255,255,255,0.1) !important;
+  margin-top: 0 !important;
 }
 .footer__content-bottom-wrapper {
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
   justify-content: flex-start !important;
 }
 
