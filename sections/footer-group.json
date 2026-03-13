@@ -17,8 +17,9 @@
         "brand": {
           "type": "pcr_brand",
           "settings": {
-            "logo_width": 200,
-            "description": "<p>Small-batch, specialty coffee roasted in Watsonville, CA. In memory of Mike Gobel \u2014 10% of every Mike\u2019s Blend goes to the Pacific Coast recovery community.</p>"
+            "logo": "shopify://shop_images/IMG_0015.jpg",
+            "logo_width": 120,
+            "description": "<p>Small-batch, specialty coffee roasted in Watsonville, CA. In memory of Mike Gobel — 10% of every Mike’s Blend goes to the Pacific Coast recovery community.</p>"
           }
         },
         "shop-menu": {
@@ -36,16 +37,28 @@
           }
         }
       },
-      "block_order": ["brand", "shop-menu", "support-menu"],
+      "block_order": [
+        "brand",
+        "shop-menu",
+        "support-menu"
+      ],
       "settings": {
         "color_scheme": "scheme-3",
         "newsletter_enable": true,
-        "show_social": false,
+        "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
         "padding_top": 40,
         "padding_bottom": 24
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }
