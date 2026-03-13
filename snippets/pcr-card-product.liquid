@@ -21,7 +21,7 @@
   assign product_url     = the_product.url
   assign image_primary   = the_product.featured_media
   assign image_hover     = the_product.media[1]
-  assign vendor          = the_product.vendor
+  assign roast_level     = the_product.metafields.custom.roast_level.value | default: the_product.vendor
   assign product_type    = the_product.product_type
   assign flavor_notes    = the_product.metafields.custom.flavor_notes.value
   assign sold_out        = false
@@ -75,9 +75,9 @@
       {%- endif -%}
 
       {%- comment -%} Roast level badge — top right {%- endcomment -%}
-      {%- if vendor != blank -%}
-        <span class="pcr-card__roast-badge" aria-label="Roast level: {{ vendor }}">
-          {{ vendor }}
+      {%- if roast_level != blank -%}
+        <span class="pcr-card__roast-badge" aria-label="Roast level: {{ roast_level }}">
+          {{ roast_level }}
         </span>
       {%- endif -%}
 
@@ -139,13 +139,7 @@
         <span class="pcr-card__price" id="price-{{ the_product.id }}">
           {{- first_variant.price | money -}}
         </span>
-        <span class="pcr-card__size">
-          {%- if the_product.variants.size == 1 -%}
-            {{ first_variant.title }}
-          {%- else -%}
-            12oz. bag
-          {%- endif -%}
-        </span>
+        <span class="pcr-card__size">12oz. bag</span>
       </div>
 
       {%- if sold_out -%}
