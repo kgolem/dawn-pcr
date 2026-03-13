@@ -28,6 +28,10 @@
    GLOBAL
    ========================================================= */
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Global eyebrow subheadline — used across all sections */
 .pcr-eyebrow,
 .pcr-wholesale__eyebrow,
