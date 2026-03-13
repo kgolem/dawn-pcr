@@ -22,6 +22,7 @@
   assign image_hover   = the_product.media[1]
   assign product_type  = the_product.product_type
   assign flavor_notes  = the_product.metafields.custom.flavor_notes.value
+  assign roast_label   = the_product.metafields.custom.roast_label.value
   assign sold_out      = false
   if first_variant.available == false
     assign sold_out = true
@@ -70,6 +71,11 @@
         <div class="pcr-product-card__img-placeholder">
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
         </div>
+      {%- endif -%}
+
+      {%- comment -%} Roast label badge — top right {%- endcomment -%}
+      {%- if roast_label != blank -%}
+        <span class="pcr-card__roast-badge">{{ roast_label }}</span>
       {%- endif -%}
 
       {%- comment -%} Sold out badge — top left {%- endcomment -%}
