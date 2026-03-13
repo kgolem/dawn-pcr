@@ -2420,88 +2420,98 @@ a:hover {
 .pcr-bss__blend-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 @media (min-width: 640px) {
   .pcr-bss__blend-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* Card shell — no padding; image is flush like a product card */
 .pcr-bss__blend-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.25rem;
   border: 1.5px solid #d1d5db;
   background: #ffffff;
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-.pcr-bss__blend-card:hover { border-color: var(--pcr-black); }
-.pcr-bss__blend-card.is-selected {
+.pcr-bss__blend-card:hover {
   border-color: var(--pcr-black);
-  border-left: 4px solid var(--pcr-gold);
-  background: #fffdf4;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.pcr-bss__blend-card.is-selected {
+  border: 2px solid var(--pcr-black);
+  box-shadow: 0 0 0 2px var(--pcr-gold);
 }
 .pcr-bss__blend-card.is-unavailable { opacity: 0.45; cursor: not-allowed; }
 
+/* Image area */
+.pcr-bss__blend-media {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+.pcr-bss__blend-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.pcr-bss__blend-card:hover .pcr-bss__blend-img { transform: scale(1.03); }
+.pcr-bss__blend-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pcr-bss__blend-img-placeholder .placeholder-svg { width: 60px; height: 60px; color: #9ca3af; }
+
+/* Most Popular badge — top left (gold, matches brand) */
 .pcr-bss__blend-badge {
   position: absolute;
-  top: -1px;
-  right: -1px;
+  top: 0;
+  left: 0;
   background: var(--pcr-gold);
   color: var(--pcr-black);
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.6rem;
+  z-index: 1;
 }
-.pcr-bss__blend-roast {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #9ca3af;
+
+/* Body: name + flavor notes */
+.pcr-bss__blend-body {
+  padding: 0.9rem 1rem 0;
+  flex: 1;
 }
 .pcr-bss__blend-name {
   font-family: var(--pcr-font-heading);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
-.pcr-bss__blend-notes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  list-style: none;
-  padding: 0;
-  margin: 0.25rem 0 0;
-}
-.pcr-bss__blend-notes li {
-  font-size: 0.75rem;
-  padding: 0.15rem 0.5rem;
-  border: 1px solid #d1d5db;
-  color: #4b5563;
-  background: #f9f9f7;
-}
-.pcr-bss__blend-card.is-selected .pcr-bss__blend-notes li {
-  border-color: #c4a64c;
-  background: #fef9ec;
-}
-.pcr-bss__blend-soldout {
-  font-size: 0.75rem;
-  color: #ef4444;
-  font-weight: 600;
+
+/* Footer: selected state indicator */
+.pcr-bss__blend-footer {
+  padding: 0.6rem 1rem 0.75rem;
+  border-top: 1px solid #f0ece5;
+  margin-top: 0.75rem;
+  min-height: 2rem;
 }
 .pcr-bss__blend-check {
   display: none;
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  font-size: 0.875rem;
-  color: var(--pcr-gold);
+  font-size: 0.75rem;
   font-weight: 700;
+  color: var(--pcr-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 .pcr-bss__blend-card.is-selected .pcr-bss__blend-check { display: block; }
 

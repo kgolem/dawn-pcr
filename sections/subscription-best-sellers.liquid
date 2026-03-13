@@ -114,6 +114,7 @@
             {%- if variant == first_variant -%}{%- assign is_selected = true -%}{%- endif -%}
             {%- assign roast_val = variant.metafields.custom.roast_level.value -%}
             {%- assign notes_val = variant.metafields.custom.flavor_notes.value -%}
+            {%- assign tile_img = variant.image | default: the_product.featured_media -%}
 
             <label
               class="pcr-bss__blend-card{% if is_selected %} is-selected{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
@@ -131,27 +132,59 @@
                 {% unless variant.available %}disabled{% endunless %}
               >
 
-              {%- if popular_id > 0 and variant.id == popular_id -%}
-                <span class="pcr-bss__blend-badge">Most Popular</span>
-              {%- endif -%}
+              {%- comment -%} ── Image with badges (mirrors pcr-card-product layout) ── {%- endcomment -%}
+              <div class="pcr-bss__blend-media">
+                {%- if tile_img != blank -%}
+                  <img
+                    src="{{ tile_img | image_url: width: 600 }}"
+                    srcset="{{ tile_img | image_url: width: 300 }} 300w, {{ tile_img | image_url: width: 600 }} 600w"
+                    sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 100vw"
+                    alt="{{ variant.title | escape }}"
+                    class="pcr-bss__blend-img"
+                    loading="lazy"
+                    width="{{ tile_img.width }}"
+                    height="{{ tile_img.height }}"
+                  >
+                {%- else -%}
+                  <div class="pcr-bss__blend-img-placeholder">
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {%- endif -%}
 
-              {%- if roast_val != blank -%}
-                <span class="pcr-bss__blend-roast">{{ roast_val }}</span>
-              {%- endif -%}
+                {%- comment -%} Roast badge — top right, same style as product cards {%- endcomment -%}
+                {%- if roast_val != blank -%}
+                  <span class="pcr-card__roast-badge" aria-label="Roast level: {{ roast_val }}">
+                    {{ roast_val }}
+                  </span>
+                {%- endif -%}
 
-              <h4 class="pcr-bss__blend-name">{{ variant.title }}</h4>
+                {%- comment -%} Most Popular badge — top left {%- endcomment -%}
+                {%- if popular_id > 0 and variant.id == popular_id -%}
+                  <span class="pcr-bss__blend-badge">Most Popular</span>
+                {%- endif -%}
 
-              {%- if notes_val != blank -%}
-                <ul class="pcr-bss__blend-notes" aria-label="Flavor notes">
-                  {%- for note in notes_val -%}<li>{{ note }}</li>{%- endfor -%}
-                </ul>
-              {%- endif -%}
+                {%- comment -%} Sold out overlay {%- endcomment -%}
+                {%- unless variant.available -%}
+                  <span class="pcr-product-card__sold-out-badge">Sold Out</span>
+                {%- endunless -%}
+              </div>
 
-              {%- unless variant.available -%}
-                <span class="pcr-bss__blend-soldout">Sold Out</span>
-              {%- endunless -%}
+              {%- comment -%} ── Body: name + flavor notes ── {%- endcomment -%}
+              <div class="pcr-bss__blend-body">
+                <h4 class="pcr-bss__blend-name">{{ variant.title }}</h4>
 
-              <span class="pcr-bss__blend-check" aria-hidden="true">✓</span>
+                {%- if notes_val != blank -%}
+                  <ul class="pcr-card__notes pcr-bss__blend-notes" aria-label="Flavor notes">
+                    {%- for note in notes_val -%}<li class="pcr-card__note">{{ note }}</li>{%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </div>
+
+              {%- comment -%} Selected checkmark footer {%- endcomment -%}
+              <div class="pcr-bss__blend-footer">
+                <span class="pcr-bss__blend-check" aria-hidden="true">✓ Selected</span>
+              </div>
+
             </label>
           {%- endfor -%}
         </div>
