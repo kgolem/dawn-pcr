@@ -81,97 +81,55 @@
         "cta_url": ""
       }
     },
-    "social-proof-heading": {
-      "type": "rich-text",
+    "pcr-social-proof": {
+      "type": "pcr-social-proof",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "review-1": {
+          "type": "review",
           "settings": {
-            "heading": "LOVED BY SANTA CRUZ COUNTY AND BEYOND",
-            "heading_size": "h2"
+            "stars": 5,
+            "quote": "Best coffee I've had in years. Mike's Blend is our go-to for the café — smooth, consistent, and our customers keep asking what it is.",
+            "author": "The Hangar Café, Watsonville"
           }
         },
-        "text": {
-          "type": "text",
+        "review-2": {
+          "type": "review",
           "settings": {
-            "text": "<p>★★★★★ 4.9/5 based on 1,200+ reviews</p>"
+            "stars": 5,
+            "quote": "The Rise & Gr!nd subscription is my morning ritual. Always fresh, always perfect.",
+            "author": "Verified Buyer"
           }
-        }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "I love that 10% of Mike's Blend supports the recovery community. Great coffee, great cause.",
+            "author": "Verified Buyer"
+          }
+        },
+        "photo-1": { "type": "photo", "settings": {} },
+        "photo-2": { "type": "photo", "settings": {} },
+        "photo-3": { "type": "photo", "settings": {} },
+        "photo-4": { "type": "photo", "settings": {} }
       },
       "block_order": [
-        "heading",
-        "text"
+        "review-1",
+        "review-2",
+        "review-3",
+        "photo-1",
+        "photo-2",
+        "photo-3",
+        "photo-4"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 60,
-        "padding_bottom": 0
-      }
-    },
-    "instagram-grid": {
-      "type": "multicolumn",
-      "blocks": {
-        "col1": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "col2": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "col3": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "col4": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "col1",
-        "col2",
-        "col3",
-        "col4"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "square",
-        "button_label": "Follow @PacificCoastRoasters",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 16,
-        "padding_bottom": 60
+        "eyebrow": "What people are saying",
+        "heading": "Loved by Santa Cruz County and Beyond",
+        "show_stars": true,
+        "rating": "4.9",
+        "review_summary": "4.9/5 based on 1,200+ reviews",
+        "instagram_label": "Follow @PacificCoastRoasters",
+        "instagram_url": ""
       }
     }
   },
@@ -180,7 +138,6 @@
     "pcr-trust-bar",
     "pcr-featured-products",
     "pcr-memorial",
-    "social-proof-heading",
-    "instagram-grid"
+    "pcr-social-proof"
   ]
 }

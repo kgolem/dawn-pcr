@@ -1,99 +1,160 @@
-# Dawn
+# Pacific Coast Roasters — Shopify Theme
 
-[![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)
+A full fork of [Shopify Dawn](https://github.com/Shopify/dawn) customized for Pacific Coast Roasters.
+All PCR sections, snippets, assets, and template JSON are committed directly to this repo.
 
-[Getting started](#getting-started) |
-[Staying up to date with Dawn changes](#staying-up-to-date-with-dawn-changes) |
-[Developer tools](#developer-tools) |
-[Contributing](#contributing) |
-[Code of conduct](#code-of-conduct) |
-[Theme Store submission](#theme-store-submission) |
-[License](#license)
+**Deadline:** Sunday, March 15, 2026
+**Store:** pacificcoastroasters.com · 10 Hangar Way, Watsonville, CA 95076
 
-Dawn represents a HTML-first, JavaScript-only-as-needed approach to theme development. It's Shopify's first source available theme with performance, flexibility, and [Online Store 2.0 features](https://www.shopify.com/partners/blog/shopify-online-store) built-in and acts as a reference for building Shopify themes.
+---
 
-* **Web-native in its purest form:** Themes run on the [evergreen web](https://www.w3.org/2001/tag/doc/evergreen-web/). We leverage the latest web browsers to their fullest, while maintaining support for the older ones through progressive enhancement—not polyfills.
-* **Lean, fast, and reliable:** Functionality and design defaults to “no” until it meets this requirement. Code ships on quality. Themes must be built with purpose. They shouldn’t support each and every feature in Shopify.
-* **Server-rendered:** HTML must be rendered by Shopify servers using Liquid. Business logic and platform primitives such as translations and money formatting don’t belong on the client. Async and on-demand rendering of parts of the page is OK, but we do it sparingly as a progressive enhancement.
-* **Functional, not pixel-perfect:** The Web doesn’t require each page to be rendered pixel-perfect by each browser engine. Using semantic markup, progressive enhancement, and clever design, we ensure that themes remain functional regardless of the browser.
+## Local development
 
-You can find a more detailed version of our theme code principles in the [contribution guide](https://github.com/Shopify/dawn/blob/main/.github/CONTRIBUTING.md#theme-code-principles).
-
-## Getting started
-We recommend using Dawn as a starting point for theme development. [Learn more on Shopify.dev](https://shopify.dev/themes/getting-started/create).
-
-> If you're building a theme for the Shopify Theme Store, then you can use Dawn as a starting point. However, the theme that you submit needs to be [substantively different from Dawn](https://shopify.dev/themes/store/requirements#uniqueness) so that it provides added value for merchants. Learn about the [ways that you can use Dawn](https://shopify.dev/themes/tools/dawn#ways-to-use-dawn).
-
-Please note that the main branch may include code for features not yet released. The "stable" version of Dawn is available in the theme store.
-
-## Staying up to date with Dawn changes
-
-Say you're building a new theme off Dawn but you still want to be able to pull in the latest changes, you can add a remote `upstream` pointing to this Dawn repository.
-
-1. Navigate to your local theme folder.
-2. Verify the list of remotes and validate that you have both an `origin` and `upstream`:
-```sh
-git remote -v
-```
-3. If you don't see an `upstream`, you can add one that points to Shopify's Dawn repository:
-```sh
-git remote add upstream https://github.com/Shopify/dawn.git
-```
-4. Pull in the latest Dawn changes into your repository:
-```sh
-git fetch upstream
-git pull upstream main
-```
-
-## Developer tools
-
-There are a number of really useful tools that the Shopify Themes team uses during development. Dawn is already set up to work with these tools.
-
-### Shopify CLI
-
-[Shopify CLI](https://github.com/Shopify/shopify-cli) helps you build Shopify themes faster and is used to automate and enhance your local development workflow. It comes bundled with a suite of commands for developing Shopify themes—everything from working with themes on a Shopify store (e.g. creating, publishing, deleting themes) or launching a development server for local theme development.
-
-You can follow this [quick start guide for theme developers](https://shopify.dev/docs/themes/tools/cli) to get started.
-
-### Theme Check
-
-We recommend using [Theme Check](https://github.com/shopify/theme-check) as a way to validate and lint your Shopify themes.
-
-We've added Theme Check to Dawn's [list of VS Code extensions](/.vscode/extensions.json) so if you're using Visual Studio Code as your code editor of choice, you'll be prompted to install the [Theme Check VS Code](https://marketplace.visualstudio.com/items?itemName=Shopify.theme-check-vscode) extension upon opening VS Code after you've forked and cloned Dawn.
-
-You can also run it from a terminal with the following Shopify CLI command:
+Prerequisites: [Node.js](https://nodejs.org/) v18+, [Shopify CLI](https://shopify.dev/docs/themes/tools/cli) v3+
 
 ```bash
-shopify theme check
+# Install Shopify CLI (if not already installed)
+npm install -g @shopify/cli @shopify/theme
+
+# Authenticate with the store
+shopify auth login --store pacificcoastroasters.myshopify.com
+
+# Start local dev server (live preview in browser)
+shopify theme dev --store pacificcoastroasters.myshopify.com
 ```
 
-### Continuous Integration
+## Deploy to Shopify
 
-Dawn uses [GitHub Actions](https://github.com/features/actions) to maintain the quality of the theme. [This is a starting point](https://github.com/Shopify/dawn/blob/main/.github/workflows/ci.yml) and what we suggest to use in order to ensure you're building better themes. Feel free to build off of it!
+```bash
+# Push directly to the store (creates/updates a theme)
+shopify theme push --store pacificcoastroasters.myshopify.com
 
-#### Shopify/lighthouse-ci-action
+# Or package as a zip for manual upload
+shopify theme package
+# Then: Shopify admin → Online Store → Themes → Add theme → Upload zip
+```
 
-We love fast websites! Which is why we created [Shopify/lighthouse-ci-action](https://github.com/Shopify/lighthouse-ci-action). This runs a series of [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) audits for the home, product and collections pages on a store to ensure code that gets added doesn't degrade storefront performance over time.
+---
 
-#### Shopify/theme-check-action
+## PCR custom files
 
-Dawn runs [Theme Check](#Theme-Check) on every commit via [Shopify/theme-check-action](https://github.com/Shopify/theme-check-action).
+### Sections
 
-## Contributing
+| File | Used on | What it does |
+|------|---------|-------------|
+| `sections/pcr-header.liquid` | All pages (via `layout/theme.liquid`) | Announcement bar, sticky nav, mobile menu overlay |
+| `sections/pcr-hero.liquid` | Homepage | Full-bleed hero, white content box, 3 CTA buttons |
+| `sections/pcr-trust-bar.liquid` | Homepage | Trust signals bar (icon + text blocks) |
+| `sections/pcr-featured-products.liquid` | Homepage | 4-col grid: 3 products + subscription CTA |
+| `sections/pcr-memorial.liquid` | Homepage, Our Story | Mike Gobel story — video + text two-column |
+| `sections/pcr-social-proof.liquid` | Homepage | Stars + review cards + Instagram photo grid |
+| `sections/pcr-collection-hero.liquid` | Collection pages | Collection title, description, product count, hero image |
+| `sections/pcr-product.liquid` | Product pages | Gallery, roast indicator, flavor pills, variant selector, ATC |
+| `sections/pcr-wholesale.liquid` | Wholesale page | Full schema-driven wholesale marketing page |
 
-Want to make commerce better for everyone by contributing to Dawn? We'd love your help! Please read our [contributing guide](https://github.com/Shopify/dawn/blob/main/.github/CONTRIBUTING.md) to learn about our development process, how to propose bug fixes and improvements, and how to build for Dawn.
+### Snippets
 
-## Code of conduct
+| File | What it does |
+|------|-------------|
+| `snippets/pcr-card-product.liquid` | Product card: roast badge, flavor pills, variant selector, ATC |
+| `snippets/wholesale-form.liquid` | Wholesale inquiry form (contact form, routed to store email) |
+| `snippets/roast-indicator.liquid` | 5-dot roast scale (Light ○○●○○ Dark) |
 
-All developers who wish to contribute through code or issues, please first read our [Code of Conduct](https://github.com/Shopify/dawn/blob/main/.github/CODE_OF_CONDUCT.md).
+### Assets
 
-## Theme Store submission
+| File | What it does |
+|------|-------------|
+| `assets/pcr-custom.css` | All brand tokens, layout overrides, component styles |
+| `assets/pcr-cards.js` | Variant selector: updates price + hidden input on size change |
 
-The [Shopify Theme Store](https://themes.shopify.com/) is the place where Shopify merchants find the themes that they'll use to showcase and support their business. As a theme partner, you can create themes for the Shopify Theme Store and reach an international audience of an ever-growing number of entrepreneurs.
+### Templates (pre-configured)
 
-Ensure that you follow the list of [theme store requirements](https://shopify.dev/themes/store/requirements) if you're interested in becoming a [Shopify Theme Partner](https://themes.shopify.com/services/themes/guidelines) and building themes for the Shopify platform.
+| Template | Sections |
+|----------|---------|
+| `templates/index.json` | pcr-hero → pcr-trust-bar → pcr-featured-products → pcr-memorial → pcr-social-proof |
+| `templates/collection.json` | pcr-collection-hero → main-collection-product-grid |
+| `templates/product.json` | pcr-product → related-products |
+| `templates/page.wholesale.json` | pcr-wholesale (fully populated with content) |
+| `templates/page.our-story.json` | pcr-memorial → our-values multicolumn → farmers-market band |
+| `templates/page.brew-guides.json` | Standard page |
+| `templates/page.contact.json` | Standard contact form page |
 
-## License
+---
 
-Copyright (c) 2021-present Shopify Inc. See [LICENSE](/LICENSE.md) for further details.
+## Brand tokens (in `assets/pcr-custom.css`)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--pcr-gold` | `#DAB556` | Heritage Gold — promo banners, secondary buttons |
+| `--pcr-black` | `#111111` | Roaster Black — primary text, buttons, borders |
+| `--pcr-red` | `#E3342F` | Crimson Red — sale tags only |
+| `--pcr-blue` | `#2A4365` | Pacific Blue — link hover, nav interactive states |
+| `--pcr-white` | `#FDFDFB` | Canvas White — page background |
+| `--pcr-font-heading` | Arvo / Rokkitt / Zilla Slab | Bold, uppercase for section headers |
+| `--pcr-font-body` | Work Sans / Assistant / Inter | |
+
+---
+
+## Shopify admin setup checklist
+
+Do this before pushing the theme live. All steps are in the Shopify admin.
+
+### Products
+- [ ] Create metafield: **Flavor Notes** — namespace `custom`, key `flavor_notes`, type: Single line text, List of values
+- [ ] Create metafield: **Roast Level** — namespace `custom`, key `roast_level`, type: Integer (1–5)
+- [ ] Populate all 7 products with flavor notes, roast level, and size variants
+- [ ] Set product **Vendor** field = roast name (e.g. "Medium Roast") as fallback display
+
+### Collections
+- [ ] `best-sellers` — Mike's Blend, Rise & Gr!nd, Shadow Work
+- [ ] `exotics` — Peaberry, Pinkerton, Tanzania
+- [ ] All products available at `/collections/all`
+
+### Pages
+- [ ] **Wholesale** — handle `wholesale`, template `page.wholesale`
+- [ ] **Our Story** — handle `our-story`, template `page.our-story`
+- [ ] **Brew Guides** — handle `brew-guides`, template `page.brew-guides`
+- [ ] **Contact Us** — handle `contact-us`, template `page.contact`
+- [ ] **FAQ & Shipping** — handle `faq`, standard page template
+
+### Navigation
+- [ ] **Main menu** (handle `main-menu`): Best Sellers · Exotics · Coffee · Subscription · Wholesale
+- [ ] **Footer menu** (handle `footer`): FAQ & Shipping · Brew Guides · Wholesale · Contact Us
+- [ ] Logo links home (no "Home" nav item needed)
+
+### Theme settings (Online Store → Themes → Customize → Gear icon)
+- [ ] Upload logo (SVG or 2x PNG, transparent background)
+- [ ] Colors — Scheme 1: bg `#FDFDFB`, text `#111111`, solid button `#111111`/white
+- [ ] Colors — Scheme 2: bg `#DAB556`, text `#111111` (gold accent sections)
+- [ ] Colors — Scheme 3: bg `#111111`, text `#FFFFFF` (footer)
+- [ ] Typography: heading = Arvo, body = Work Sans
+- [ ] Buttons: corner radius 0px
+- [ ] Product cards: border 1px, radius 0px, image padding 0px
+
+### Notifications
+- [ ] Settings → Notifications → Contact form — set delivery email for wholesale form submissions
+
+---
+
+## Staying in sync with Dawn upstream
+
+```bash
+git remote add upstream https://github.com/Shopify/dawn.git
+git fetch upstream
+git merge upstream/main  # resolve any conflicts in PCR files manually
+```
+
+---
+
+## Editing content after launch
+
+| What | Where |
+|------|-------|
+| Announcement bar text | Theme Editor → PCR Header settings |
+| Hero image / copy / buttons | Theme Editor → PCR Hero settings |
+| Featured products | Theme Editor → PCR Featured Products → Collection |
+| Memorial story copy | Theme Editor → PCR Memorial Story settings |
+| Review quotes / Instagram photos | Theme Editor → PCR Social Proof → blocks |
+| Wholesale page content | Theme Editor → PCR Wholesale → section settings + blocks |
+| Brand colors / fonts | Theme Editor → Gear icon → Colors / Typography |
+| CSS token overrides | Edit `assets/pcr-custom.css`, then `shopify theme push` |
