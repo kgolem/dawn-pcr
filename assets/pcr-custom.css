@@ -2724,8 +2724,8 @@ shop-follow-button,
 /* flex-grow ratios 2:1:1 = 50% / 25% / 25% of available space */
 .footer__blocks-wrapper .footer-block { min-width: 0; }
 .footer__blocks-wrapper .footer-block:nth-child(1) { flex: 2 0 0 !important; }
-.footer__blocks-wrapper .footer-block:nth-child(2) { flex: 1 0 0 !important; margin-top: 20px !important; }
-.footer__blocks-wrapper .footer-block:nth-child(3) { flex: 1 0 0 !important; margin-top: 20px !important; }
+.footer__blocks-wrapper .footer-block:nth-child(2) { flex: 1 0 0 !important; }
+.footer__blocks-wrapper .footer-block:nth-child(3) { flex: 1 0 0 !important; }
 
 /* Mobile (<768px): stack vertically — brand → shop → support */
 @media (max-width: 767px) {
