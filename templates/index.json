@@ -14,8 +14,8 @@
       "settings": {
         "image": "shopify://shop_images/PCR-beans.jpg",
         "banner_height": "small",
-        "eyebrow": "Pacific Coast Roasters - Watsonville, CA",
-        "heading": "locally-roasted. always fresh. your new favorite coffee is here.",
+        "eyebrow": "small batch • third wave",
+        "heading": "roasted in santa cruz county. sold weekly at Saratoga farmers market every saturday 9am-1pm.",
         "subheading": "",
         "btn1_label": "Shop Best Sellers",
         "btn1_url": "/collections/best-sellers",
@@ -130,8 +130,8 @@
         "slide-5"
       ],
       "settings": {
-        "eyebrow": "Our Mission",
-        "heading": "10% to recovery. 100% in Mike's artisinal footsteps.",
+        "eyebrow": "our mission",
+        "heading": "Roasting consistently great coffee from farms we actually visit. Just like Mike taught us.",
         "body": "<p>It all started in the early 2010s when Dave walked into Mike’s Highway 9 coffee shop and the two hit it off instantly. What began as a friendship turned into a full-blown partnership, with the two buying a coffee roaster together and bonding over their love of the craft.<br/></p><p>Unexpectedly, we lost Mike in 2025. Losing a friend and partner hit Dave hard, but it also sparked a deeper connection. This loss brought him closer to the Pacific Coast recovery community, and today he’s a dedicated advocate for addiction and rehabilitation, keeping Mike’s story alive along the way.<br/></p><p><strong>10% of every bag of Mike’s Blend goes straight to supporting the Pacific Coast recovery community </strong>— a small way of honoring the guy who inspired it all.</p>",
         "cta_label": "",
         "cta_url": ""
