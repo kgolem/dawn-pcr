@@ -14,9 +14,9 @@
       "settings": {
         "image": "shopify://shop_images/PCR-beans.jpg",
         "banner_height": "small",
-        "eyebrow": "small batch • third wave",
-        "heading": "roasted in santa cruz county. sold weekly at Saratoga farmers market every saturday 9am-1pm.",
-        "subheading": "",
+        "eyebrow": "small batch • third wave • santa cruz county",
+        "heading": "pacific coast roasters",
+        "subheading": "Crafted on the California coast. Enjoyed everywhere else.",
         "btn1_label": "Shop Best Sellers",
         "btn1_url": "/collections/best-sellers",
         "btn2_label": "Shop EXOTICS",
@@ -32,21 +32,21 @@
           "type": "trust_item",
           "settings": {
             "icon": "♻️",
-            "text": "Sustainably sourced (verified partners)"
+            "text": "Roasted Daily"
           }
         },
         "trust-2": {
           "type": "trust_item",
           "settings": {
             "icon": "☕",
-            "text": "Roasted fresh weekly"
+            "text": "Dated for freshness"
           }
         },
         "trust-3": {
           "type": "trust_item",
           "settings": {
             "icon": "🔒",
-            "text": "Secure checkout"
+            "text": "Shipped within 48 hours"
           }
         }
       },
@@ -60,8 +60,8 @@
     "pcr-featured-products": {
       "type": "pcr-featured-products",
       "settings": {
-        "eyebrow": "BEST SELLERS",
-        "heading": "Tried & True, Freshly-Roasted Greatness",
+        "eyebrow": "the coffee ours regulars keep coming back for.",
+        "heading": "best sellers",
         "subheading": "Roasted daily. Dated for freshness. Shipped within 48 hours for maximum flavor.",
         "collection": "best-sellers",
         "view_all_label": "View Catalog",
@@ -77,9 +77,9 @@
     "pcr-featured-exotics": {
       "type": "pcr-featured-products",
       "settings": {
-        "eyebrow": "PCR Exotics",
-        "heading": "Single-origin rarities. Extremely-limited quantities.",
-        "subheading": "Unique coffees you won't find anywhere else. Trust us and try one out.",
+        "eyebrow": "limited lots, rare processing methods. one-of-a-kind flavor.",
+        "heading": "PCR Exotics",
+        "subheading": "",
         "collection": "exotics",
         "view_all_label": "View Exotics",
         "popular_product": "",
