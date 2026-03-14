@@ -172,7 +172,7 @@
       ],
       "settings": {
         "eyebrow": "customer reviews",
-        "heading": "coffee, culture & community",
+        "heading": "coffee • culture • community",
         "show_stars": false,
         "rating": "4.9",
         "review_summary": "4.9/5 based on 1,200+ reviews"
@@ -181,7 +181,7 @@
     "pcr-instagram-cta": {
       "type": "pcr-instagram-cta",
       "settings": {
-        "heading": "Grab your PCR refills at Saratoga Farmer's Market every Saturday. We'll see you there!",
+        "heading": "Come see us at Saratoga Farmer's Market every Saturday from 9am to 1pm.",
         "button_label": "Follow @PacificCoastRoasters",
         "button_url": "https://www.instagram.com/pacificcoastroasters/"
       }
