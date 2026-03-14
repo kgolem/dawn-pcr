@@ -1319,6 +1319,7 @@ a:hover {
   background: white;
   border-bottom: 1px solid #e5e7eb;
   transition: box-shadow 0.25s ease;
+  padding: 25px 0;
 }
 .pcr-header--scrolled {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
@@ -1327,7 +1328,6 @@ a:hover {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 30px 0 25px;
   gap: 5rem;
 }
 
