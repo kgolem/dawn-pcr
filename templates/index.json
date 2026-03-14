@@ -60,9 +60,9 @@
     "pcr-featured-products": {
       "type": "pcr-featured-products",
       "settings": {
-        "eyebrow": "the coffee ours regulars keep coming back for.",
+        "eyebrow": "Crowd favorites, roasted fresh, shipped fast.",
         "heading": "best sellers",
-        "subheading": "Roasted daily. Dated for freshness. Shipped within 48 hours for maximum flavor.",
+        "subheading": "",
         "collection": "best-sellers",
         "view_all_label": "View Catalog",
         "popular_product": "mike-s-blend",
@@ -77,7 +77,7 @@
     "pcr-featured-exotics": {
       "type": "pcr-featured-products",
       "settings": {
-        "eyebrow": "limited lots, rare processing methods. one-of-a-kind flavor.",
+        "eyebrow": "Limited lots. Rare origins. Gone when they're gone.",
         "heading": "PCR Exotics",
         "subheading": "",
         "collection": "exotics",
