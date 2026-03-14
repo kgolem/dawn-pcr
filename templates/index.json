@@ -31,21 +31,21 @@
         "trust-1": {
           "type": "trust_item",
           "settings": {
-            "icon": "♻️",
+            "icon": "🔥",
             "text": "Roasted Daily"
           }
         },
         "trust-2": {
           "type": "trust_item",
           "settings": {
-            "icon": "☕",
+            "icon": "📅",
             "text": "Dated for freshness"
           }
         },
         "trust-3": {
           "type": "trust_item",
           "settings": {
-            "icon": "🔒",
+            "icon": "🚚",
             "text": "Shipped within 48 hours"
           }
         }
