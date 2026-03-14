@@ -1319,7 +1319,7 @@ a:hover {
   background: white;
   border-bottom: 1px solid #e5e7eb;
   transition: box-shadow 0.25s ease;
-  padding: 21px 0;
+  padding: 19px 0;
 }
 .pcr-header--scrolled {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
