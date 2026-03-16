@@ -22,7 +22,7 @@
         "btn2_label": "Shop EXOTICS",
         "btn2_url": "shopify://collections/exotics",
         "btn3_label": "SUBSCRIBE & SAVE",
-        "btn3_url": "shopify://pages/subscription"
+        "btn3_url": "shopify://products/subscription-sellers-subscription"
       }
     },
     "pcr-trust-bar": {
