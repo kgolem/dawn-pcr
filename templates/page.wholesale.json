@@ -104,7 +104,7 @@
             "use_label": "Espresso · Milk Drinks",
             "name": "Mike's Blend",
             "description": "Our flagship wholesale espresso. Rich dark chocolate, warm spice, and caramel sweetness. Cuts through milk perfectly — built for volume and consistency.",
-            "format": "12oz bags • 2.2kg bags • 5lb. bags"
+            "format": "12oz bags • 2.2kg bag • 5lb. bags"
           }
         },
         "product-rise": {
@@ -154,7 +154,7 @@
           "type": "faq_item",
           "settings": {
             "question": "What is your minimum order quantity?",
-            "answer": "Our standard wholesale minimum is 10 lbs per week. We offer flexible terms for new businesses during their launch phase — mention it in your inquiry and we'll work something out."
+            "answer": "5lb minimum • 5lb. increments"
           }
         },
         "faq-2": {
