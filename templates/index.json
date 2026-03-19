@@ -14,7 +14,7 @@
       "settings": {
         "image": "shopify://shop_images/PCR-beans.jpg",
         "banner_height": "small",
-        "eyebrow": "small batch • third wave",
+        "eyebrow": "small batch • third wave • watsonville, ca",
         "heading": "pacific coast roasters",
         "subheading": "Enjoyed everywhere great coffee is celebrated. Crafted on the California coast.",
         "btn1_label": "Shop Best Sellers",
@@ -60,8 +60,8 @@
     "pcr-featured-products": {
       "type": "pcr-featured-products",
       "settings": {
-        "eyebrow": "Customers love this trio of artisinal roasts",
-        "heading": "best sellers",
+        "eyebrow": "Customers love this trio of artisinal creations",
+        "heading": "best-selling whole beans",
         "subheading": "",
         "collection": "best-sellers",
         "view_all_label": "View Catalog",
@@ -69,7 +69,7 @@
         "popular_label": "Most Popular",
         "show_sub_card": true,
         "sub_title": "SUBSCRIBE & SAVE",
-        "sub_description": "Lock in 15% off forever. Receive a 2.2lb of Rise & Gr!nd, Mike's Blend or Shadow Work every 2 • 4 • 6 weeks",
+        "sub_description": "Lock in 15% off forever. Receive a 2.2lb bag of Rise & Gr!nd, Mike's Blend or Shadow Work every 2 • 4 • 6 weeks.",
         "sub_url": "shopify://pages/subscription",
         "sub_cta": "Subscribe Now"
       }
