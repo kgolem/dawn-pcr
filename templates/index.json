@@ -94,17 +94,17 @@
     "pcr-memorial": {
       "type": "pcr-memorial",
       "blocks": {
-        "slide-1": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/511529744_18465312544072721_247037496943023666_n.jpg",
-            "alt": "Behind the roastery"
-          }
-        },
         "slide-2": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/IMG_4120.jpg",
+            "image": "shopify://shop_images/72134607811__FE580B16-8BF3-4E75-A944-E293B35FBD5F.jpg",
+            "alt": ""
+          }
+        },
+        "slide-5": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7012.jpg",
             "alt": ""
           }
         },
@@ -122,25 +122,33 @@
             "alt": ""
           }
         },
-        "slide-5": {
+        "slide_LcDtXT": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/IMG_7012.jpg",
+            "image": "shopify://shop_images/IMG_4120.jpg",
+            "alt": ""
+          }
+        },
+        "slide_wj8TLW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8204.jpg",
             "alt": ""
           }
         }
       },
       "block_order": [
-        "slide-1",
         "slide-2",
+        "slide-5",
         "slide-3",
         "slide_n9JBb9",
-        "slide-5"
+        "slide_LcDtXT",
+        "slide_wj8TLW"
       ],
       "settings": {
         "eyebrow": "Our Mission",
         "heading": "Roasting consistently great coffee from farms we actually visit. Just like Mike taught us.",
-        "body": "<p>PCR was built on a simple idea: that great coffee starts long before the roaster. It starts at the farm. Dave learned that firsthand in the early 2010s, when he walked into Mike's Highway 9 coffee shop and met someone who took the whole chain — seed to cup — seriously. The two became fast friends, then business partners, buying a roaster together and chasing the kind of coffee that can change your life.</p><p><strong>We lost Mike unexpectedly in 2025. His legacy lives on.</strong></p><p><em>10% of every bag of Mike's Blend goes straight to supporting Santa Cruz County recovery programs.</em></p>",
+        "body": "<p>PCR was built on a simple idea: that great coffee starts long before the roaster. It starts at the farm. Dave learned that firsthand in the early 2010s, when he walked into Mike's Highway 9 coffee shop and met someone who took the whole chain — seed to cup — seriously. The two became fast friends, then business partners, buying a roaster together and chasing the kind of coffee that can change your life.</p><p><strong>We lost Mike unexpectedly in 2025. His legacy lives on through PCR's mission.</strong></p><p><em>10% of every bag of Mike's Blend goes straight to supporting Santa Cruz County recovery programs.</em></p>",
         "cta_label": "",
         "cta_url": ""
       }
@@ -199,8 +207,8 @@
     "pcr-hero",
     "pcr-trust-bar",
     "pcr-featured-products",
-    "pcr-featured-exotics",
     "pcr-memorial",
+    "pcr-featured-exotics",
     "pcr-social-proof",
     "pcr-instagram-cta"
   ]
