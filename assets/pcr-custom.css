@@ -3746,14 +3746,14 @@ shop-pay-button,
    ========================================================= */
 .pcr-instagram-cta {
   background: var(--pcr-gold);
-  padding: 2.5rem 0;
+  padding: 4rem 0;
 }
 
 .pcr-instagram-cta__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 4rem;
   text-align: center;
 }
 
