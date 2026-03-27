@@ -178,16 +178,21 @@
           </div>
         </div>
 
-        {%- comment -%} ATC button {%- endcomment -%}
-        {%- if current_variant.available -%}
-          <button type="submit" name="add" class="button button--primary pcr-product__atc" form="{{ product_form_id }}">
-            Add to Cart
-          </button>
-        {%- else -%}
-          <button type="button" class="button button--primary pcr-product__atc" disabled aria-disabled="true">
-            Sold Out
-          </button>
-        {%- endif -%}
+        {%- comment -%} ATC + Subscribe buttons {%- endcomment -%}
+        <div class="pcr-product__actions">
+          {%- if current_variant.available -%}
+            <button type="submit" name="add" class="button button--primary pcr-product__atc" form="{{ product_form_id }}">
+              Add to Cart
+            </button>
+          {%- else -%}
+            <button type="button" class="button button--primary pcr-product__atc" disabled aria-disabled="true">
+              Sold Out
+            </button>
+          {%- endif -%}
+          <a href="/pages/subscription" class="button button--secondary pcr-product__subscribe-cta">
+            Subscribe &amp; Save
+          </a>
+        </div>
 
         {%- comment -%} Free shipping badge {%- endcomment -%}
         {%- if current_variant.price >= 5000 -%}

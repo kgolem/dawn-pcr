@@ -2006,14 +2006,41 @@ a:hover {
 .pcr-product__qty-input::-webkit-inner-spin-button,
 .pcr-product__qty-input::-webkit-outer-spin-button { appearance: none; }
 
-/* ATC */
+/* ATC + Subscribe */
+.pcr-product__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
 .pcr-product__atc {
   width: 100%;
   padding: 1rem;
   font-size: 1.035rem;
-  margin-bottom: 0.75rem;
   text-align: center;
   justify-content: center;
+}
+.pcr-product__subscribe-cta {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.035rem;
+  text-align: center;
+  justify-content: center;
+  border: 2px solid var(--pcr-gold);
+  background: transparent;
+  color: var(--pcr-black);
+  font-weight: 700;
+  font-family: var(--pcr-font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.15s, color 0.15s;
+}
+.pcr-product__subscribe-cta:hover {
+  background: var(--pcr-gold);
+  color: var(--pcr-black);
 }
 
 .pcr-product__shipping-note {
