@@ -169,8 +169,17 @@
           </div>
         </div>
 
-        {%- comment -%} ATC + Subscribe buttons {%- endcomment -%}
-        <div class="pcr-product__actions">
+        {%- comment -%} ATC + Subscribe buttons (hide subscribe for exotics) {%- endcomment -%}
+        {%- liquid
+          assign is_exotic = false
+          for col in product.collections
+            if col.handle == 'exotics'
+              assign is_exotic = true
+              break
+            endif
+          endfor
+        -%}
+        <div class="pcr-product__actions{% if is_exotic %} pcr-product__actions--single{% endif %}">
           {%- if current_variant.available -%}
             <button type="submit" name="add" class="button button--primary pcr-product__atc" form="{{ product_form_id }}">
               Add to Cart
@@ -180,10 +189,12 @@
               Sold Out
             </button>
           {%- endif -%}
-          <span class="pcr-product__actions-or">or</span>
-          <a href="/pages/subscription" class="pcr-product__subscribe-cta">
-            Subscribe &amp; Save
-          </a>
+          {%- unless is_exotic -%}
+            <span class="pcr-product__actions-or">or</span>
+            <a href="/pages/subscription" class="pcr-product__subscribe-cta">
+              Subscribe &amp; Save
+            </a>
+          {%- endunless -%}
         </div>
 
         {%- comment -%} Free shipping badge {%- endcomment -%}
