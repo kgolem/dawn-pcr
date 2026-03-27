@@ -153,43 +153,85 @@
         "faq-1": {
           "type": "faq_item",
           "settings": {
-            "question": "What is your minimum order quantity?",
-            "answer": "5lb minimum • 5lb. increments"
+            "question": "Who do you wholesale to?",
+            "answer": "We partner with coffee shops, restaurants, offices, grocery accounts, and creative spaces that care about quality. If you're serving people, we're listening."
           }
         },
         "faq-2": {
           "type": "faq_item",
           "settings": {
-            "question": "What bags and sizes do you offer?",
-            "answer": "All blends are available in 12oz (340g) and 1kg (35oz) bags. Our lineup includes Mike's Blend, Rise & Gr!nd, Shadow Work, Decaf, and rotating seasonal single origins."
+            "question": "What makes your coffee different?",
+            "answer": "We source small-lot coffees from producers around the world and roast in tight batches to highlight what makes each one special. No filler, no shortcuts—just intentional coffee that actually tastes like where it came from."
           }
         },
         "faq-3": {
           "type": "faq_item",
           "settings": {
-            "question": "How fast do you fulfill orders?",
-            "answer": "We roast weekly and ship within 48 hours of order confirmation from our Watsonville, CA facility. Order by Sunday night and expect delivery by Wednesday."
+            "question": "What coffees are available for wholesale?",
+            "answer": "We offer three core categories: Evergreens – consistent blends like Mike's Blend, Shadow Work, and Rise & Grind. Rotating Single Origins – fresh drops from different regions. Exotics – rare, limited coffees that push the ceiling on quality."
           }
         },
         "faq-4": {
           "type": "faq_item",
           "settings": {
-            "question": "Do you offer private label roasting?",
-            "answer": "Yes. We offer white-label services for grocery and high-volume accounts meeting a minimum of 50 lbs per week. Contact us for custom bagging and label options."
+            "question": "Do you have minimum order quantities?",
+            "answer": "We keep it flexible. Most wholesale partners start with 5–10 lbs per order, but we're happy to work with you depending on your setup."
           }
         },
         "faq-5": {
           "type": "faq_item",
           "settings": {
-            "question": "What are your payment terms?",
-            "answer": "Initial orders are processed via credit card. After 30 days of consistent ordering, accounts in good standing can be transitioned to Net 15 or Net 30 terms."
+            "question": "Do you offer pricing tiers or volume discounts?",
+            "answer": "Yes. Pricing scales with volume. The more you move, the better your margins. Reach out and we'll tailor it to your flow."
           }
         },
         "faq-6": {
           "type": "faq_item",
           "settings": {
-            "question": "Can I request samples before committing?",
-            "answer": "Yes — mention it in your application and we'll arrange a curated sample kit suited to your equipment and brewing style. No commitment required."
+            "question": "How fresh is your coffee?",
+            "answer": "We roast to order and typically ship within 24–72 hours. Coffee lands fresh but rested—right in that sweet spot for brewing."
+          }
+        },
+        "faq-7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you provide training or support?",
+            "answer": "Absolutely. We can help dial in espresso, build drink menus, and train your team so the coffee hits every time."
+          }
+        },
+        "faq-8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer private label or white labeling?",
+            "answer": "Yes. We work with select partners on custom blends and branded packaging. If you're trying to build something unique, we're here for it."
+          }
+        },
+        "faq-9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can we sample your coffee first?",
+            "answer": "Of course. We offer sample kits so you can taste through the lineup before committing."
+          }
+        },
+        "faq-10": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What equipment do you recommend?",
+            "answer": "We can guide you on grinders, espresso machines, and brew setups based on your space and volume. We keep it practical—no overkill."
+          }
+        },
+        "faq-11": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer cold brew or ready-to-drink options?",
+            "answer": "Yes. We produce high-strength cold brew concentrate and canned options. Ask about availability and formats."
+          }
+        },
+        "faq-12": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do we get started?",
+            "answer": "Hit us up through the wholesale form or email us directly. We'll set you up with samples, pricing, and a plan that fits your business."
           }
         }
       },
@@ -215,7 +257,13 @@
         "faq-3",
         "faq-4",
         "faq-5",
-        "faq-6"
+        "faq-6",
+        "faq-7",
+        "faq-8",
+        "faq-9",
+        "faq-10",
+        "faq-11",
+        "faq-12"
       ],
       "settings": {
         "hero_eyebrow": "Wholesaling with Pacific Coast Roasters",
@@ -253,7 +301,8 @@
         "equip_title": "Equipment Sourcing",
         "equip_desc": "We help source and recommend commercial equipment suited to your volume and budget, and provide ongoing maintenance guidance.",
         "testimonials_title": "Client love our small-batch, fresh-first approach",
-        "faq_title": "Wholesale FAQs",
+        "faq_title": "Wholesale FAQ – Pacific Coast Roasters",
+        "faq_description": "We're not trying to be the biggest. We're trying to be the best in your cup. If that aligns, let's build.",
         "form_title": "Want more info about our wholesale program?",
         "form_subtitle": "Fill out your details below and our team will reach out within 24 hours to arrange for a private tasting.",
         "contact_email": "pacificcoastroasters@gmail.com"

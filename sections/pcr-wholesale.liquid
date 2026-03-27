@@ -157,6 +157,9 @@
 <section class="pcr-ws-section pcr-ws-faq bg-white">
   <div class="page-width pcr-ws-faq__inner">
     <h2 class="pcr-ws-section__title">{{ section.settings.faq_title }}</h2>
+    {%- if section.settings.faq_description != blank -%}
+      <p class="pcr-ws-section__subtitle">{{ section.settings.faq_description }}</p>
+    {%- endif -%}
     <div class="pcr-ws-faq__list">
       {%- for block in faq_blocks -%}
         <details class="pcr-ws-faq__item" {{ block.shopify_attributes }}>
@@ -317,6 +320,7 @@
 
     { "type": "header", "content": "FAQ" },
     { "type": "text", "id": "faq_title", "label": "Section title", "default": "Frequently Asked Questions" },
+    { "type": "textarea", "id": "faq_description", "label": "Section description" },
 
     { "type": "header", "content": "Contact Form" },
     { "type": "text", "id": "form_title", "label": "Section title", "default": "Start Your Wholesale Partnership" },
