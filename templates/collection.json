@@ -12,7 +12,7 @@
     "pcr-collection-hero": {
       "type": "pcr-collection-hero",
       "settings": {
-        "hero_image": "shopify://shop_images/PCR-beans.jpg",
+        "hero_image": "shopify://shop_images/IMG_2797.jpg",
         "heading": "",
         "description": "",
         "cta_label": "",
@@ -47,13 +47,13 @@
         "description": "Turn your favorite bag into a recurring delivery. Pick your cadence, save 15% on every shipment, and manage everything from your account — no commitment required.",
         "perk_1": "15% off every order, forever",
         "perk_2": "Free shipping on all subscriptions",
-        "perk_3": "Delivery every 2, 4, 6, or 8 weeks",
+        "perk_3": "4 • 6 • 8 week delivery windows",
         "perk_4": "Swap, pause, or cancel anytime",
         "cta_label": "Start Your Subscription",
         "cta_url": "shopify://pages/subscription",
         "secondary_label": "Join Wholesale Program",
         "secondary_url": "shopify://pages/wholesale",
-        "trust_copy": "No commitment — manage deliveries from your account"
+        "trust_copy": "month-to-month • cancel anytime"
       }
     }
   },
