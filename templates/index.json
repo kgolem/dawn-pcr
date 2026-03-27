@@ -65,13 +65,6 @@
     "pcr-memorial": {
       "type": "pcr-memorial",
       "blocks": {
-        "slide-2": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-03-13_at_10.15.08_AM.png",
-            "alt": ""
-          }
-        },
         "slide-5": {
           "type": "slide",
           "settings": {
@@ -109,7 +102,6 @@
         }
       },
       "block_order": [
-        "slide-2",
         "slide-5",
         "slide-3",
         "slide_LcDtXT",
