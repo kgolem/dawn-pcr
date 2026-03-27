@@ -266,6 +266,10 @@
         "faq-12"
       ],
       "settings": {
+        "hero_image": "shopify://shop_images/IMG_8181.jpg",
+        "hero_bg_color": "",
+        "hero_overlay_color": "#111111",
+        "hero_overlay_opacity": 80,
         "hero_eyebrow": "Wholesaling with Pacific Coast Roasters",
         "hero_heading": "Wholesale Coffee Program",
         "hero_subheading": "Delivered fast, backed by real support. We make serving exceptional coffee refreshingly simple.",

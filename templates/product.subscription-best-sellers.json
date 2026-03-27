@@ -154,6 +154,10 @@
         "faq-6"
       ],
       "settings": {
+        "hero_image": "shopify://shop_images/PCR-beans.jpg",
+        "hero_bg_color": "",
+        "hero_overlay_color": "#000000",
+        "hero_overlay_opacity": 70,
         "hero_eyebrow": "ON-DEMAND, ALWAYS-FRESH LOCAL COFFEE BEANS",
         "hero_heading": "Subscribe & Save",
         "hero_subheading": "Choose your coffee, set your frequency of delivery, and never run out of the coffee you love. Free shipping on every order.",
