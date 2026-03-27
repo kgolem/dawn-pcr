@@ -119,9 +119,13 @@
         </ul>
       {%- endif -%}
 
-      {%- comment -%} Price {%- endcomment -%}
+      {%- comment -%} Price + size {%- endcomment -%}
+      {%- assign size_label = product.metafields.custom.size.value -%}
       <p class="pcr-product__price" id="pcr-price-{{ product.id }}">
         {{ current_variant.price | money }}
+        {%- if size_label != blank -%}
+          <span class="pcr-product__size-label">{{ size_label }}</span>
+        {%- endif -%}
         {%- if current_variant.compare_at_price > current_variant.price -%}
           <s class="pcr-product__compare-price">{{ current_variant.compare_at_price | money }}</s>
         {%- endif -%}
