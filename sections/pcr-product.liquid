@@ -101,15 +101,6 @@
         {% render 'roast-indicator', level: 3 %}
       {%- endif -%}
 
-      {%- comment -%} Flavor notes {%- endcomment -%}
-      {%- if flavor_notes != blank -%}
-        <ul class="pcr-card__notes pcr-product__flavor-notes" aria-label="Tasting notes">
-          {%- for note in flavor_notes -%}
-            <li class="pcr-card__note">{{ note }}</li>
-          {%- endfor -%}
-        </ul>
-      {%- endif -%}
-
       {%- comment -%} Price + size {%- endcomment -%}
       {%- assign size_label = product.metafields.custom.size.value -%}
       <p class="pcr-product__price" id="pcr-price-{{ product.id }}">
@@ -203,6 +194,18 @@
         {%- endif -%}
 
       {%- endform -%}
+
+      {%- comment -%} Flavor notes {%- endcomment -%}
+      {%- if flavor_notes != blank -%}
+        <div class="pcr-product__flavor-section">
+          <p class="pcr-product__section-label">Flavor Notes</p>
+          <ul class="pcr-card__notes pcr-product__flavor-notes" aria-label="Tasting notes">
+            {%- for note in flavor_notes -%}
+              <li class="pcr-card__note">{{ note }}</li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
 
       {%- comment -%} Description / origin story {%- endcomment -%}
       {%- if product.description != blank -%}

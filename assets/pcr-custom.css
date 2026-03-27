@@ -1885,7 +1885,20 @@ a:hover {
   line-height: 1.1;
   margin-bottom: 0.75rem;
 }
-.pcr-product__flavor-notes { margin: 0.75rem 0 1rem; }
+.pcr-product__flavor-section {
+  border-top: 1px solid var(--pcr-black);
+  padding: 1rem 0 0.25rem;
+  margin-bottom: 0;
+}
+.pcr-product__section-label {
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--pcr-font-body);
+  margin-bottom: 0.75rem;
+}
+.pcr-product__flavor-notes { margin: 0 0 1rem; }
 .pcr-product__flavor-notes .pcr-card__note { font-size: 0.81rem; }
 
 .pcr-product__price {
