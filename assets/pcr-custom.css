@@ -1809,7 +1809,7 @@ a:hover {
 }
 @media (min-width: 768px) {
   .pcr-product__layout {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 4fr;
     gap: 4rem;
     align-items: start;
   }
@@ -1877,27 +1877,28 @@ a:hover {
 }
 .pcr-product__title {
   font-family: var(--pcr-font-heading);
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(2.01rem, 3.45vw, 2.59rem);
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 0.75rem;
 }
 .pcr-product__flavor-notes { margin: 0.75rem 0 1rem; }
+.pcr-product__flavor-notes .pcr-card__note { font-size: 0.81rem; }
 
 .pcr-product__price {
-  font-size: 1.5rem;
+  font-size: 1.725rem;
   font-weight: 700;
   font-family: var(--pcr-font-body);
   margin-bottom: 0.75rem;
 }
 .pcr-product__size-label {
-  font-size: 0.85rem;
+  font-size: 0.98rem;
   font-weight: 400;
   color: #6b7280;
   margin-left: 0.25rem;
 }
 .pcr-product__compare-price {
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 400;
   color: #9ca3af;
   margin-left: 0.5rem;
@@ -1910,7 +1911,7 @@ a:hover {
   background: var(--pcr-gold);
   border: 1px solid var(--pcr-black);
   padding: 0.6rem 0.9rem;
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
   font-family: var(--pcr-font-body);
@@ -1920,7 +1921,7 @@ a:hover {
 /* Variant buttons */
 .pcr-product__variants { margin-bottom: 1.25rem; }
 .pcr-product__variants-label {
-  font-size: 0.75rem;
+  font-size: 0.86rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1938,7 +1939,7 @@ a:hover {
   justify-content: center;
   border: 1px solid var(--pcr-black);
   padding: 0.5rem 1rem;
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   font-weight: 600;
   font-family: var(--pcr-font-body);
   text-transform: uppercase;
@@ -1961,7 +1962,7 @@ a:hover {
 /* Quantity */
 .pcr-product__qty { margin-bottom: 1rem; }
 .pcr-product__qty-label {
-  font-size: 0.75rem;
+  font-size: 0.86rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1995,7 +1996,7 @@ a:hover {
   border-right: 1px solid var(--pcr-black);
   text-align: center;
   font-family: var(--pcr-font-body);
-  font-size: 0.95rem;
+  font-size: 1.09rem;
   font-weight: 600;
   -moz-appearance: textfield;
 }
@@ -2006,14 +2007,14 @@ a:hover {
 .pcr-product__atc {
   width: 100%;
   padding: 1rem;
-  font-size: 0.9rem;
+  font-size: 1.035rem;
   margin-bottom: 0.75rem;
   text-align: center;
   justify-content: center;
 }
 
 .pcr-product__shipping-note {
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   color: #6b7280;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -2029,9 +2030,9 @@ a:hover {
   border: 1px solid #e5e7eb;
   background: #f9fafb;
   margin-bottom: 1.5rem;
-  font-size: 0.875rem;
+  font-size: 1.006rem;
 }
-.pcr-product__brew-icon { font-size: 1.25rem; flex-shrink: 0; }
+.pcr-product__brew-icon { font-size: 1.44rem; flex-shrink: 0; }
 .pcr-product__brew-callout a {
   display: block;
   color: var(--pcr-black);
@@ -2045,7 +2046,7 @@ a:hover {
   padding: 0;
 }
 .pcr-product__desc-summary {
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2068,7 +2069,7 @@ a:hover {
 .pcr-product__desc-details[open] .pcr-product__desc-summary::after { transform: rotate(45deg); }
 .pcr-product__desc {
   padding-bottom: 1.25rem;
-  font-size: 0.95rem;
+  font-size: 1.09rem;
   line-height: 1.7;
   color: #4b5563;
 }

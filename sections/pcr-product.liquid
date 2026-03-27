@@ -86,15 +86,6 @@
     {%- comment -%} ── Right: Details ── {%- endcomment -%}
     <div class="pcr-product__details">
 
-      {%- comment -%} Type + origin {%- endcomment -%}
-      {%- if product_type != blank or vendor != blank -%}
-        <p class="pcr-product__meta-line">
-          {%- if product_type != blank -%}<span class="pcr-product__type">{{ product_type }}</span>{%- endif -%}
-          {%- if product_type != blank and vendor != blank -%}<span aria-hidden="true"> · </span>{%- endif -%}
-          {%- if vendor != blank -%}<span class="pcr-product__vendor">{{ vendor }}</span>{%- endif -%}
-        </p>
-      {%- endif -%}
-
       <h1 class="pcr-product__title">{{ product.title }}</h1>
 
       {%- comment -%} Roast level indicator {%- endcomment -%}
