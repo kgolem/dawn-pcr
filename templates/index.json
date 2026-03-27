@@ -22,12 +22,12 @@
         "eyebrow": "small batch • third wave • watsonville, ca",
         "heading": "pacific coast roasters",
         "subheading": "Enjoyed everywhere great coffee is celebrated. Crafted on the California coast.",
-        "btn1_label": "SUBSCRIBE & SAVE",
-        "btn1_url": "shopify://products/subscription-sellers-subscription",
+        "btn1_label": "Shop Best Sellers",
+        "btn1_url": "shopify://collections/best-sellers",
         "btn2_label": "Shop EXOTICS",
         "btn2_url": "shopify://collections/exotics",
-        "btn3_label": "Shop Best Sellers",
-        "btn3_url": "/collections/best-sellers"
+        "btn3_label": "Subscribe & Save",
+        "btn3_url": "shopify://products/subscription-sellers-subscription"
       }
     },
     "pcr-trust-bar": {
