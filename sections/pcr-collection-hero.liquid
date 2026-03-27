@@ -15,11 +15,24 @@
   endif
 -%}
 
-<div class="pcr-col-hero{% if has_image %} pcr-col-hero--has-image{% endif %}"
-  {%- if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' %}
-    style="background-color: {{ section.settings.background_color }};"
-  {%- endif -%}
->
+<style>
+  #pcr-col-hero-{{ section.id }} {
+    {%- if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' -%}
+      background-color: {{ section.settings.background_color }};
+    {%- endif -%}
+  }
+  #pcr-col-hero-{{ section.id }}::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: {{ section.settings.overlay_color | default: '#000000' }};
+    opacity: {{ section.settings.overlay_opacity | default: 0 | times: 0.01 }};
+  }
+</style>
+
+<div id="pcr-col-hero-{{ section.id }}" class="pcr-col-hero{% if has_image %} pcr-col-hero--has-image{% endif %}">
 
   {%- if has_image -%}
     <div class="pcr-col-hero__bg" aria-hidden="true">
@@ -45,13 +58,6 @@
         >
       {%- endif -%}
     </div>
-  {%- endif -%}
-
-  {%- if section.settings.overlay_opacity > 0 -%}
-    {%- assign overlay_color = section.settings.overlay_color | default: '#000000' -%}
-    <div class="pcr-col-hero__overlay" aria-hidden="true"
-      style="position:absolute;inset:0;z-index:1;background:{{ overlay_color }};opacity:{{ section.settings.overlay_opacity | divided_by: 100.0 }};pointer-events:none;"
-    ></div>
   {%- endif -%}
 
   <div class="pcr-col-hero__content page-width">
