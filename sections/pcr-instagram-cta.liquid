@@ -28,13 +28,12 @@
           -%}
           {%- if embed_url != blank -%}
             {%- liquid
-              assign clean_url = embed_url | split: '?' | first
-              assign clean_url = clean_url | replace: '/reel/', '/reel/'
+              assign clean_url = embed_url | split: '?' | first | strip
               unless clean_url contains '/embed'
-                assign clean_url = clean_url | append: 'embed/'
-                unless clean_url contains '/reel/' or clean_url contains '/p/'
-                  continue
+                unless clean_url | slice: -1, 1 == '/'
+                  assign clean_url = clean_url | append: '/'
                 endunless
+                assign clean_url = clean_url | append: 'embed/'
               endunless
             -%}
             <div class="pcr-instagram-cta__video-wrap">
