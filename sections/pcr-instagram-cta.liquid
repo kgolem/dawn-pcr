@@ -29,10 +29,11 @@
           {%- if embed_url != blank -%}
             {%- liquid
               assign clean_url = embed_url | split: '?' | first | strip
-              unless clean_url contains '/embed'
-                unless clean_url | slice: -1, 1 == '/'
-                  assign clean_url = clean_url | append: '/'
-                endunless
+              assign last_char = clean_url | slice: -1, 1
+              if last_char != '/'
+                assign clean_url = clean_url | append: '/'
+              endif
+              unless clean_url contains '/embed/'
                 assign clean_url = clean_url | append: 'embed/'
               endunless
             -%}
