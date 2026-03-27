@@ -104,21 +104,28 @@
         "slide-2": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-03-13_at_10.15.08_AM.png",
+            "image": "shopify://shop_images/IMG_4120.jpg",
             "alt": ""
           }
         },
         "slide-3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-03-13_at_10.16.41_AM.png",
+            "image": "shopify://shop_images/IMG_6986.jpg",
+            "alt": ""
+          }
+        },
+        "slide_n9JBb9": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7068.jpg",
             "alt": ""
           }
         },
         "slide-5": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-03-13_at_10.15.56_AM.png",
+            "image": "shopify://shop_images/IMG_7012.jpg",
             "alt": ""
           }
         }
@@ -127,12 +134,13 @@
         "slide-1",
         "slide-2",
         "slide-3",
+        "slide_n9JBb9",
         "slide-5"
       ],
       "settings": {
-        "eyebrow": "our mission",
+        "eyebrow": "Our Mission",
         "heading": "Roasting consistently great coffee from farms we actually visit. Just like Mike taught us.",
-        "body": "<p>PCR was built on a simple idea: that great coffee starts long before the roaster. It starts at the farm. Dave learned that firsthand in the early 2010s, when he walked into Mike's Highway 9 coffee shop and met someone who took the whole chain — seed to cup — seriously. The two became fast friends, then business partners, buying a roaster together and chasing the kind of coffee that can change your life.</p><p>We lost Mike unexpectedly in 2025. His passion for the craft lives on in every roast we pull, and his memory has deepened our ties to the Pacific Coast recovery community — a cause close to Dave's heart.</p><p><strong>10% of every bag of Mike's Blend goes straight to supporting Santa Cruz County recovery programs.</strong></p>",
+        "body": "<p>PCR was built on a simple idea: that great coffee starts long before the roaster. It starts at the farm. Dave learned that firsthand in the early 2010s, when he walked into Mike's Highway 9 coffee shop and met someone who took the whole chain — seed to cup — seriously. The two became fast friends, then business partners, buying a roaster together and chasing the kind of coffee that can change your life.</p><p><strong>We lost Mike unexpectedly in 2025. His legacy lives on.</strong></p><p><em>10% of every bag of Mike's Blend goes straight to supporting Santa Cruz County recovery programs.</em></p>",
         "cta_label": "",
         "cta_url": ""
       }
