@@ -3757,6 +3757,33 @@ shop-pay-button,
   text-align: center;
 }
 
+/* Video grid */
+.pcr-instagram-cta__videos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+}
+@media (max-width: 549px) {
+  .pcr-instagram-cta__videos {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+  }
+}
+.pcr-instagram-cta__video-wrap {
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border: 2px solid var(--pcr-black);
+  background: var(--pcr-black);
+}
+.pcr-instagram-cta__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .pcr-instagram-cta__heading {
   font-family: var(--pcr-font-heading);
   font-size: clamp(1.35rem, 3vw, 2rem);

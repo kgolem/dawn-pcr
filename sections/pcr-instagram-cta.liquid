@@ -7,6 +7,56 @@
 <section class="pcr-instagram-cta">
   <div class="page-width pcr-instagram-cta__inner">
 
+    {%- liquid
+      assign has_videos = false
+      if section.settings.video_1 != blank or section.settings.video_2 != blank or section.settings.video_3 != blank
+        assign has_videos = true
+      endif
+    -%}
+    {%- if has_videos -%}
+      <div class="pcr-instagram-cta__videos">
+        {%- if section.settings.video_1 != blank -%}
+          <div class="pcr-instagram-cta__video-wrap">
+            <video
+              src="{{ section.settings.video_1 }}"
+              autoplay muted loop playsinline
+              preload="metadata"
+              class="pcr-instagram-cta__video"
+              {%- if section.settings.poster_1 != blank %}
+                poster="{{ section.settings.poster_1 | image_url: width: 600 }}"
+              {%- endif %}
+            ></video>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.video_2 != blank -%}
+          <div class="pcr-instagram-cta__video-wrap">
+            <video
+              src="{{ section.settings.video_2 }}"
+              autoplay muted loop playsinline
+              preload="metadata"
+              class="pcr-instagram-cta__video"
+              {%- if section.settings.poster_2 != blank %}
+                poster="{{ section.settings.poster_2 | image_url: width: 600 }}"
+              {%- endif %}
+            ></video>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.video_3 != blank -%}
+          <div class="pcr-instagram-cta__video-wrap">
+            <video
+              src="{{ section.settings.video_3 }}"
+              autoplay muted loop playsinline
+              preload="metadata"
+              class="pcr-instagram-cta__video"
+              {%- if section.settings.poster_3 != blank %}
+                poster="{{ section.settings.poster_3 | image_url: width: 600 }}"
+              {%- endif %}
+            ></video>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
     {%- if section.settings.heading != blank -%}
       <h2 class="pcr-instagram-cta__heading">{{ section.settings.heading }}</h2>
     {%- endif -%}
@@ -37,6 +87,45 @@
   "tag": "section",
   "class": "pcr-section-instagram-cta",
   "settings": [
+    {
+      "type": "header",
+      "content": "Vertical videos"
+    },
+    {
+      "type": "text",
+      "id": "video_1",
+      "label": "Video 1 URL (MP4)",
+      "info": "Upload to Content → Files, paste URL here. 9:16 vertical format."
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_1",
+      "label": "Video 1 poster image"
+    },
+    {
+      "type": "text",
+      "id": "video_2",
+      "label": "Video 2 URL (MP4)"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_2",
+      "label": "Video 2 poster image"
+    },
+    {
+      "type": "text",
+      "id": "video_3",
+      "label": "Video 3 URL (MP4)"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_3",
+      "label": "Video 3 poster image"
+    },
+    {
+      "type": "header",
+      "content": "Heading & CTA"
+    },
     {
       "type": "text",
       "id": "heading",
