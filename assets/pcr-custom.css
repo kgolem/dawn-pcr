@@ -2032,7 +2032,8 @@ a:hover {
 .pcr-product__subscribe-cta:link,
 .pcr-product__subscribe-cta:visited {
   width: 100%;
-  padding: 0.75rem;
+  min-height: calc(4.5rem + var(--buttons-border-width, 0px) * 2);
+  padding: 0.75rem 1rem;
   font-size: 0.78rem;
   text-align: center;
   justify-content: center;
