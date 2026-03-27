@@ -32,6 +32,10 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Scale up all text 10% on non-product pages */
+body { font-size: 110%; }
+.pcr-section-product { font-size: calc(100% / 1.1); }
+
 /* Global eyebrow subheadline — used across all sections */
 .pcr-eyebrow,
 .pcr-wholesale__eyebrow,
