@@ -32,7 +32,18 @@
 -%}
 
 {%- comment -%}══ 1. HERO ══{%- endcomment -%}
-<section class="pcr-ws-hero">
+<style>
+  #sub-hero-{{ section.id }} {
+    {%- if section.settings.hero_bg_color != blank and section.settings.hero_bg_color != 'rgba(0,0,0,0)' -%}
+      background-color: {{ section.settings.hero_bg_color }};
+    {%- endif -%}
+  }
+  #sub-hero-{{ section.id }} .pcr-ws-hero__overlay {
+    background: {{ section.settings.hero_overlay_color | default: '#000000' }};
+    opacity: {{ section.settings.hero_overlay_opacity | default: 65 | times: 0.01 }};
+  }
+</style>
+<section id="sub-hero-{{ section.id }}" class="pcr-ws-hero">
   {%- if section.settings.hero_image != blank -%}
     <div class="pcr-ws-hero__bg" aria-hidden="true">
       <img
@@ -392,7 +403,10 @@
   "class": "pcr-section-subscription-bss",
   "settings": [
     { "type": "header", "content": "Hero" },
-    { "type": "image_picker", "id": "hero_image", "label": "Background image", "info": "Dark overlay applied automatically. Recommend a coffee bag or barista action shot." },
+    { "type": "image_picker", "id": "hero_image", "label": "Background image" },
+    { "type": "color", "id": "hero_bg_color", "label": "Background color", "info": "Visible when no image is set." },
+    { "type": "color", "id": "hero_overlay_color", "label": "Overlay color", "default": "#000000" },
+    { "type": "range", "id": "hero_overlay_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Overlay opacity", "default": 65 },
     { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "Best Sellers Subscription" },
     { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Your Favorites. On Repeat. Save 15%." },
     { "type": "textarea", "id": "hero_subheading", "label": "Subheading", "default": "Pick your blend, set your cadence, and never run out of the coffee you love. Free shipping on every order." },

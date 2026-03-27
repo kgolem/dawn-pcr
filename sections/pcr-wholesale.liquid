@@ -14,7 +14,18 @@
 -%}
 
 {%- comment -%}══ 1. HERO ══{%- endcomment -%}
-<section class="pcr-ws-hero">
+<style>
+  #ws-hero-{{ section.id }} {
+    {%- if section.settings.hero_bg_color != blank and section.settings.hero_bg_color != 'rgba(0,0,0,0)' -%}
+      background-color: {{ section.settings.hero_bg_color }};
+    {%- endif -%}
+  }
+  #ws-hero-{{ section.id }} .pcr-ws-hero__overlay {
+    background: {{ section.settings.hero_overlay_color | default: '#000000' }};
+    opacity: {{ section.settings.hero_overlay_opacity | default: 65 | times: 0.01 }};
+  }
+</style>
+<section id="ws-hero-{{ section.id }}" class="pcr-ws-hero">
   {%- if section.settings.hero_image != blank -%}
     <div class="pcr-ws-hero__bg" aria-hidden="true">
       <img
@@ -267,7 +278,10 @@
   "class": "pcr-section-wholesale",
   "settings": [
     { "type": "header", "content": "Hero" },
-    { "type": "image_picker", "id": "hero_image", "label": "Background image", "info": "Dark overlay applied automatically." },
+    { "type": "image_picker", "id": "hero_image", "label": "Background image" },
+    { "type": "color", "id": "hero_bg_color", "label": "Background color", "info": "Visible when no image is set." },
+    { "type": "color", "id": "hero_overlay_color", "label": "Overlay color", "default": "#000000" },
+    { "type": "range", "id": "hero_overlay_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Overlay opacity", "default": 65 },
     { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "Wholesale Partnership Program" },
     { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Premium Small-Batch Coffee for Your Business" },
     { "type": "textarea", "id": "hero_subheading", "label": "Subheading", "default": "Freshly roasted to order in Watsonville, CA. Delivered fast, backed by real support. We make serving exceptional coffee simple." },
