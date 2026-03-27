@@ -4,8 +4,14 @@
 {{ 'section-email-signup-banner.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+  {%- if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' -%}
+    #Banner-{{ section.id }} { background-color: {{ section.settings.background_color }}; }
+  {%- endif -%}
   #Banner-{{ section.id }}::after {
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+    {%- if section.settings.overlay_color != blank and section.settings.overlay_color != 'rgba(0,0,0,0)' -%}
+      background: {{ section.settings.overlay_color }};
+    {%- endif -%}
   }
 
   {%- if section.settings.image_height == 'adapt-image' and section.settings.image != blank -%}
@@ -165,6 +171,19 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.email-signup-banner.settings.image.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Visible when no image is set or behind transparent areas."
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000",
+      "info": "Color layer drawn on top of background image."
     },
     {
       "type": "range",

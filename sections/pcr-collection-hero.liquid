@@ -15,7 +15,11 @@
   endif
 -%}
 
-<div class="pcr-col-hero{% if has_image %} pcr-col-hero--has-image{% endif %}">
+<div class="pcr-col-hero{% if has_image %} pcr-col-hero--has-image{% endif %}"
+  {%- if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' %}
+    style="background-color: {{ section.settings.background_color }};"
+  {%- endif -%}
+>
 
   {%- if has_image -%}
     <div class="pcr-col-hero__bg" aria-hidden="true">
@@ -41,6 +45,13 @@
         >
       {%- endif -%}
     </div>
+  {%- endif -%}
+
+  {%- if section.settings.overlay_opacity > 0 -%}
+    {%- assign overlay_color = section.settings.overlay_color | default: '#000000' -%}
+    <div class="pcr-col-hero__overlay" aria-hidden="true"
+      style="position:absolute;inset:0;z-index:1;background:{{ overlay_color }};opacity:{{ section.settings.overlay_opacity | divided_by: 100.0 }};pointer-events:none;"
+    ></div>
   {%- endif -%}
 
   <div class="pcr-col-hero__content page-width">
@@ -81,6 +92,33 @@
     {
       "type": "paragraph",
       "content": "Defaults to the collection's own image and description. Override here for custom content per collection."
+    },
+    {
+      "type": "header",
+      "content": "Colors & overlay"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Visible when no hero image is set, or behind transparent areas."
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000",
+      "info": "Color layer drawn on top of the hero image."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 0
     },
     {
       "type": "image_picker",

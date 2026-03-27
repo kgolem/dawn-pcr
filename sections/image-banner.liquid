@@ -24,8 +24,14 @@
 {%- endif -%}
 
 {%- style -%}
+  {%- if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' -%}
+    #Banner-{{ section.id }} { background-color: {{ section.settings.background_color }}; }
+  {%- endif -%}
   #Banner-{{ section.id }}::after {
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+    {%- if section.settings.overlay_color != blank and section.settings.overlay_color != 'rgba(0,0,0,0)' -%}
+      background: {{ section.settings.overlay_color }};
+    {%- endif -%}
   }
 {%- endstyle -%}
 
@@ -184,6 +190,19 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Visible when no image is set or behind transparent areas."
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000",
+      "info": "Color layer drawn on top of background image."
     },
     {
       "type": "range",

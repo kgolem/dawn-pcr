@@ -97,6 +97,9 @@
     </div>
   {%- endif -%}
 
+  {%- if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' -%}
+    <style>#Slider-{{ section.id }} { background-color: {{ section.settings.background_color }}; }</style>
+  {%- endif -%}
   <div
     class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
     id="Slider-{{ section.id }}"
@@ -109,6 +112,9 @@
       <style>
         #Slide-{{ section.id }}-{{ forloop.index }} .banner__media::after {
           opacity: {{ block.settings.image_overlay_opacity | divided_by: 100.0 }};
+          {%- if block.settings.overlay_color != blank and block.settings.overlay_color != 'rgba(0,0,0,0)' -%}
+            background: {{ block.settings.overlay_color }};
+          {%- endif -%}
         }
       </style>
       <div
@@ -271,6 +277,12 @@
   },
   "settings": [
     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Visible behind slides or when no image is set."
+    },
+    {
       "type": "select",
       "id": "layout",
       "options": [
@@ -394,6 +406,13 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay color",
+          "default": "#000000",
+          "info": "Color layer drawn on top of slide image."
         },
         {
           "type": "range",

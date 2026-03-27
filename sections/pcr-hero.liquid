@@ -15,7 +15,11 @@
   assign height_class = section.settings.banner_height
 -%}
 
-<div class="pcr-hero pcr-hero--{{ height_class }}">
+<div class="pcr-hero pcr-hero--{{ height_class }}"
+  {%- if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' %}
+    style="background-color: {{ section.settings.background_color }};"
+  {%- endif -%}
+>
 
   {%- comment -%} Background: video > GIF > static image {%- endcomment -%}
   {%- if video_url != blank -%}
@@ -61,6 +65,14 @@
     </div>
   {%- else -%}
     <div class="pcr-hero__bg pcr-hero__bg--placeholder" aria-hidden="true"></div>
+  {%- endif -%}
+
+  {%- comment -%} Color overlay {%- endcomment -%}
+  {%- if section.settings.overlay_opacity > 0 -%}
+    {%- assign overlay_color = section.settings.overlay_color | default: '#000000' -%}
+    <div class="pcr-hero__overlay" aria-hidden="true"
+      style="position:absolute;inset:0;z-index:1;background:{{ overlay_color }};opacity:{{ section.settings.overlay_opacity | divided_by: 100.0 }};pointer-events:none;"
+    ></div>
   {%- endif -%}
 
   {%- comment -%} White content box {%- endcomment -%}
@@ -147,6 +159,33 @@
       "id": "image",
       "label": "Background image (static fallback)",
       "info": "Recommended: 1800×900px or wider. Used only if no video or GIF URL is set."
+    },
+    {
+      "type": "header",
+      "content": "Colors & overlay"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Visible when no media is set, or behind transparent areas."
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000",
+      "info": "Color layer drawn on top of background media."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 0
     },
     {
       "type": "select",
