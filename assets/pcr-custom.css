@@ -2028,7 +2028,9 @@ a:hover {
   text-align: center;
   justify-content: center;
 }
-.pcr-product__subscribe-cta {
+.pcr-product__subscribe-cta,
+.pcr-product__subscribe-cta:link,
+.pcr-product__subscribe-cta:visited {
   width: 100%;
   padding: 0.75rem;
   font-size: 0.78rem;
@@ -2044,11 +2046,11 @@ a:hover {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
 }
 .pcr-product__subscribe-cta:active {
   background: white;
-  border-color: var(--pcr-black);
   color: var(--pcr-black);
 }
 
