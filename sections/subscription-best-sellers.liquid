@@ -38,7 +38,12 @@
       background-color: {{ section.settings.hero_bg_color }};
     {%- endif -%}
   }
-  #sub-hero-{{ section.id }} .pcr-ws-hero__overlay {
+  #sub-hero-{{ section.id }}::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
     background: {{ section.settings.hero_overlay_color | default: '#000000' }};
     opacity: {{ section.settings.hero_overlay_opacity | default: 65 | times: 0.01 }};
   }
@@ -57,7 +62,6 @@
       >
     </div>
   {%- endif -%}
-  <div class="pcr-ws-hero__overlay" aria-hidden="true"></div>
   <div class="pcr-ws-hero__content page-width">
     {%- if section.settings.hero_eyebrow != blank -%}
       <p class="pcr-ws-hero__eyebrow">{{ section.settings.hero_eyebrow }}</p>
