@@ -12,7 +12,12 @@
     "pcr-hero": {
       "type": "pcr-hero",
       "settings": {
+        "video_url": "",
+        "gif_url": "",
         "image": "shopify://shop_images/IMG_3098.jpg",
+        "background_color": "",
+        "overlay_color": "#dab556",
+        "overlay_opacity": 20,
         "banner_height": "small",
         "eyebrow": "small batch • third wave • watsonville, ca",
         "heading": "pacific coast roasters",
@@ -24,6 +29,38 @@
         "btn3_label": "SUBSCRIBE & SAVE",
         "btn3_url": "shopify://products/subscription-sellers-subscription"
       }
+    },
+    "pcr-trust-bar": {
+      "type": "pcr-trust-bar",
+      "blocks": {
+        "trust-1": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "🔥",
+            "text": "Roasted weekly"
+          }
+        },
+        "trust-2": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "📅",
+            "text": "Dated for freshness"
+          }
+        },
+        "trust-3": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "🚚",
+            "text": "Shipped within 48 hours"
+          }
+        }
+      },
+      "block_order": [
+        "trust-1",
+        "trust-2",
+        "trust-3"
+      ],
+      "settings": {}
     },
     "pcr-memorial": {
       "type": "pcr-memorial",
@@ -86,38 +123,6 @@
         "cta_label": "",
         "cta_url": ""
       }
-    },
-    "pcr-trust-bar": {
-      "type": "pcr-trust-bar",
-      "blocks": {
-        "trust-1": {
-          "type": "trust_item",
-          "settings": {
-            "icon": "🔥",
-            "text": "Roasted weekly"
-          }
-        },
-        "trust-2": {
-          "type": "trust_item",
-          "settings": {
-            "icon": "📅",
-            "text": "Dated for freshness"
-          }
-        },
-        "trust-3": {
-          "type": "trust_item",
-          "settings": {
-            "icon": "🚚",
-            "text": "Shipped within 48 hours"
-          }
-        }
-      },
-      "block_order": [
-        "trust-1",
-        "trust-2",
-        "trust-3"
-      ],
-      "settings": {}
     },
     "pcr-featured-products": {
       "type": "pcr-featured-products",
@@ -205,8 +210,8 @@
   },
   "order": [
     "pcr-hero",
-    "pcr-memorial",
     "pcr-trust-bar",
+    "pcr-memorial",
     "pcr-featured-products",
     "pcr-featured-exotics",
     "pcr-social-proof",
