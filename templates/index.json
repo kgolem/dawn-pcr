@@ -12,7 +12,7 @@
     "pcr-hero": {
       "type": "pcr-hero",
       "settings": {
-        "image": "shopify://shop_images/PCR-beans.jpg",
+        "image": "shopify://shop_images/IMG_3098.jpg",
         "banner_height": "small",
         "eyebrow": "small batch • third wave • watsonville, ca",
         "heading": "pacific coast roasters",
@@ -71,23 +71,6 @@
         "sub_title": "SUBSCRIBE & SAVE",
         "sub_description": "Lock in 15% off forever. Receive a 2.2lb bag of Rise & Gr!nd, Mike's Blend or Shadow Work every 2 • 4 • 6 weeks.",
         "sub_url": "shopify://pages/subscription",
-        "sub_cta": "Subscribe Now"
-      }
-    },
-    "pcr-featured-exotics": {
-      "type": "pcr-featured-products",
-      "settings": {
-        "eyebrow": "Limited lots. Rare origins. Gone when they're gone.",
-        "heading": "PCR Exotics",
-        "subheading": "",
-        "collection": "exotics",
-        "view_all_label": "View Exotics",
-        "popular_product": "",
-        "popular_label": "Most Popular",
-        "show_sub_card": false,
-        "sub_title": "Tour De Coast Coffee Subscription",
-        "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
-        "sub_url": "",
         "sub_cta": "Subscribe Now"
       }
     },
@@ -151,6 +134,23 @@
         "body": "<p>PCR was built on a simple idea: that great coffee starts long before the roaster. It starts at the farm. Dave learned that firsthand in the early 2010s, when he walked into Mike's Highway 9 coffee shop and met someone who took the whole chain — seed to cup — seriously. The two became fast friends, then business partners, buying a roaster together and chasing the kind of coffee that can change your life.</p><p><strong>We lost Mike unexpectedly in 2025. His legacy lives on through PCR's mission.</strong></p><p><em>10% of every bag of Mike's Blend goes straight to supporting Santa Cruz County recovery programs.</em></p>",
         "cta_label": "",
         "cta_url": ""
+      }
+    },
+    "pcr-featured-exotics": {
+      "type": "pcr-featured-products",
+      "settings": {
+        "eyebrow": "Limited lots. Rare origins. Gone when they're gone.",
+        "heading": "PCR Exotics",
+        "subheading": "",
+        "collection": "exotics",
+        "view_all_label": "View Exotics",
+        "popular_product": "",
+        "popular_label": "Most Popular",
+        "show_sub_card": false,
+        "sub_title": "Tour De Coast Coffee Subscription",
+        "sub_description": "Let us pick our favorite seasonal single origins for you every month. Save 15%.",
+        "sub_url": "",
+        "sub_cta": "Subscribe Now"
       }
     },
     "pcr-social-proof": {
