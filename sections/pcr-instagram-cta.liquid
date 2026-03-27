@@ -8,52 +8,48 @@
   <div class="page-width pcr-instagram-cta__inner">
 
     {%- liquid
-      assign has_videos = false
-      if section.settings.video_1 != blank or section.settings.video_2 != blank or section.settings.video_3 != blank
-        assign has_videos = true
+      assign has_embeds = false
+      if section.settings.embed_1 != blank or section.settings.embed_2 != blank or section.settings.embed_3 != blank
+        assign has_embeds = true
       endif
     -%}
-    {%- if has_videos -%}
+    {%- if has_embeds -%}
       <div class="pcr-instagram-cta__videos">
-        {%- if section.settings.video_1 != blank -%}
-          <div class="pcr-instagram-cta__video-wrap">
-            <video
-              src="{{ section.settings.video_1 }}"
-              autoplay muted loop playsinline
-              preload="metadata"
-              class="pcr-instagram-cta__video"
-              {%- if section.settings.poster_1 != blank %}
-                poster="{{ section.settings.poster_1 | image_url: width: 600 }}"
-              {%- endif %}
-            ></video>
-          </div>
-        {%- endif -%}
-        {%- if section.settings.video_2 != blank -%}
-          <div class="pcr-instagram-cta__video-wrap">
-            <video
-              src="{{ section.settings.video_2 }}"
-              autoplay muted loop playsinline
-              preload="metadata"
-              class="pcr-instagram-cta__video"
-              {%- if section.settings.poster_2 != blank %}
-                poster="{{ section.settings.poster_2 | image_url: width: 600 }}"
-              {%- endif %}
-            ></video>
-          </div>
-        {%- endif -%}
-        {%- if section.settings.video_3 != blank -%}
-          <div class="pcr-instagram-cta__video-wrap">
-            <video
-              src="{{ section.settings.video_3 }}"
-              autoplay muted loop playsinline
-              preload="metadata"
-              class="pcr-instagram-cta__video"
-              {%- if section.settings.poster_3 != blank %}
-                poster="{{ section.settings.poster_3 | image_url: width: 600 }}"
-              {%- endif %}
-            ></video>
-          </div>
-        {%- endif -%}
+        {%- for i in (1..3) -%}
+          {%- liquid
+            case i
+              when 1
+                assign embed_url = section.settings.embed_1
+              when 2
+                assign embed_url = section.settings.embed_2
+              when 3
+                assign embed_url = section.settings.embed_3
+            endcase
+          -%}
+          {%- if embed_url != blank -%}
+            {%- liquid
+              assign clean_url = embed_url | split: '?' | first
+              assign clean_url = clean_url | replace: '/reel/', '/reel/'
+              unless clean_url contains '/embed'
+                assign clean_url = clean_url | append: 'embed/'
+                unless clean_url contains '/reel/' or clean_url contains '/p/'
+                  continue
+                endunless
+              endunless
+            -%}
+            <div class="pcr-instagram-cta__video-wrap">
+              <iframe
+                src="{{ clean_url }}"
+                class="pcr-instagram-cta__video"
+                frameborder="0"
+                scrolling="no"
+                allowtransparency="true"
+                loading="lazy"
+                title="Instagram Reel {{ i }}"
+              ></iframe>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
       </div>
     {%- endif -%}
 
@@ -89,38 +85,23 @@
   "settings": [
     {
       "type": "header",
-      "content": "Vertical videos"
+      "content": "Instagram embeds"
     },
     {
       "type": "text",
-      "id": "video_1",
-      "label": "Video 1 URL (MP4)",
-      "info": "Upload to Content → Files, paste URL here. 9:16 vertical format."
-    },
-    {
-      "type": "image_picker",
-      "id": "poster_1",
-      "label": "Video 1 poster image"
+      "id": "embed_1",
+      "label": "Reel 1 URL",
+      "info": "Paste an Instagram Reel or post URL, e.g. https://www.instagram.com/reel/ABC123/"
     },
     {
       "type": "text",
-      "id": "video_2",
-      "label": "Video 2 URL (MP4)"
-    },
-    {
-      "type": "image_picker",
-      "id": "poster_2",
-      "label": "Video 2 poster image"
+      "id": "embed_2",
+      "label": "Reel 2 URL"
     },
     {
       "type": "text",
-      "id": "video_3",
-      "label": "Video 3 URL (MP4)"
-    },
-    {
-      "type": "image_picker",
-      "id": "poster_3",
-      "label": "Video 3 poster image"
+      "id": "embed_3",
+      "label": "Reel 3 URL"
     },
     {
       "type": "header",
