@@ -17,7 +17,7 @@
         "image": "shopify://shop_images/PCR-beans.jpg",
         "background_color": "",
         "overlay_color": "#dab556",
-        "overlay_opacity": 30,
+        "overlay_opacity": 55,
         "banner_height": "small",
         "eyebrow": "small batch • third wave • watsonville, ca",
         "heading": "pacific coast roasters",
@@ -86,13 +86,6 @@
             "alt": ""
           }
         },
-        "slide_n9JBb9": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/IMG_7068.jpg",
-            "alt": ""
-          }
-        },
         "slide_LcDtXT": {
           "type": "slide",
           "settings": {
@@ -100,10 +93,17 @@
             "alt": ""
           }
         },
+        "slide_n9JBb9": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7062.jpg",
+            "alt": ""
+          }
+        },
         "slide_wj8TLW": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/IMG_8204.jpg",
+            "image": "shopify://shop_images/IMG_3098.jpg",
             "alt": ""
           }
         }
@@ -112,8 +112,8 @@
         "slide-2",
         "slide-5",
         "slide-3",
-        "slide_n9JBb9",
         "slide_LcDtXT",
+        "slide_n9JBb9",
         "slide_wj8TLW"
       ],
       "settings": {

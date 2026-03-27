@@ -12,6 +12,9 @@
     "pcr-collection-hero": {
       "type": "pcr-collection-hero",
       "settings": {
+        "background_color": "",
+        "overlay_color": "#dab556",
+        "overlay_opacity": 65,
         "hero_image": "shopify://shop_images/IMG_2797.jpg",
         "heading": "",
         "description": "",
