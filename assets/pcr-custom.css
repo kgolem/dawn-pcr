@@ -1809,13 +1809,16 @@ a:hover {
 }
 @media (min-width: 768px) {
   .pcr-product__layout {
-    grid-template-columns: 3fr 4fr;
+    grid-template-columns: 9fr 16fr;
     gap: 4rem;
     align-items: start;
   }
 }
 
 /* Gallery */
+.pcr-product__gallery {
+  padding: 2rem 0;
+}
 .pcr-product__featured-image {
   position: relative;
   aspect-ratio: 1;

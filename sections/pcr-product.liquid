@@ -198,17 +198,6 @@
 
       {%- endform -%}
 
-      {%- comment -%} Brew guide callout {%- endcomment -%}
-      {%- if section.settings.show_brew_guide -%}
-        <div class="pcr-product__brew-callout">
-          <span class="pcr-product__brew-icon" aria-hidden="true">☕</span>
-          <div>
-            <strong>Not sure how to brew it?</strong>
-            <a href="{{ section.settings.brew_guide_url | default: '/pages/brew-guides' }}">See our brew guides →</a>
-          </div>
-        </div>
-      {%- endif -%}
-
       {%- comment -%} Description / origin story {%- endcomment -%}
       {%- if product.description != blank -%}
         <details class="pcr-product__desc-details" open>
