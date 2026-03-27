@@ -191,7 +191,7 @@
           {%- endif -%}
           {%- unless is_exotic -%}
             <span class="pcr-product__actions-or">or</span>
-            <a href="/pages/subscription" class="pcr-product__subscribe-cta">
+            <a href="{{ section.settings.subscribe_url | default: '/products/subscription-sellers-subscription' }}" class="pcr-product__subscribe-cta">
               Subscribe &amp; Save
             </a>
           {%- endunless -%}
@@ -289,16 +289,10 @@
   "class": "pcr-section-product",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "show_brew_guide",
-      "label": "Show brew guide callout",
-      "default": true
-    },
-    {
       "type": "url",
-      "id": "brew_guide_url",
-      "label": "Brew guide URL",
-      "info": "Defaults to /pages/brew-guides"
+      "id": "subscribe_url",
+      "label": "Subscribe & Save URL",
+      "info": "Link for the Subscribe & Save button. Pick the subscription product from the picker."
     }
   ],
   "presets": [
