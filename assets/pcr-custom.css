@@ -2279,7 +2279,7 @@ a:hover {
 
 /* ── 3. Value Props ── */
 .pcr-ws-value__layout { display: grid; gap: 3rem; align-items: center; }
-@media (min-width: 1024px) { .pcr-ws-value__layout { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .pcr-ws-value__layout { grid-template-columns: 4fr 3fr; } }
 .pcr-ws-value__lead { font-size: 1.05rem; color: #374151; line-height: 1.7; margin: 0 0 2rem; }
 .pcr-ws-value__benefits { display: flex; flex-direction: column; gap: 1.5rem; }
 .pcr-ws-benefit { display: flex; gap: 1rem; align-items: flex-start; }
