@@ -202,6 +202,9 @@
     "pcr-instagram-cta": {
       "type": "pcr-instagram-cta",
       "settings": {
+        "embed_1": "https://www.instagram.com/reel/DS_5V3JDQ1D/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "embed_2": "https://www.instagram.com/reel/DQvikdTEYap/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "embed_3": "https://www.instagram.com/reel/DTymEJmEkiB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
         "heading": "Come see us at Saratoga Farmer's Market every Saturday from 9am to 1pm.",
         "button_label": "Follow along @PacificCoastRoasters",
         "button_url": "https://www.instagram.com/pacificcoastroasters/"
