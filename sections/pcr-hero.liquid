@@ -68,12 +68,13 @@
   {%- endif -%}
 
   {%- comment -%} Color overlay {%- endcomment -%}
-  {%- if section.settings.overlay_opacity > 0 -%}
-    {%- assign overlay_color = section.settings.overlay_color | default: '#000000' -%}
-    <div class="pcr-hero__overlay" aria-hidden="true"
-      style="position:absolute;inset:0;z-index:1;background:{{ overlay_color }};opacity:{{ section.settings.overlay_opacity | divided_by: 100.0 }};pointer-events:none;"
-    ></div>
-  {%- endif -%}
+  {%- liquid
+    assign ov_color = section.settings.overlay_color | default: '#000000'
+    assign ov_pct   = section.settings.overlay_opacity | default: 0
+  -%}
+  <div class="pcr-hero__overlay" aria-hidden="true"
+    style="position:absolute;inset:0;z-index:1;background:{{ ov_color }};opacity:{{ ov_pct | times: 1.0 | divided_by: 100 }};pointer-events:none;"
+  ></div>
 
   {%- comment -%} White content box {%- endcomment -%}
   <div class="pcr-hero__content-wrap page-width">
