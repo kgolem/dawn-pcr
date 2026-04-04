@@ -190,6 +190,17 @@
         "rating": "4.9",
         "review_summary": "4.9/5 based on 1,200+ reviews"
       }
+    },
+    "pcr-instagram-cta": {
+      "type": "pcr-instagram-cta",
+      "settings": {
+        "embed_1": "",
+        "embed_2": "",
+        "embed_3": "",
+        "heading": "Come see us at Saratoga Farmer's Market every Saturday from 9am to 1pm.",
+        "button_label": "Follow along @PacificCoastRoasters",
+        "button_url": "https://www.instagram.com/pacificcoastroasters/"
+      }
     }
   },
   "order": [
@@ -198,6 +209,7 @@
     "pcr-memorial",
     "pcr-featured-products",
     "pcr-featured-exotics",
-    "pcr-social-proof"
+    "pcr-social-proof",
+    "pcr-instagram-cta"
   ]
 }
