@@ -137,6 +137,7 @@
         "testimonial-1": {
           "type": "testimonial",
           "settings": {
+            "logo": "shopify://shop_images/876ad1ea-01db-4e28-856b-bd8bc5ac8aa1.jpg",
             "quote": "Partnering with Pacific Coast Roasters has elevated our coffee program in all the right ways. The quality is consistently exceptional, and each offering feels intentional, like it was chosen with real care behind it.\n\nWhat we appreciate most is their ability to bring something unique without losing approachability. Our customers trust it, come back for it, and genuinely enjoy exploring what’s new.\n\nIt’s rare to find a roaster that balances craft, consistency, and creativity this well. Pacific Coast Roasters has been an easy and valuable addition to what we do at Lito’s.",
             "author_name": "Charolette",
             "author_title": "Lito's Community Cafe & Market"
@@ -145,6 +146,7 @@
         "testimonial-2": {
           "type": "testimonial",
           "settings": {
+            "logo": "shopify://shop_images/IMG_0376.jpg",
             "quote": "Working with Pacific Coast Roasters has been a game changer for us. The quality of their coffee is undeniable. Every bag is thoughtfully sourced and roasted to bring out something special. You can taste the intention behind it.\n\nBeyond the coffee itself, what really stands out is their commitment to community and creativity. They’re not just another roaster—they bring energy, story, and consistency that’s hard to find.\n\nOur customers have love this coffee, and so do we. Pacific Coast Roasters has become a staple for us, and we’re proud to partner with a brand that genuinely cares about the craft and the people it serves.",
             "author_name": "Kendra",
             "author_title": "Coffeeville"
