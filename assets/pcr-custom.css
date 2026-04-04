@@ -2384,6 +2384,8 @@ a:hover {
   text-align: left;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
+.pcr-ws-testimonial__logo { margin-bottom: 1rem; }
+.pcr-ws-testimonial__logo-img { max-width: 120px; max-height: 40px; width: auto; height: auto; object-fit: contain; }
 .pcr-ws-testimonial__stars { color: var(--pcr-gold); font-size: 1rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
 .pcr-ws-testimonial__quote { font-size: 1rem; color: #374151; line-height: 1.7; font-style: italic; margin: 0 0 1.5rem; }
 .pcr-ws-testimonial__author { display: flex; flex-direction: column; gap: 0.15rem; }

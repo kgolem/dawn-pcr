@@ -154,6 +154,18 @@
     <div class="pcr-ws-grid pcr-ws-grid--2 pcr-ws-grid--max4xl">
       {%- for block in testimonial_blocks -%}
         <div class="pcr-ws-testimonial" {{ block.shopify_attributes }}>
+          {%- if block.settings.logo != blank -%}
+            <div class="pcr-ws-testimonial__logo">
+              <img
+                src="{{ block.settings.logo | image_url: width: 200 }}"
+                alt="{{ block.settings.author_name | escape }} logo"
+                loading="lazy"
+                width="200"
+                height="{{ 200 | divided_by: block.settings.logo.aspect_ratio | round }}"
+                class="pcr-ws-testimonial__logo-img"
+              >
+            </div>
+          {%- endif -%}
           <div class="pcr-ws-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="pcr-ws-testimonial__quote">"{{ block.settings.quote }}"</blockquote>
           <footer class="pcr-ws-testimonial__author">
@@ -251,6 +263,13 @@
               <label class="pcr-ws-form__label" for="ws-email">Email Address</label>
               <input id="ws-email" type="email" name="contact[email]" required placeholder="jane@example.com" class="pcr-ws-form__input">
             </div>
+            <div class="pcr-ws-form__field">
+              <label class="pcr-ws-form__label" for="ws-phone">Phone Number</label>
+              <input id="ws-phone" type="tel" name="contact[phone]" placeholder="(555) 123-4567" class="pcr-ws-form__input">
+            </div>
+          </div>
+
+          <div class="pcr-ws-form__row">
             <div class="pcr-ws-form__field">
               <label class="pcr-ws-form__label" for="ws-volume">Estimated Weekly Volume</label>
               <select id="ws-volume" name="contact[weekly_volume]" class="pcr-ws-form__select">
@@ -389,6 +408,7 @@
       "type": "testimonial",
       "name": "Testimonial",
       "settings": [
+        { "type": "image_picker", "id": "logo", "label": "Company logo", "info": "Optional. Displays at the top of the card." },
         { "type": "textarea", "id": "quote", "label": "Quote (no quotation marks needed)", "default": "Switching to Pacific Coast Roasters was the best operational decision we made this year." },
         { "type": "text", "id": "author_name", "label": "Author name", "default": "Sarah Jenkins" },
         { "type": "text", "id": "author_title", "label": "Author title & business", "default": "GM, The Daily Press Cafe — Santa Cruz, CA" }
